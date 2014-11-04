@@ -68,6 +68,30 @@
     <Compile Include="Control\DBControl.cs" />
     <Compile Include="Entity\LessonPlan.cs" />
     <Compile Include="Entity\LessonPlanYear.cs" />
+    <Compile Include="UI\LessonYearUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\LessonYearUI.Designer.cs">
+      <DependentUpon>LessonYearUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\LessonUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\LessonUI.Designer.cs">
+      <DependentUpon>LessonUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SubjectUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SubjectUI.Designer.cs">
+      <DependentUpon>SubjectUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ReportUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ReportUI.Designer.cs">
+      <DependentUpon>ReportUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
