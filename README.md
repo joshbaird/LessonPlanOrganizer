@@ -1,34 +1,13 @@
-Heading
+Lesson Plan Orgranizer
 =======
  
-Sub-heading
+ToDO List
 -----------
+  This is a work in progress. Need to define all tasks here
+ use mark down to learn how to edit and add stuff to this file...
+ A [wiki MD](http://en.wikipedia.org/wiki/Markdown).
  
-### Another deeper heading
- 
- Paragraphs are separated
- by a blank line.
- 
- Let 2 spaces at the end of a line to do a  
- line break
- 
- Text attributes *italic*,
- **bold**, `monospace`,~~monospace~~, `monospace` .
- 
- A [link](http://example.com).
- <<<   No space between ] and (  >>>
- 
- Shopping list:
- 
-   * apples
-   * oranges
-   * pears
- 
- Numbered list:
- 
-   1. apples
-   2. oranges
-   3. pears
- 
- The rain---not the reign---in
- Spain.
+### Coding that needs to be done....
+   * Entity Objects
+   * Control Objects
+   * UI
