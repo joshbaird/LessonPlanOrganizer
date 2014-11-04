@@ -1,10 +1,10 @@
- Heading
- =======
+Heading
+=======
  
- Sub-heading
- -----------
+Sub-heading
+-----------
  
- ### Another deeper heading
+### Another deeper heading
  
  Paragraphs are separated
  by a blank line.
