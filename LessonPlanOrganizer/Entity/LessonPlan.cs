@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using System.Windows.Forms.Calendar;
+
 namespace LessonPlanOrganizer
 {
-    class LessonPlan
+    class LessonPlan : CalendarItem
     {
-        public LessonPlan()
+        public LessonPlan(Calendar cal) : base(cal)
         {
 
         }
