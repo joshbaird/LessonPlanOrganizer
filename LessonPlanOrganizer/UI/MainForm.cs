@@ -14,7 +14,11 @@ namespace LessonPlanOrganizer
     {
         public MainForm()
         {
-            InitializeComponent();
+            InitializeComponent();        }
+
+        private void quitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
