@@ -52,8 +52,8 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.monthView1 = new WindowsFormsCalendar.MonthView();
-            this.calendar1 = new WindowsFormsCalendar.Calendar();
+            this.monthView1 = new System.Windows.Forms.Calendar.MonthView();
+            this.calendar1 = new System.Windows.Forms.Calendar.Calendar();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -277,9 +277,6 @@
             // 
             this.calendar1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.calendar1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.calendar1.ItemsBackgroundColor = System.Drawing.Color.RoyalBlue;
-            this.calendar1.ItemsFont = null;
-            this.calendar1.ItemsForeColor = System.Drawing.Color.Black;
             this.calendar1.Location = new System.Drawing.Point(233, 3);
             this.calendar1.Name = "calendar1";
             this.calendar1.Size = new System.Drawing.Size(542, 486);
@@ -332,8 +329,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private WindowsFormsCalendar.MonthView monthView1;
-        private WindowsFormsCalendar.Calendar calendar1;
+        private System.Windows.Forms.Calendar.MonthView monthView1;
+        private System.Windows.Forms.Calendar.Calendar calendar1;
 
 
 
