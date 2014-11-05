@@ -20,5 +20,13 @@ namespace LessonPlanOrganizer
         {
             this.Close();
         }
+
+        private void monthView1_SelectionChanged(object sender, EventArgs e)
+        {
+            if((this.monthView1.SelectionEnd - this.monthView1.SelectionStart).TotalDays <= this.calendar1.MaximumViewDays)
+                this.calendar1.SetViewRange(this.monthView1.SelectionStart, this.monthView1.SelectionEnd);
+            else
+                this.calendar1.SetViewRange(this.monthView1.SelectionStart, this.monthView1.SelectionStart.AddDays(this.calendar1.MaximumViewDays));
+        }
     }
 }
