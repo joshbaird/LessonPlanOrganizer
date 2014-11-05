@@ -63,14 +63,51 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="WindowsFormsCalendar">
-      <HintPath>Dependency\WindowsFormsCalendar.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Control\DBControl.cs" />
     <Compile Include="Entity\LessonPlan.cs" />
     <Compile Include="Entity\LessonPlanYear.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\Calendar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="System.Windows.Forms.Calendar\CalendarColorTable.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\CalendarDay.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\CalendarDayEventArgs.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\CalendarDaysMode.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\CalendarDayTop.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\CalendarHighlightRange.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\CalendarItem.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\CalendarItemCancelEventArgs.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\CalendarItemCollection.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\CalendarItemEventArgs.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\CalendarItemImageAlign.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\CalendarLoadEventArgs.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\CalendarProfessionalRenderer.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\CalendarRenderer.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\CalendarRendererBoxEventArgs.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\CalendarRendererDayEventArgs.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\CalendarRendererEventArgs.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\CalendarRendererItemBoundsEventArgs.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\CalendarRendererItemEventArgs.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\CalendarRendererTimeUnitEventArgs.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\CalendarSelectableElement.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\CalendarSystemRenderer.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\CalendarTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="System.Windows.Forms.Calendar\CalendarTimeScale.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\CalendarTimeScaleUnit.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\CalendarWeek.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\ICalendarSelectableElement.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\ISelectableElement.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\MonthView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="System.Windows.Forms.Calendar\MonthViewBoxEventArgs.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\MonthViewDay.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\MonthViewMontEventArgs.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\MonthViewMonth.cs" />
     <Compile Include="UI\LessonYearUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,7 +168,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.94.0\build\net40\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.94.0\build\net40\System.Data.SQLite.Core.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
