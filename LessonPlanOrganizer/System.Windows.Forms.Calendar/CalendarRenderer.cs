@@ -986,7 +986,8 @@ namespace System.Windows.Forms.Calendar
                     CalendarDay dayStart = item.DayStart;
                     CalendarDay dayEnd = item.DayEnd;
                     item.ClearBounds();
-
+                    if (dayEnd == null || dayStart == null)
+                        continue;
                     for (int i = dayStart.Index; i <= dayEnd.Index; i++)
                     {
                         Calendar.Days[i].AddContainedItem(item);
@@ -1000,7 +1001,8 @@ namespace System.Windows.Forms.Calendar
                 {
                     CalendarDay dayStart = item.DayStart;
                     CalendarDay dayEnd = item.DayEnd;
-
+                    if (dayEnd == null || dayStart == null)
+                        continue;
                     PlaceInMatrix(ref matix, curIndex + 1, dayStart.Index, dayEnd.Index);
                     curIndex++;
                 }

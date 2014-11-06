@@ -11,7 +11,7 @@ namespace LessonPlanOrganizer
 {
     public partial class ReportUI : Form
     {
-        public ReportUI()
+        public ReportUI(String mode)
         {
             InitializeComponent();
         }

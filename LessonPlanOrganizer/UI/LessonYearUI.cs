@@ -11,7 +11,7 @@ namespace LessonPlanOrganizer
 {
     public partial class LessonYearUI : Form
     {
-        public LessonYearUI()
+        public LessonYearUI(String mode)
         {
             InitializeComponent();
         }

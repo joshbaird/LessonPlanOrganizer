@@ -57,16 +57,19 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.monthView1 = new System.Windows.Forms.Calendar.MonthView();
             this.calendar1 = new System.Windows.Forms.Calendar.Calendar();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.monthView1 = new System.Windows.Forms.Calendar.MonthView();
             this.objectListView1 = new BrightIdeasSoftware.ObjectListView();
             this.olvSubjects = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.pTop = new System.Windows.Forms.Panel();
+            this.bToday = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.objectListView1)).BeginInit();
+            this.pTop.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -99,6 +102,7 @@
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.openToolStripMenuItem.Text = "&Open Lesson Year";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openFileStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
@@ -110,7 +114,7 @@
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
             this.quitToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.quitToolStripMenuItem.Text = "&Quit";
-            this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
+            this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitFileStripMenuItem_Click);
             // 
             // yearToolStripMenuItem
             // 
@@ -127,18 +131,21 @@
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
             this.newToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.newToolStripMenuItem.Text = "&New";
+            this.newToolStripMenuItem.Click += new System.EventHandler(this.newYearMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.editToolStripMenuItem.Text = "&Edit";
+            this.editToolStripMenuItem.Click += new System.EventHandler(this.editYearStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.deleteToolStripMenuItem.Text = "&Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteYearStripMenuItem_Click);
             // 
             // subjectsToolStripMenuItem
             // 
@@ -155,18 +162,21 @@
             this.newToolStripMenuItem2.Name = "newToolStripMenuItem2";
             this.newToolStripMenuItem2.Size = new System.Drawing.Size(107, 22);
             this.newToolStripMenuItem2.Text = "&New";
+            this.newToolStripMenuItem2.Click += new System.EventHandler(this.newSubjectStripMenuItem_Click);
             // 
             // editToolStripMenuItem2
             // 
             this.editToolStripMenuItem2.Name = "editToolStripMenuItem2";
             this.editToolStripMenuItem2.Size = new System.Drawing.Size(107, 22);
             this.editToolStripMenuItem2.Text = "&Edit";
+            this.editToolStripMenuItem2.Click += new System.EventHandler(this.editSubjectStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem2
             // 
             this.deleteToolStripMenuItem2.Name = "deleteToolStripMenuItem2";
             this.deleteToolStripMenuItem2.Size = new System.Drawing.Size(107, 22);
             this.deleteToolStripMenuItem2.Text = "&Delete";
+            this.deleteToolStripMenuItem2.Click += new System.EventHandler(this.deleteSubjectStripMenuItem_Click);
             // 
             // lessonToolStripMenuItem
             // 
@@ -183,18 +193,21 @@
             this.newToolStripMenuItem1.Name = "newToolStripMenuItem1";
             this.newToolStripMenuItem1.Size = new System.Drawing.Size(107, 22);
             this.newToolStripMenuItem1.Text = "&New";
+            this.newToolStripMenuItem1.Click += new System.EventHandler(this.newLessonStripMenuItem_Click);
             // 
             // editToolStripMenuItem1
             // 
             this.editToolStripMenuItem1.Name = "editToolStripMenuItem1";
             this.editToolStripMenuItem1.Size = new System.Drawing.Size(107, 22);
             this.editToolStripMenuItem1.Text = "&Edit";
+            this.editToolStripMenuItem1.Click += new System.EventHandler(this.editLessonStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem1
             // 
             this.deleteToolStripMenuItem1.Name = "deleteToolStripMenuItem1";
             this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(107, 22);
             this.deleteToolStripMenuItem1.Text = "&Delete";
+            this.deleteToolStripMenuItem1.Click += new System.EventHandler(this.deleteLessonStripMenuItem_Click);
             // 
             // reportsToolStripMenuItem
             // 
@@ -210,12 +223,14 @@
             this.subjectStatisticsToolStripMenuItem.Name = "subjectStatisticsToolStripMenuItem";
             this.subjectStatisticsToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.subjectStatisticsToolStripMenuItem.Text = "&Subject Statistics";
+            this.subjectStatisticsToolStripMenuItem.Click += new System.EventHandler(this.subjectStatisticsReportStripMenuItem_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
             this.toolStripMenuItem3.Size = new System.Drawing.Size(162, 22);
             this.toolStripMenuItem3.Text = "&Lesson Plan";
+            this.toolStripMenuItem3.Click += new System.EventHandler(this.lessonPlanReportStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -230,17 +245,19 @@
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "&About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutHelpStripMenuItem_Click);
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.pTop, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(784, 538);
             this.tableLayoutPanel1.TabIndex = 1;
@@ -253,35 +270,12 @@
             this.tableLayoutPanel2.Controls.Add(this.calendar1, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 43);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 38);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(778, 492);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(778, 497);
             this.tableLayoutPanel2.TabIndex = 0;
-            // 
-            // monthView1
-            // 
-            this.monthView1.ArrowsColor = System.Drawing.SystemColors.Window;
-            this.monthView1.ArrowsSelectedColor = System.Drawing.Color.Gold;
-            this.monthView1.DayBackgroundColor = System.Drawing.Color.Empty;
-            this.monthView1.DayGrayedText = System.Drawing.SystemColors.GrayText;
-            this.monthView1.DaySelectedBackgroundColor = System.Drawing.SystemColors.Highlight;
-            this.monthView1.DaySelectedColor = System.Drawing.SystemColors.WindowText;
-            this.monthView1.DaySelectedTextColor = System.Drawing.SystemColors.HighlightText;
-            this.monthView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.monthView1.ItemPadding = new System.Windows.Forms.Padding(2);
-            this.monthView1.Location = new System.Drawing.Point(3, 3);
-            this.monthView1.MonthTitleColor = System.Drawing.SystemColors.ActiveCaption;
-            this.monthView1.MonthTitleColorInactive = System.Drawing.SystemColors.InactiveCaption;
-            this.monthView1.MonthTitleTextColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.monthView1.MonthTitleTextColorInactive = System.Drawing.SystemColors.InactiveCaptionText;
-            this.monthView1.Name = "monthView1";
-            this.monthView1.Size = new System.Drawing.Size(218, 174);
-            this.monthView1.TabIndex = 0;
-            this.monthView1.Text = "monthView1";
-            this.monthView1.TodayBorderColor = System.Drawing.Color.Maroon;
-            this.monthView1.SelectionChanged += new System.EventHandler(this.monthView1_SelectionChanged);
             // 
             // calendar1
             // 
@@ -310,7 +304,7 @@
         calendarHighlightRange5};
             this.calendar1.Location = new System.Drawing.Point(233, 3);
             this.calendar1.Name = "calendar1";
-            this.calendar1.Size = new System.Drawing.Size(542, 486);
+            this.calendar1.Size = new System.Drawing.Size(542, 491);
             this.calendar1.TabIndex = 1;
             this.calendar1.Text = "calendar1";
             this.calendar1.LoadItems += new System.Windows.Forms.Calendar.Calendar.CalendarLoadEventHandler(this.calendar1_LoadItems);
@@ -327,8 +321,31 @@
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 180F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(224, 486);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(224, 491);
             this.tableLayoutPanel3.TabIndex = 2;
+            // 
+            // monthView1
+            // 
+            this.monthView1.ArrowsColor = System.Drawing.SystemColors.Window;
+            this.monthView1.ArrowsSelectedColor = System.Drawing.Color.Gold;
+            this.monthView1.DayBackgroundColor = System.Drawing.Color.Empty;
+            this.monthView1.DayGrayedText = System.Drawing.SystemColors.GrayText;
+            this.monthView1.DaySelectedBackgroundColor = System.Drawing.SystemColors.Highlight;
+            this.monthView1.DaySelectedColor = System.Drawing.SystemColors.WindowText;
+            this.monthView1.DaySelectedTextColor = System.Drawing.SystemColors.HighlightText;
+            this.monthView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.monthView1.ItemPadding = new System.Windows.Forms.Padding(2);
+            this.monthView1.Location = new System.Drawing.Point(3, 3);
+            this.monthView1.MonthTitleColor = System.Drawing.SystemColors.ActiveCaption;
+            this.monthView1.MonthTitleColorInactive = System.Drawing.SystemColors.InactiveCaption;
+            this.monthView1.MonthTitleTextColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.monthView1.MonthTitleTextColorInactive = System.Drawing.SystemColors.InactiveCaptionText;
+            this.monthView1.Name = "monthView1";
+            this.monthView1.Size = new System.Drawing.Size(218, 174);
+            this.monthView1.TabIndex = 0;
+            this.monthView1.Text = "monthView1";
+            this.monthView1.TodayBorderColor = System.Drawing.Color.Maroon;
+            this.monthView1.SelectionChanged += new System.EventHandler(this.monthView1_SelectionChanged);
             // 
             // objectListView1
             // 
@@ -338,7 +355,7 @@
             this.objectListView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.objectListView1.Location = new System.Drawing.Point(3, 183);
             this.objectListView1.Name = "objectListView1";
-            this.objectListView1.Size = new System.Drawing.Size(218, 300);
+            this.objectListView1.Size = new System.Drawing.Size(218, 305);
             this.objectListView1.TabIndex = 1;
             this.objectListView1.UseCompatibleStateImageBehavior = false;
             this.objectListView1.View = System.Windows.Forms.View.List;
@@ -346,6 +363,25 @@
             // olvSubjects
             // 
             this.olvSubjects.Text = "Subjects";
+            // 
+            // pTop
+            // 
+            this.pTop.Controls.Add(this.bToday);
+            this.pTop.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pTop.Location = new System.Drawing.Point(3, 3);
+            this.pTop.Name = "pTop";
+            this.pTop.Size = new System.Drawing.Size(778, 29);
+            this.pTop.TabIndex = 1;
+            // 
+            // bToday
+            // 
+            this.bToday.Location = new System.Drawing.Point(9, 3);
+            this.bToday.Name = "bToday";
+            this.bToday.Size = new System.Drawing.Size(75, 23);
+            this.bToday.TabIndex = 0;
+            this.bToday.Text = "Today";
+            this.bToday.UseVisualStyleBackColor = true;
+            this.bToday.Click += new System.EventHandler(this.bToday_Click);
             // 
             // MainForm
             // 
@@ -364,6 +400,7 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.objectListView1)).EndInit();
+            this.pTop.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -400,6 +437,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private BrightIdeasSoftware.ObjectListView objectListView1;
         private BrightIdeasSoftware.OLVColumn olvSubjects;
+        private System.Windows.Forms.Panel pTop;
+        private System.Windows.Forms.Button bToday;
 
 
 

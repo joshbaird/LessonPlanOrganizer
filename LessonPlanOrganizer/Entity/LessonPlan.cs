@@ -9,9 +9,15 @@ namespace LessonPlanOrganizer
 {
     class LessonPlan : CalendarItem
     {
-        public LessonPlan(Calendar cal) : base(cal)
+        public LessonPlan(Calendar year)
+            : base(year)
         {
 
+        }
+
+        public LessonPlan(Calendar year, DateTime start, TimeSpan duration, String title)
+            : base(year, start, duration, title)
+        {
         }
 
         /// <summary>
