@@ -15,31 +15,25 @@ namespace LessonPlanOrganizer
             _subjects = new List<Subject>();
         }
         private List<LessonPlan> _lessonPlans;
-        public List<LessonPlan> LessonPlans
+        public List<LessonPlan> GetLessonPlans()
         {
-            get
-            {
-                return _lessonPlans;
-            }
-            set
-            {
-                _lessonPlans = value;
-            }
+            return _lessonPlans;
+        }
+        public void SetLessonPlans(List<LessonPlan> lessons)
+        {
+            _lessonPlans = lessons;
         }
 
         private List<Subject> _subjects;
-        public List<Subject> Subjects
+        public List<Subject> GetSubjects()
         {
-            get
-            {
-                if (_subjects == null)
-                    return new List<Subject>();
-                return _subjects;
-            }
-            set
-            {
-                _subjects = value;
-            }
+            if (_subjects == null)
+                return new List<Subject>();
+            return _subjects;
+        }
+        public void SetSubjects(List<Subject> subjects)
+        {
+            _subjects = subjects;
         }
         
 
