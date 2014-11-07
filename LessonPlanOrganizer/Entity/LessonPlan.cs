@@ -7,6 +7,7 @@ using System.Windows.Forms.Calendar;
 
 namespace LessonPlanOrganizer
 {
+    [Serializable]
     class LessonPlan : CalendarItem
     {
         public LessonPlan(Calendar year)
