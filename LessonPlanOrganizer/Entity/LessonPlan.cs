@@ -13,7 +13,6 @@ namespace LessonPlanOrganizer
         public LessonPlan(Calendar year)
             : base(year)
         {
-
         }
 
         public LessonPlan(Calendar year, DateTime start, TimeSpan duration, String title)

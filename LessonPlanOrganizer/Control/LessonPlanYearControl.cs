@@ -7,42 +7,47 @@ using System.Windows.Forms.Calendar;
 
 namespace LessonPlanOrganizer
 {
-    class LessonPlanYearControl : Calendar
+    class LessonPlanYearControl
     {
-        public LessonPlanYearControl() : base()
+        public LessonPlanYearControl()
         {
             _lessonPlans = new List<LessonPlan>();
             _subjects = new List<Subject>();
         }
         private List<LessonPlan> _lessonPlans;
-        public List<LessonPlan> GetLessonPlans()
+        public List<LessonPlan> LessonPlans
         {
-            return _lessonPlans;
-        }
-        public void SetLessonPlans(List<LessonPlan> lessons)
-        {
-            _lessonPlans = lessons;
+            get
+            {
+                if (_lessonPlans == null)
+                    return new List<LessonPlan>();
+                return _lessonPlans;
+            }
+            set
+            {
+                _lessonPlans = value;
+            }
         }
 
         private List<Subject> _subjects;
-        public List<Subject> GetSubjects()
+        public List<Subject> Subjects
         {
-            if (_subjects == null)
-                return new List<Subject>();
-            return _subjects;
-        }
-        public void SetSubjects(List<Subject> subjects)
-        {
-            _subjects = subjects;
+            get
+            {
+                if (_subjects == null)
+                    return new List<Subject>();
+                return _subjects;
+            }
+            set
+            {
+                _subjects = value;
+            }
         }
         
 
-        public void loadLessonsIntoUIDisplay(DateTime start, DateTime end)
+        public List<LessonPlan> GetLessonsForCalendarDisplay(DateTime start, DateTime end)
         {
-            //targetDt.Ticks > d1.Ticks && targetDt.Ticks < d2.Ticks
-            List<LessonPlan> passLessons = _lessonPlans.Where(l => (l.StartDate.Ticks >= start.Ticks && l.StartDate.Ticks <= end.Ticks)).ToList<LessonPlan>();
-            if(passLessons != null)
-                this.Items.AddRange(passLessons);
+            return LessonPlans.Where(l => (l.StartDate.Ticks >= start.Ticks && l.StartDate.Ticks <= end.Ticks)).ToList<LessonPlan>();
         }
     }  
 }
