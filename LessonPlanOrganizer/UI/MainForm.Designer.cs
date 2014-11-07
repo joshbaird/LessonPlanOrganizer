@@ -64,7 +64,7 @@
             this.bToday = new System.Windows.Forms.Button();
             this.labelHeaderFill = new System.Windows.Forms.Label();
             this.monthView = new System.Windows.Forms.Calendar.MonthView();
-            this.lessonPlanYearControl = new LessonPlanOrganizer.LessonPlanYearControl();
+            this.calendar1 = new System.Windows.Forms.Calendar.Calendar();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tlpLessonPlanYear.SuspendLayout();
@@ -269,7 +269,7 @@
             this.tlpLessonPlanYear.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 230F));
             this.tlpLessonPlanYear.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpLessonPlanYear.Controls.Add(this.tlpLeftPane, 0, 0);
-            this.tlpLessonPlanYear.Controls.Add(this.lessonPlanYearControl, 1, 0);
+            this.tlpLessonPlanYear.Controls.Add(this.calendar1, 1, 0);
             this.tlpLessonPlanYear.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpLessonPlanYear.Location = new System.Drawing.Point(3, 4);
             this.tlpLessonPlanYear.Name = "tlpLessonPlanYear";
@@ -304,6 +304,7 @@
             this.objectListView1.GridLines = true;
             this.objectListView1.Location = new System.Drawing.Point(3, 193);
             this.objectListView1.Name = "objectListView1";
+            this.objectListView1.OwnerDraw = true;
             this.objectListView1.Size = new System.Drawing.Size(218, 329);
             this.objectListView1.TabIndex = 1;
             this.objectListView1.UseAlternatingBackColors = true;
@@ -373,10 +374,10 @@
             this.monthView.TodayBorderColor = System.Drawing.Color.Maroon;
             this.monthView.SelectionChanged += new System.EventHandler(this.monthView_SelectionChanged);
             // 
-            // lessonPlanYearControl
+            // calendar1
             // 
-            this.lessonPlanYearControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lessonPlanYearControl.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.calendar1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.calendar1.Font = new System.Drawing.Font("Segoe UI", 9F);
             calendarHighlightRange1.DayOfWeek = System.DayOfWeek.Monday;
             calendarHighlightRange1.EndTime = System.TimeSpan.Parse("17:00:00");
             calendarHighlightRange1.StartTime = System.TimeSpan.Parse("08:00:00");
@@ -392,18 +393,18 @@
             calendarHighlightRange5.DayOfWeek = System.DayOfWeek.Friday;
             calendarHighlightRange5.EndTime = System.TimeSpan.Parse("17:00:00");
             calendarHighlightRange5.StartTime = System.TimeSpan.Parse("08:00:00");
-            this.lessonPlanYearControl.HighlightRanges = new System.Windows.Forms.Calendar.CalendarHighlightRange[] {
+            this.calendar1.HighlightRanges = new System.Windows.Forms.Calendar.CalendarHighlightRange[] {
         calendarHighlightRange1,
         calendarHighlightRange2,
         calendarHighlightRange3,
         calendarHighlightRange4,
         calendarHighlightRange5};
-            this.lessonPlanYearControl.Location = new System.Drawing.Point(233, 3);
-            this.lessonPlanYearControl.Name = "lessonPlanYearControl";
-            this.lessonPlanYearControl.Size = new System.Drawing.Size(542, 525);
-            this.lessonPlanYearControl.TabIndex = 3;
-            this.lessonPlanYearControl.Text = "lessonPlanYearControl1";
-            this.lessonPlanYearControl.LoadItems += new System.Windows.Forms.Calendar.Calendar.CalendarLoadEventHandler(this.lessonPlanYearControl_LoadItems);
+            this.calendar1.Location = new System.Drawing.Point(233, 3);
+            this.calendar1.Name = "calendar1";
+            this.calendar1.Size = new System.Drawing.Size(542, 525);
+            this.calendar1.TabIndex = 3;
+            this.calendar1.Text = "calendar1";
+            this.calendar1.LoadItems += new System.Windows.Forms.Calendar.Calendar.CalendarLoadEventHandler(this.calendar1_LoadItems);
             // 
             // MainForm
             // 
@@ -461,8 +462,8 @@
         private BrightIdeasSoftware.OLVColumn olvSubjects;
         private System.Windows.Forms.Panel pTop;
         private System.Windows.Forms.Button bToday;
-        private LessonPlanYearControl lessonPlanYearControl;
         private System.Windows.Forms.Label labelHeaderFill;
+        private System.Windows.Forms.Calendar.Calendar calendar1;
 
 
 
