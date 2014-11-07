@@ -56,18 +56,19 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.calendar1 = new System.Windows.Forms.Calendar.Calendar();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.monthView1 = new System.Windows.Forms.Calendar.MonthView();
+            this.tlpLessonPlanYear = new System.Windows.Forms.TableLayoutPanel();
+            this.tlpLeftPane = new System.Windows.Forms.TableLayoutPanel();
             this.objectListView1 = new BrightIdeasSoftware.ObjectListView();
             this.olvSubjects = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.pTop = new System.Windows.Forms.Panel();
             this.bToday = new System.Windows.Forms.Button();
+            this.labelHeaderFill = new System.Windows.Forms.Label();
+            this.monthView = new System.Windows.Forms.Calendar.MonthView();
+            this.lessonPlanYearControl = new LessonPlanOrganizer.LessonPlanYearControl();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
+            this.tlpLessonPlanYear.SuspendLayout();
+            this.tlpLeftPane.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.objectListView1)).BeginInit();
             this.pTop.SuspendLayout();
             this.SuspendLayout();
@@ -251,36 +252,125 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.pTop, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.tlpLessonPlanYear, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.labelHeaderFill, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 1F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(784, 538);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
-            // tableLayoutPanel2
+            // tlpLessonPlanYear
             // 
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 230F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Controls.Add(this.calendar1, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 0, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 38);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(778, 497);
-            this.tableLayoutPanel2.TabIndex = 0;
+            this.tlpLessonPlanYear.ColumnCount = 2;
+            this.tlpLessonPlanYear.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 230F));
+            this.tlpLessonPlanYear.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpLessonPlanYear.Controls.Add(this.tlpLeftPane, 0, 0);
+            this.tlpLessonPlanYear.Controls.Add(this.lessonPlanYearControl, 1, 0);
+            this.tlpLessonPlanYear.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tlpLessonPlanYear.Location = new System.Drawing.Point(3, 4);
+            this.tlpLessonPlanYear.Name = "tlpLessonPlanYear";
+            this.tlpLessonPlanYear.RowCount = 1;
+            this.tlpLessonPlanYear.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpLessonPlanYear.Size = new System.Drawing.Size(778, 531);
+            this.tlpLessonPlanYear.TabIndex = 0;
             // 
-            // calendar1
+            // tlpLeftPane
             // 
-            this.calendar1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.calendar1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tlpLeftPane.ColumnCount = 1;
+            this.tlpLeftPane.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpLeftPane.Controls.Add(this.objectListView1, 0, 1);
+            this.tlpLeftPane.Controls.Add(this.pTop, 0, 0);
+            this.tlpLeftPane.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tlpLeftPane.Location = new System.Drawing.Point(3, 3);
+            this.tlpLeftPane.Name = "tlpLeftPane";
+            this.tlpLeftPane.RowCount = 2;
+            this.tlpLeftPane.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 190F));
+            this.tlpLeftPane.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpLeftPane.Size = new System.Drawing.Size(224, 525);
+            this.tlpLeftPane.TabIndex = 2;
+            // 
+            // objectListView1
+            // 
+            this.objectListView1.AllColumns.Add(this.olvSubjects);
+            this.objectListView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.olvSubjects});
+            this.objectListView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.objectListView1.Location = new System.Drawing.Point(3, 193);
+            this.objectListView1.Name = "objectListView1";
+            this.objectListView1.Size = new System.Drawing.Size(218, 329);
+            this.objectListView1.TabIndex = 1;
+            this.objectListView1.UseCompatibleStateImageBehavior = false;
+            this.objectListView1.View = System.Windows.Forms.View.List;
+            // 
+            // olvSubjects
+            // 
+            this.olvSubjects.FillsFreeSpace = true;
+            this.olvSubjects.Text = "Subjects";
+            // 
+            // pTop
+            // 
+            this.pTop.Controls.Add(this.monthView);
+            this.pTop.Controls.Add(this.bToday);
+            this.pTop.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pTop.Location = new System.Drawing.Point(3, 3);
+            this.pTop.Name = "pTop";
+            this.pTop.Size = new System.Drawing.Size(218, 184);
+            this.pTop.TabIndex = 1;
+            // 
+            // bToday
+            // 
+            this.bToday.Dock = System.Windows.Forms.DockStyle.Top;
+            this.bToday.Location = new System.Drawing.Point(0, 0);
+            this.bToday.Name = "bToday";
+            this.bToday.Size = new System.Drawing.Size(218, 23);
+            this.bToday.TabIndex = 0;
+            this.bToday.Text = "Today";
+            this.bToday.UseVisualStyleBackColor = true;
+            this.bToday.Click += new System.EventHandler(this.bToday_Click);
+            // 
+            // labelHeaderFill
+            // 
+            this.labelHeaderFill.AutoSize = true;
+            this.labelHeaderFill.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.labelHeaderFill.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelHeaderFill.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.labelHeaderFill.Location = new System.Drawing.Point(3, 0);
+            this.labelHeaderFill.Name = "labelHeaderFill";
+            this.labelHeaderFill.Size = new System.Drawing.Size(778, 1);
+            this.labelHeaderFill.TabIndex = 1;
+            this.labelHeaderFill.Text = "-";
+            // 
+            // monthView
+            // 
+            this.monthView.ArrowsColor = System.Drawing.SystemColors.Window;
+            this.monthView.ArrowsSelectedColor = System.Drawing.Color.Gold;
+            this.monthView.DayBackgroundColor = System.Drawing.Color.Empty;
+            this.monthView.DayGrayedText = System.Drawing.SystemColors.GrayText;
+            this.monthView.DaySelectedBackgroundColor = System.Drawing.SystemColors.Highlight;
+            this.monthView.DaySelectedColor = System.Drawing.SystemColors.WindowText;
+            this.monthView.DaySelectedTextColor = System.Drawing.SystemColors.HighlightText;
+            this.monthView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.monthView.ItemPadding = new System.Windows.Forms.Padding(2);
+            this.monthView.Location = new System.Drawing.Point(0, 23);
+            this.monthView.MonthTitleColor = System.Drawing.SystemColors.ActiveCaption;
+            this.monthView.MonthTitleColorInactive = System.Drawing.SystemColors.InactiveCaption;
+            this.monthView.MonthTitleTextColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.monthView.MonthTitleTextColorInactive = System.Drawing.SystemColors.InactiveCaptionText;
+            this.monthView.Name = "monthView";
+            this.monthView.Size = new System.Drawing.Size(218, 161);
+            this.monthView.TabIndex = 0;
+            this.monthView.Text = "monthView1";
+            this.monthView.TodayBorderColor = System.Drawing.Color.Maroon;
+            this.monthView.SelectionChanged += new System.EventHandler(this.monthView1_SelectionChanged);
+            // 
+            // lessonPlanYearControl
+            // 
+            this.lessonPlanYearControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lessonPlanYearControl.Font = new System.Drawing.Font("Segoe UI", 9F);
             calendarHighlightRange1.DayOfWeek = System.DayOfWeek.Monday;
             calendarHighlightRange1.EndTime = System.TimeSpan.Parse("17:00:00");
             calendarHighlightRange1.StartTime = System.TimeSpan.Parse("08:00:00");
@@ -296,92 +386,18 @@
             calendarHighlightRange5.DayOfWeek = System.DayOfWeek.Friday;
             calendarHighlightRange5.EndTime = System.TimeSpan.Parse("17:00:00");
             calendarHighlightRange5.StartTime = System.TimeSpan.Parse("08:00:00");
-            this.calendar1.HighlightRanges = new System.Windows.Forms.Calendar.CalendarHighlightRange[] {
+            this.lessonPlanYearControl.HighlightRanges = new System.Windows.Forms.Calendar.CalendarHighlightRange[] {
         calendarHighlightRange1,
         calendarHighlightRange2,
         calendarHighlightRange3,
         calendarHighlightRange4,
         calendarHighlightRange5};
-            this.calendar1.Location = new System.Drawing.Point(233, 3);
-            this.calendar1.Name = "calendar1";
-            this.calendar1.Size = new System.Drawing.Size(542, 491);
-            this.calendar1.TabIndex = 1;
-            this.calendar1.Text = "calendar1";
-            this.calendar1.LoadItems += new System.Windows.Forms.Calendar.Calendar.CalendarLoadEventHandler(this.calendar1_LoadItems);
-            // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.ColumnCount = 1;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Controls.Add(this.monthView1, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.objectListView1, 0, 1);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 2;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 180F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(224, 491);
-            this.tableLayoutPanel3.TabIndex = 2;
-            // 
-            // monthView1
-            // 
-            this.monthView1.ArrowsColor = System.Drawing.SystemColors.Window;
-            this.monthView1.ArrowsSelectedColor = System.Drawing.Color.Gold;
-            this.monthView1.DayBackgroundColor = System.Drawing.Color.Empty;
-            this.monthView1.DayGrayedText = System.Drawing.SystemColors.GrayText;
-            this.monthView1.DaySelectedBackgroundColor = System.Drawing.SystemColors.Highlight;
-            this.monthView1.DaySelectedColor = System.Drawing.SystemColors.WindowText;
-            this.monthView1.DaySelectedTextColor = System.Drawing.SystemColors.HighlightText;
-            this.monthView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.monthView1.ItemPadding = new System.Windows.Forms.Padding(2);
-            this.monthView1.Location = new System.Drawing.Point(3, 3);
-            this.monthView1.MonthTitleColor = System.Drawing.SystemColors.ActiveCaption;
-            this.monthView1.MonthTitleColorInactive = System.Drawing.SystemColors.InactiveCaption;
-            this.monthView1.MonthTitleTextColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.monthView1.MonthTitleTextColorInactive = System.Drawing.SystemColors.InactiveCaptionText;
-            this.monthView1.Name = "monthView1";
-            this.monthView1.Size = new System.Drawing.Size(218, 174);
-            this.monthView1.TabIndex = 0;
-            this.monthView1.Text = "monthView1";
-            this.monthView1.TodayBorderColor = System.Drawing.Color.Maroon;
-            this.monthView1.SelectionChanged += new System.EventHandler(this.monthView1_SelectionChanged);
-            // 
-            // objectListView1
-            // 
-            this.objectListView1.AllColumns.Add(this.olvSubjects);
-            this.objectListView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.olvSubjects});
-            this.objectListView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.objectListView1.Location = new System.Drawing.Point(3, 183);
-            this.objectListView1.Name = "objectListView1";
-            this.objectListView1.Size = new System.Drawing.Size(218, 305);
-            this.objectListView1.TabIndex = 1;
-            this.objectListView1.UseCompatibleStateImageBehavior = false;
-            this.objectListView1.View = System.Windows.Forms.View.List;
-            // 
-            // olvSubjects
-            // 
-            this.olvSubjects.Text = "Subjects";
-            // 
-            // pTop
-            // 
-            this.pTop.Controls.Add(this.bToday);
-            this.pTop.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pTop.Location = new System.Drawing.Point(3, 3);
-            this.pTop.Name = "pTop";
-            this.pTop.Size = new System.Drawing.Size(778, 29);
-            this.pTop.TabIndex = 1;
-            // 
-            // bToday
-            // 
-            this.bToday.Location = new System.Drawing.Point(9, 3);
-            this.bToday.Name = "bToday";
-            this.bToday.Size = new System.Drawing.Size(75, 23);
-            this.bToday.TabIndex = 0;
-            this.bToday.Text = "Today";
-            this.bToday.UseVisualStyleBackColor = true;
-            this.bToday.Click += new System.EventHandler(this.bToday_Click);
+            this.lessonPlanYearControl.Location = new System.Drawing.Point(233, 3);
+            this.lessonPlanYearControl.Name = "lessonPlanYearControl";
+            this.lessonPlanYearControl.Size = new System.Drawing.Size(542, 525);
+            this.lessonPlanYearControl.TabIndex = 3;
+            this.lessonPlanYearControl.Text = "lessonPlanYearControl1";
+            this.lessonPlanYearControl.LoadItems += new System.Windows.Forms.Calendar.Calendar.CalendarLoadEventHandler(this.lessonPlanYearControl_LoadItems);
             // 
             // MainForm
             // 
@@ -397,8 +413,9 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            this.tlpLessonPlanYear.ResumeLayout(false);
+            this.tlpLeftPane.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.objectListView1)).EndInit();
             this.pTop.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -431,14 +448,15 @@
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Calendar.MonthView monthView1;
-        private System.Windows.Forms.Calendar.Calendar calendar1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.TableLayoutPanel tlpLessonPlanYear;
+        private System.Windows.Forms.Calendar.MonthView monthView;
+        private System.Windows.Forms.TableLayoutPanel tlpLeftPane;
         private BrightIdeasSoftware.ObjectListView objectListView1;
         private BrightIdeasSoftware.OLVColumn olvSubjects;
         private System.Windows.Forms.Panel pTop;
         private System.Windows.Forms.Button bToday;
+        private LessonPlanYearControl lessonPlanYearControl;
+        private System.Windows.Forms.Label labelHeaderFill;
 
 
 

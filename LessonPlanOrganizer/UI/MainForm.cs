@@ -17,26 +17,17 @@ namespace LessonPlanOrganizer
         public MainForm()
         {
             InitializeComponent();
+           
         }
+        
+        
 
         private void monthView1_SelectionChanged(object sender, EventArgs e)
         {
-            if((this.monthView1.SelectionEnd - this.monthView1.SelectionStart).TotalDays <= this.calendar1.MaximumViewDays)
-                this.calendar1.SetViewRange(this.monthView1.SelectionStart, this.monthView1.SelectionEnd);
+            if ((this.monthView.SelectionEnd - this.monthView.SelectionStart).TotalDays <= this.lessonPlanYearControl.MaximumViewDays)
+                this.lessonPlanYearControl.SetViewRange(this.monthView.SelectionStart, this.monthView.SelectionEnd);
             else
-                this.calendar1.SetViewRange(this.monthView1.SelectionStart, this.monthView1.SelectionStart.AddDays(this.calendar1.MaximumViewDays));
-        }
-
-        private void calendar1_LoadItems(object sender, CalendarLoadEventArgs e)
-        {
-            LessonPlanYear lpy = new LessonPlanYear(calendar1);
-            // load items from Lesson Year Plan
-            LessonPlan item = new LessonPlan(lpy.Calendar, new DateTime(2014, 11, 6), new TimeSpan(1, 0, 0, 0), "Testing");
-            item.ApplyColor(Color.Red);
-            CalendarItem item2 = new CalendarItem(calendar1, new DateTime(2014, 11, 10), new TimeSpan(1, 0, 0, 0), "Testing2");
-            item2.ApplyColor(Color.Blue);
-            calendar1.Items.Add(item);
-            calendar1.Items.Add(item2);
+                this.lessonPlanYearControl.SetViewRange(this.monthView.SelectionStart, this.monthView.SelectionStart.AddDays(this.lessonPlanYearControl.MaximumViewDays));
         }
 
         #region menu strip actions
@@ -141,8 +132,19 @@ namespace LessonPlanOrganizer
 
         private void bToday_Click(object sender, EventArgs e)
         {
-            this.monthView1.SelectionStart = DateTime.Now;
-            this.monthView1.SelectionEnd = DateTime.Now.AddDays(1);
+            this.monthView.SelectionStart = DateTime.Now;
+            this.monthView.SelectionEnd = DateTime.Now.AddDays(1);
+        }
+
+        private void lessonPlanYearControl_LoadItems(object sender, CalendarLoadEventArgs e)
+        {
+            // load items from Lesson Year Plan
+            LessonPlan item = new LessonPlan(lessonPlanYearControl, new DateTime(2014, 11, 6), new TimeSpan(1, 0, 0, 0), "Testing");
+            item.ApplyColor(Color.Red);
+            LessonPlan item2 = new LessonPlan(lessonPlanYearControl, new DateTime(2014, 11, 10), new TimeSpan(1, 0, 0, 0), "Testing2");
+            item2.ApplyColor(Color.Blue);
+            lessonPlanYearControl.Items.Add(item);
+            lessonPlanYearControl.Items.Add(item2);
         }
     }
 }
