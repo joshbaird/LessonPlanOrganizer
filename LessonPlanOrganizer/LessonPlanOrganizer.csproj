@@ -71,6 +71,10 @@
     <Compile Include="Control\DBControl.cs" />
     <Compile Include="Entity\LessonPlan.cs" />
     <Compile Include="Entity\LessonPlanYear.cs" />
+    <Compile Include="Entity\Subject.cs" />
+    <Compile Include="Control\LessonPlanYearControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="System.Windows.Forms.Calendar\Calendar.cs">
       <SubType>Component</SubType>
     </Compile>

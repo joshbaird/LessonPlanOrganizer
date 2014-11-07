@@ -3,17 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using System.Windows.Forms.Calendar;
-
 namespace LessonPlanOrganizer
 {
     class LessonPlanYear
     {
-        public LessonPlanYear(Calendar cal)
+        public LessonPlanYear()
         {
-            Calendar = cal;
+            
         }
-        public Calendar Calendar;
 
         /// <summary>
         /// 
