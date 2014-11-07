@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange1 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
-            System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange2 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
-            System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange3 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
-            System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange4 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
-            System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange5 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
+            System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange6 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
+            System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange7 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
+            System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange8 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
+            System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange9 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
+            System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange10 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,10 +62,10 @@
             this.objectListView1 = new BrightIdeasSoftware.ObjectListView();
             this.olvSubjects = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.pTop = new System.Windows.Forms.Panel();
-            this.bToday = new System.Windows.Forms.Button();
-            this.labelHeaderFill = new System.Windows.Forms.Label();
             this.monthView = new System.Windows.Forms.Calendar.MonthView();
+            this.bToday = new System.Windows.Forms.Button();
             this.lessonPlanYearControl = new LessonPlanOrganizer.LessonPlanYearControl();
+            this.labelHeaderFill = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tlpLessonPlanYear.SuspendLayout();
@@ -299,6 +300,9 @@
             this.objectListView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.olvSubjects});
             this.objectListView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.objectListView1.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.objectListView1.FullRowSelect = true;
+            this.objectListView1.GridLines = true;
             this.objectListView1.Location = new System.Drawing.Point(3, 193);
             this.objectListView1.Name = "objectListView1";
             this.objectListView1.Size = new System.Drawing.Size(218, 329);
@@ -321,29 +325,6 @@
             this.pTop.Size = new System.Drawing.Size(218, 184);
             this.pTop.TabIndex = 1;
             // 
-            // bToday
-            // 
-            this.bToday.Dock = System.Windows.Forms.DockStyle.Top;
-            this.bToday.Location = new System.Drawing.Point(0, 0);
-            this.bToday.Name = "bToday";
-            this.bToday.Size = new System.Drawing.Size(218, 23);
-            this.bToday.TabIndex = 0;
-            this.bToday.Text = "Today";
-            this.bToday.UseVisualStyleBackColor = true;
-            this.bToday.Click += new System.EventHandler(this.bToday_Click);
-            // 
-            // labelHeaderFill
-            // 
-            this.labelHeaderFill.AutoSize = true;
-            this.labelHeaderFill.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelHeaderFill.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelHeaderFill.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelHeaderFill.Location = new System.Drawing.Point(3, 0);
-            this.labelHeaderFill.Name = "labelHeaderFill";
-            this.labelHeaderFill.Size = new System.Drawing.Size(778, 1);
-            this.labelHeaderFill.TabIndex = 1;
-            this.labelHeaderFill.Text = "-";
-            // 
             // monthView
             // 
             this.monthView.ArrowsColor = System.Drawing.SystemColors.Window;
@@ -365,39 +346,62 @@
             this.monthView.TabIndex = 0;
             this.monthView.Text = "monthView1";
             this.monthView.TodayBorderColor = System.Drawing.Color.Maroon;
-            this.monthView.SelectionChanged += new System.EventHandler(this.monthView1_SelectionChanged);
+            this.monthView.SelectionChanged += new System.EventHandler(this.monthView_SelectionChanged);
+            // 
+            // bToday
+            // 
+            this.bToday.Dock = System.Windows.Forms.DockStyle.Top;
+            this.bToday.Location = new System.Drawing.Point(0, 0);
+            this.bToday.Name = "bToday";
+            this.bToday.Size = new System.Drawing.Size(218, 23);
+            this.bToday.TabIndex = 0;
+            this.bToday.Text = "Today";
+            this.bToday.UseVisualStyleBackColor = true;
+            this.bToday.Click += new System.EventHandler(this.bToday_Click);
             // 
             // lessonPlanYearControl
             // 
             this.lessonPlanYearControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lessonPlanYearControl.Font = new System.Drawing.Font("Segoe UI", 9F);
-            calendarHighlightRange1.DayOfWeek = System.DayOfWeek.Monday;
-            calendarHighlightRange1.EndTime = System.TimeSpan.Parse("17:00:00");
-            calendarHighlightRange1.StartTime = System.TimeSpan.Parse("08:00:00");
-            calendarHighlightRange2.DayOfWeek = System.DayOfWeek.Tuesday;
-            calendarHighlightRange2.EndTime = System.TimeSpan.Parse("17:00:00");
-            calendarHighlightRange2.StartTime = System.TimeSpan.Parse("08:00:00");
-            calendarHighlightRange3.DayOfWeek = System.DayOfWeek.Wednesday;
-            calendarHighlightRange3.EndTime = System.TimeSpan.Parse("17:00:00");
-            calendarHighlightRange3.StartTime = System.TimeSpan.Parse("08:00:00");
-            calendarHighlightRange4.DayOfWeek = System.DayOfWeek.Thursday;
-            calendarHighlightRange4.EndTime = System.TimeSpan.Parse("17:00:00");
-            calendarHighlightRange4.StartTime = System.TimeSpan.Parse("08:00:00");
-            calendarHighlightRange5.DayOfWeek = System.DayOfWeek.Friday;
-            calendarHighlightRange5.EndTime = System.TimeSpan.Parse("17:00:00");
-            calendarHighlightRange5.StartTime = System.TimeSpan.Parse("08:00:00");
+            calendarHighlightRange6.DayOfWeek = System.DayOfWeek.Monday;
+            calendarHighlightRange6.EndTime = System.TimeSpan.Parse("17:00:00");
+            calendarHighlightRange6.StartTime = System.TimeSpan.Parse("08:00:00");
+            calendarHighlightRange7.DayOfWeek = System.DayOfWeek.Tuesday;
+            calendarHighlightRange7.EndTime = System.TimeSpan.Parse("17:00:00");
+            calendarHighlightRange7.StartTime = System.TimeSpan.Parse("08:00:00");
+            calendarHighlightRange8.DayOfWeek = System.DayOfWeek.Wednesday;
+            calendarHighlightRange8.EndTime = System.TimeSpan.Parse("17:00:00");
+            calendarHighlightRange8.StartTime = System.TimeSpan.Parse("08:00:00");
+            calendarHighlightRange9.DayOfWeek = System.DayOfWeek.Thursday;
+            calendarHighlightRange9.EndTime = System.TimeSpan.Parse("17:00:00");
+            calendarHighlightRange9.StartTime = System.TimeSpan.Parse("08:00:00");
+            calendarHighlightRange10.DayOfWeek = System.DayOfWeek.Friday;
+            calendarHighlightRange10.EndTime = System.TimeSpan.Parse("17:00:00");
+            calendarHighlightRange10.StartTime = System.TimeSpan.Parse("08:00:00");
             this.lessonPlanYearControl.HighlightRanges = new System.Windows.Forms.Calendar.CalendarHighlightRange[] {
-        calendarHighlightRange1,
-        calendarHighlightRange2,
-        calendarHighlightRange3,
-        calendarHighlightRange4,
-        calendarHighlightRange5};
+        calendarHighlightRange6,
+        calendarHighlightRange7,
+        calendarHighlightRange8,
+        calendarHighlightRange9,
+        calendarHighlightRange10};
             this.lessonPlanYearControl.Location = new System.Drawing.Point(233, 3);
             this.lessonPlanYearControl.Name = "lessonPlanYearControl";
             this.lessonPlanYearControl.Size = new System.Drawing.Size(542, 525);
             this.lessonPlanYearControl.TabIndex = 3;
             this.lessonPlanYearControl.Text = "lessonPlanYearControl1";
             this.lessonPlanYearControl.LoadItems += new System.Windows.Forms.Calendar.Calendar.CalendarLoadEventHandler(this.lessonPlanYearControl_LoadItems);
+            // 
+            // labelHeaderFill
+            // 
+            this.labelHeaderFill.AutoSize = true;
+            this.labelHeaderFill.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.labelHeaderFill.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelHeaderFill.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.labelHeaderFill.Location = new System.Drawing.Point(3, 0);
+            this.labelHeaderFill.Name = "labelHeaderFill";
+            this.labelHeaderFill.Size = new System.Drawing.Size(778, 1);
+            this.labelHeaderFill.TabIndex = 1;
+            this.labelHeaderFill.Text = "-";
             // 
             // MainForm
             // 
