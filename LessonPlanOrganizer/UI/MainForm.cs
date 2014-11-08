@@ -49,13 +49,13 @@ namespace LessonPlanOrganizer
             {
                 return ((Subject)rowObject).Name;
             };
-            this.objectListView1.FormatRow += (o, e) => 
+            this.fastObjectListView1.FormatRow += (o, e) => 
             {
                 e.Item.BackColor = ((Subject)e.Model).Color;
                 e.Item.ForeColor = Color.White;
             };
 
-            this.objectListView1.AddObjects(lessonPlanYearControl.Subjects);
+            this.fastObjectListView1.AddObjects(lessonPlanYearControl.Subjects);
         }
         
         private void monthView_SelectionChanged(object sender, EventArgs e)
