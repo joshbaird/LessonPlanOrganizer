@@ -72,9 +72,7 @@
     <Compile Include="Entity\LessonPlan.cs" />
     <Compile Include="Entity\LessonPlanYear.cs" />
     <Compile Include="Entity\Subject.cs" />
-    <Compile Include="Control\LessonPlanYearControl.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Control\LessonPlanYearControl.cs" />
     <Compile Include="System.Windows.Forms.Calendar\Calendar.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -161,6 +159,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UI\SubjectUI.resx">
+      <DependentUpon>SubjectUI.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

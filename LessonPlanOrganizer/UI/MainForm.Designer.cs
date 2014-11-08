@@ -59,12 +59,12 @@
             this.tlpLessonPlanYear = new System.Windows.Forms.TableLayoutPanel();
             this.tlpLeftPane = new System.Windows.Forms.TableLayoutPanel();
             this.pTop = new System.Windows.Forms.Panel();
+            this.monthView = new System.Windows.Forms.Calendar.MonthView();
             this.bToday = new System.Windows.Forms.Button();
             this.fastObjectListView1 = new BrightIdeasSoftware.FastObjectListView();
             this.olvSubjects = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.labelHeaderFill = new System.Windows.Forms.Label();
-            this.monthView = new System.Windows.Forms.Calendar.MonthView();
             this.calendar1 = new System.Windows.Forms.Calendar.Calendar();
+            this.labelHeaderFill = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tlpLessonPlanYear.SuspendLayout();
@@ -303,6 +303,29 @@
             this.pTop.Size = new System.Drawing.Size(218, 184);
             this.pTop.TabIndex = 1;
             // 
+            // monthView
+            // 
+            this.monthView.ArrowsColor = System.Drawing.SystemColors.Window;
+            this.monthView.ArrowsSelectedColor = System.Drawing.Color.Gold;
+            this.monthView.DayBackgroundColor = System.Drawing.Color.Empty;
+            this.monthView.DayGrayedText = System.Drawing.SystemColors.GrayText;
+            this.monthView.DaySelectedBackgroundColor = System.Drawing.SystemColors.Highlight;
+            this.monthView.DaySelectedColor = System.Drawing.SystemColors.WindowText;
+            this.monthView.DaySelectedTextColor = System.Drawing.SystemColors.HighlightText;
+            this.monthView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.monthView.ItemPadding = new System.Windows.Forms.Padding(2);
+            this.monthView.Location = new System.Drawing.Point(0, 23);
+            this.monthView.MonthTitleColor = System.Drawing.SystemColors.ActiveCaption;
+            this.monthView.MonthTitleColorInactive = System.Drawing.SystemColors.InactiveCaption;
+            this.monthView.MonthTitleTextColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.monthView.MonthTitleTextColorInactive = System.Drawing.SystemColors.InactiveCaptionText;
+            this.monthView.Name = "monthView";
+            this.monthView.Size = new System.Drawing.Size(218, 161);
+            this.monthView.TabIndex = 0;
+            this.monthView.Text = "monthView1";
+            this.monthView.TodayBorderColor = System.Drawing.Color.Maroon;
+            this.monthView.SelectionChanged += new System.EventHandler(this.monthView_SelectionChanged);
+            // 
             // bToday
             // 
             this.bToday.Dock = System.Windows.Forms.DockStyle.Top;
@@ -340,41 +363,6 @@
             this.olvSubjects.Text = "Subjects";
             this.olvSubjects.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // labelHeaderFill
-            // 
-            this.labelHeaderFill.AutoSize = true;
-            this.labelHeaderFill.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelHeaderFill.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelHeaderFill.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelHeaderFill.Location = new System.Drawing.Point(3, 0);
-            this.labelHeaderFill.Name = "labelHeaderFill";
-            this.labelHeaderFill.Size = new System.Drawing.Size(778, 1);
-            this.labelHeaderFill.TabIndex = 1;
-            this.labelHeaderFill.Text = "-";
-            // 
-            // monthView
-            // 
-            this.monthView.ArrowsColor = System.Drawing.SystemColors.Window;
-            this.monthView.ArrowsSelectedColor = System.Drawing.Color.Gold;
-            this.monthView.DayBackgroundColor = System.Drawing.Color.Empty;
-            this.monthView.DayGrayedText = System.Drawing.SystemColors.GrayText;
-            this.monthView.DaySelectedBackgroundColor = System.Drawing.SystemColors.Highlight;
-            this.monthView.DaySelectedColor = System.Drawing.SystemColors.WindowText;
-            this.monthView.DaySelectedTextColor = System.Drawing.SystemColors.HighlightText;
-            this.monthView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.monthView.ItemPadding = new System.Windows.Forms.Padding(2);
-            this.monthView.Location = new System.Drawing.Point(0, 23);
-            this.monthView.MonthTitleColor = System.Drawing.SystemColors.ActiveCaption;
-            this.monthView.MonthTitleColorInactive = System.Drawing.SystemColors.InactiveCaption;
-            this.monthView.MonthTitleTextColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.monthView.MonthTitleTextColorInactive = System.Drawing.SystemColors.InactiveCaptionText;
-            this.monthView.Name = "monthView";
-            this.monthView.Size = new System.Drawing.Size(218, 161);
-            this.monthView.TabIndex = 0;
-            this.monthView.Text = "monthView1";
-            this.monthView.TodayBorderColor = System.Drawing.Color.Maroon;
-            this.monthView.SelectionChanged += new System.EventHandler(this.monthView_SelectionChanged);
-            // 
             // calendar1
             // 
             this.calendar1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -407,6 +395,18 @@
             this.calendar1.Text = "calendar1";
             this.calendar1.LoadItems += new System.Windows.Forms.Calendar.Calendar.CalendarLoadEventHandler(this.calendar1_LoadItems);
             this.calendar1.DoubleClick += new System.EventHandler(this.newLessonStripMenuItem_Click);
+            // 
+            // labelHeaderFill
+            // 
+            this.labelHeaderFill.AutoSize = true;
+            this.labelHeaderFill.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.labelHeaderFill.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelHeaderFill.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.labelHeaderFill.Location = new System.Drawing.Point(3, 0);
+            this.labelHeaderFill.Name = "labelHeaderFill";
+            this.labelHeaderFill.Size = new System.Drawing.Size(778, 1);
+            this.labelHeaderFill.TabIndex = 1;
+            this.labelHeaderFill.Text = "-";
             // 
             // MainForm
             // 

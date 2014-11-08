@@ -45,6 +45,8 @@ namespace LessonPlanOrganizer
 
         private void InitObjectListView()
         {
+            this.fastObjectListView1.OwnerDraw = true;
+
             this.olvSubjects.AspectGetter = rowObject =>
             {
                 return ((Subject)rowObject).Name;
@@ -120,8 +122,13 @@ namespace LessonPlanOrganizer
 
         private void editSubjectStripMenuItem_Click(object sender, EventArgs e)
         {
-            SubjectUI subjectSetupUI = new SubjectUI("edit");
-            subjectSetupUI.ShowDialog();
+            if(sender is BrightIdeasSoftware.FastObjectListView)
+            {
+                Subject sub = (Subject)((BrightIdeasSoftware.FastObjectListView)sender).SelectedObject;
+                SubjectUI subjectSetupUI = new SubjectUI(sub);
+                subjectSetupUI.ShowDialog();
+            }
+            
             // TODO handle close and return
         }
 
