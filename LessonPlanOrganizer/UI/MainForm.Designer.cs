@@ -345,6 +345,7 @@
             this.fastObjectListView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fastObjectListView1.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fastObjectListView1.FullRowSelect = true;
+            this.fastObjectListView1.GridLines = true;
             this.fastObjectListView1.Location = new System.Drawing.Point(3, 193);
             this.fastObjectListView1.MultiSelect = false;
             this.fastObjectListView1.Name = "fastObjectListView1";

@@ -35,8 +35,8 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.bSave = new System.Windows.Forms.Button();
-            this.bClose = new System.Windows.Forms.Button();
+            this.bOK = new System.Windows.Forms.Button();
+            this.bCancel = new System.Windows.Forms.Button();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -115,38 +115,41 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.bSave);
-            this.panel2.Controls.Add(this.bClose);
+            this.panel2.Controls.Add(this.bOK);
+            this.panel2.Controls.Add(this.bCancel);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 415);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(578, 24);
             this.panel2.TabIndex = 1;
             // 
-            // bSave
+            // bOK
             // 
-            this.bSave.Location = new System.Drawing.Point(419, 0);
-            this.bSave.Name = "bSave";
-            this.bSave.Size = new System.Drawing.Size(75, 23);
-            this.bSave.TabIndex = 1;
-            this.bSave.Text = "&Save";
-            this.bSave.UseVisualStyleBackColor = true;
-            this.bSave.Click += new System.EventHandler(this.bSave_Click);
+            this.bOK.Location = new System.Drawing.Point(419, 0);
+            this.bOK.Name = "bOK";
+            this.bOK.Size = new System.Drawing.Size(75, 23);
+            this.bOK.TabIndex = 1;
+            this.bOK.Text = "&OK";
+            this.bOK.UseVisualStyleBackColor = true;
+            this.bOK.Click += new System.EventHandler(this.bOK_Click);
             // 
-            // bClose
+            // bCancel
             // 
-            this.bClose.Location = new System.Drawing.Point(500, 0);
-            this.bClose.Name = "bClose";
-            this.bClose.Size = new System.Drawing.Size(75, 23);
-            this.bClose.TabIndex = 0;
-            this.bClose.Text = "&Close";
-            this.bClose.UseVisualStyleBackColor = true;
-            this.bClose.Click += new System.EventHandler(this.bClose_Click);
+            this.bCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.bCancel.Location = new System.Drawing.Point(500, 0);
+            this.bCancel.Name = "bCancel";
+            this.bCancel.Size = new System.Drawing.Size(75, 23);
+            this.bCancel.TabIndex = 0;
+            this.bCancel.Text = "&Cancel";
+            this.bCancel.UseVisualStyleBackColor = true;
+            this.bCancel.Click += new System.EventHandler(this.bCancel_Click);
             // 
             // SubjectUI
             // 
+            this.AcceptButton = this.bOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.bCancel;
             this.ClientSize = new System.Drawing.Size(584, 442);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "SubjectUI";
@@ -170,7 +173,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button bSave;
-        private System.Windows.Forms.Button bClose;
+        private System.Windows.Forms.Button bOK;
+        private System.Windows.Forms.Button bCancel;
     }
 }

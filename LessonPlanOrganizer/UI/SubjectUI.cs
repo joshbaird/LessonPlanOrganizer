@@ -11,7 +11,7 @@ namespace LessonPlanOrganizer
 {
     public partial class SubjectUI : Form
     {
-        public SubjectUI(Object subject)
+        public SubjectUI(Subject subject)
         {
             InitializeComponent();
             _subject = (Subject)subject;
@@ -32,15 +32,18 @@ namespace LessonPlanOrganizer
             } 
         }
 
-        private void bSave_Click(object sender, EventArgs e)
+        private void bOK_Click(object sender, EventArgs e)
         {
             // TODO validate the date before save.
             _subject.Color = colorDialog1.Color;
             _subject.Name = textBox1.Text;
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
 
-        private void bClose_Click(object sender, EventArgs e)
+        private void bCancel_Click(object sender, EventArgs e)
         {
+            this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
     }

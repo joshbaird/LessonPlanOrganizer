@@ -115,8 +115,16 @@ namespace LessonPlanOrganizer
         // Subject
         private void newSubjectStripMenuItem_Click(object sender, EventArgs e)
         {
-            SubjectUI subjectSetupUI = new SubjectUI("new");
-            subjectSetupUI.ShowDialog();
+            Subject newSub = new Subject();
+            newSub.Name = "Subject Name";
+            newSub.Color = Color.RoyalBlue;
+            SubjectUI subjectSetupUI = new SubjectUI(newSub);
+            if(subjectSetupUI.ShowDialog() == DialogResult.OK)
+            {
+                lessonPlanYearControl.addSubject(newSub);
+                this.fastObjectListView1.ClearObjects();
+                this.fastObjectListView1.AddObjects(lessonPlanYearControl.getSubjects());
+            }
             // TODO handle close and return
         }
 
@@ -134,8 +142,7 @@ namespace LessonPlanOrganizer
 
         private void deleteSubjectStripMenuItem_Click(object sender, EventArgs e)
         {
-            SubjectUI subjectSetupUI = new SubjectUI("delete");
-            subjectSetupUI.ShowDialog();
+            // TODO display list of all subjects and allow user to remove.
             // TODO handle close and return
         }
 

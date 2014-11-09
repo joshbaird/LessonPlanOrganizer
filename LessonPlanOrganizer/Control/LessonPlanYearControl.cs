@@ -15,8 +15,6 @@ namespace LessonPlanOrganizer
             LessonPlanYear.Instance.Subjects = new List<Subject>();
         }
         
-        
-
         public List<LessonPlan> GetLessonsForCalendarDisplay(DateTime start, DateTime end)
         {
             return LessonPlanYear.Instance.LessonPlans.Where(l => (l.StartDate.Ticks >= start.Ticks && l.StartDate.Ticks <= end.Ticks)).ToList<LessonPlan>();
