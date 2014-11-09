@@ -25,8 +25,8 @@ namespace LessonPlanOrganizer
             item.ApplyColor(Color.Red);
             LessonPlan item2 = new LessonPlan(calendar1, new DateTime(2014, 11, 10), new TimeSpan(1, 0, 0, 0), "Testing2");
             item2.ApplyColor(Color.Blue);
-            lessonPlanYearControl.LessonPlans.Add(item);
-            lessonPlanYearControl.LessonPlans.Add(item2);
+            lessonPlanYearControl.addLessonPlans(item);
+            lessonPlanYearControl.addLessonPlans(item2);
 
             // test load some subjecs
             Subject testSub1 = new Subject();
@@ -35,8 +35,8 @@ namespace LessonPlanOrganizer
             Subject testSub2 = new Subject();
             testSub2.Name = "ELA";
             testSub2.Color = Color.Blue;
-            lessonPlanYearControl.Subjects.Add(testSub1);
-            lessonPlanYearControl.Subjects.Add(testSub2);
+            lessonPlanYearControl.addSubject(testSub1);
+            lessonPlanYearControl.addSubject(testSub2);
 
             InitObjectListView();
         }
@@ -57,7 +57,7 @@ namespace LessonPlanOrganizer
                 e.Item.ForeColor = Color.White;
             };
 
-            this.fastObjectListView1.AddObjects(lessonPlanYearControl.Subjects);
+            this.fastObjectListView1.AddObjects(lessonPlanYearControl.getSubjects());
         }
         
         private void monthView_SelectionChanged(object sender, EventArgs e)
