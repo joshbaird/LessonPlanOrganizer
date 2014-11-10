@@ -15,6 +15,18 @@ namespace LessonPlanOrganizer
         {
             InitializeComponent();
         }
+
+        private void submitButton_Click(object sender, EventArgs e)
+        {
+            //TODO: pass parameters to control object here
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+                
+        
     }
 
     //Added comment for push testing. 

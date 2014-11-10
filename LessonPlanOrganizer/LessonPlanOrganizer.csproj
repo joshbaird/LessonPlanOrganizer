@@ -162,8 +162,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="UI\SubjectUI.resx">
-      <DependentUpon>SubjectUI.cs</DependentUpon>
+    <EmbeddedResource Include="UI\ReportUI.resx">
+      <DependentUpon>ReportUI.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

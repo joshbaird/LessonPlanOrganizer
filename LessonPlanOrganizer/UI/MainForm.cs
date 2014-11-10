@@ -171,7 +171,7 @@ namespace LessonPlanOrganizer
         // report
         private void subjectStatisticsReportStripMenuItem_Click(object sender, EventArgs e)
         {
-            ReportUI reportStats = new ReportUI("statistics");
+            ReportUI reportStats = new ReportUI("statistics");           
             reportStats.ShowDialog();
             // TODO handle close and return 
         }
@@ -179,6 +179,7 @@ namespace LessonPlanOrganizer
         private void lessonPlanReportStripMenuItem_Click(object sender, EventArgs e)
         {
             ReportUI reportStats = new ReportUI("statistics");
+            reportStats.hideUIItemsForLessonPlanReport();
             reportStats.ShowDialog();
             // TODO handle close and return 
         }
