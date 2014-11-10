@@ -5,8 +5,7 @@ using System.Text;
 using System.Drawing;
 namespace LessonPlanOrganizer
 {
-    [Serializable]
-    class Subject
+    public class Subject
     {
         public Subject()
         {

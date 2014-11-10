@@ -25,8 +25,8 @@ namespace LessonPlanOrganizer
             item.ApplyColor(Color.Red);
             LessonPlan item2 = new LessonPlan(calendar1, new DateTime(2014, 11, 10), new TimeSpan(1, 0, 0, 0), "Testing2");
             item2.ApplyColor(Color.Blue);
-            lessonPlanYearControl.LessonPlans.Add(item);
-            lessonPlanYearControl.LessonPlans.Add(item2);
+            lessonPlanYearControl.addLessonPlans(item);
+            lessonPlanYearControl.addLessonPlans(item2);
 
             // test load some subjecs
             Subject testSub1 = new Subject();
@@ -35,8 +35,8 @@ namespace LessonPlanOrganizer
             Subject testSub2 = new Subject();
             testSub2.Name = "ELA";
             testSub2.Color = Color.Blue;
-            lessonPlanYearControl.Subjects.Add(testSub1);
-            lessonPlanYearControl.Subjects.Add(testSub2);
+            lessonPlanYearControl.addSubject(testSub1);
+            lessonPlanYearControl.addSubject(testSub2);
 
             InitObjectListView();
         }
@@ -45,17 +45,19 @@ namespace LessonPlanOrganizer
 
         private void InitObjectListView()
         {
+            this.fastObjectListView1.OwnerDraw = true;
+
             this.olvSubjects.AspectGetter = rowObject =>
             {
                 return ((Subject)rowObject).Name;
             };
-            this.objectListView1.FormatRow += (o, e) => 
+            this.fastObjectListView1.FormatRow += (o, e) => 
             {
                 e.Item.BackColor = ((Subject)e.Model).Color;
                 e.Item.ForeColor = Color.White;
             };
 
-            this.objectListView1.AddObjects(lessonPlanYearControl.Subjects);
+            this.fastObjectListView1.AddObjects(lessonPlanYearControl.getSubjects());
         }
         
         private void monthView_SelectionChanged(object sender, EventArgs e)
@@ -113,22 +115,34 @@ namespace LessonPlanOrganizer
         // Subject
         private void newSubjectStripMenuItem_Click(object sender, EventArgs e)
         {
-            SubjectUI subjectSetupUI = new SubjectUI("new");
-            subjectSetupUI.ShowDialog();
+            Subject newSub = new Subject();
+            newSub.Name = "Subject Name";
+            newSub.Color = Color.RoyalBlue;
+            SubjectUI subjectSetupUI = new SubjectUI(newSub);
+            if(subjectSetupUI.ShowDialog() == DialogResult.OK)
+            {
+                lessonPlanYearControl.addSubject(newSub);
+                this.fastObjectListView1.ClearObjects();
+                this.fastObjectListView1.AddObjects(lessonPlanYearControl.getSubjects());
+            }
             // TODO handle close and return
         }
 
         private void editSubjectStripMenuItem_Click(object sender, EventArgs e)
         {
-            SubjectUI subjectSetupUI = new SubjectUI("edit");
-            subjectSetupUI.ShowDialog();
+            if(sender is BrightIdeasSoftware.FastObjectListView)
+            {
+                Subject sub = (Subject)((BrightIdeasSoftware.FastObjectListView)sender).SelectedObject;
+                SubjectUI subjectSetupUI = new SubjectUI(sub);
+                subjectSetupUI.ShowDialog();
+            }
+            
             // TODO handle close and return
         }
 
         private void deleteSubjectStripMenuItem_Click(object sender, EventArgs e)
         {
-            SubjectUI subjectSetupUI = new SubjectUI("delete");
-            subjectSetupUI.ShowDialog();
+            // TODO display list of all subjects and allow user to remove.
             // TODO handle close and return
         }
 

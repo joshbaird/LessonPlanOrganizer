@@ -5,11 +5,53 @@ using System.Text;
 
 namespace LessonPlanOrganizer
 {
-    class LessonPlanYear
+    public class LessonPlanYear
     {
-        public LessonPlanYear()
+        // implement singleton
+        private static LessonPlanYear instance;
+
+        private LessonPlanYear() { }
+
+        public static LessonPlanYear Instance
         {
-            
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new LessonPlanYear();
+                }
+                return instance;
+            }
+        }
+
+        private List<LessonPlan> _lessonPlans;
+        public List<LessonPlan> LessonPlans
+        {
+            get
+            {
+                if (_lessonPlans == null)
+                    return new List<LessonPlan>();
+                return _lessonPlans;
+            }
+            set
+            {
+                _lessonPlans = value;
+            }
+        }
+
+        private List<Subject> _subjects;
+        public List<Subject> Subjects
+        {
+            get
+            {
+                if (_subjects == null)
+                    return new List<Subject>();
+                return _subjects;
+            }
+            set
+            {
+                _subjects = value;
+            }
         }
 
         /// <summary>
