@@ -36,15 +36,17 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.endTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.fastObjectListView1 = new BrightIdeasSoftware.FastObjectListView();
+            this.subjectList = new BrightIdeasSoftware.FastObjectListView();
             this.olvSubjects = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.listView2 = new System.Windows.Forms.ListView();
+            this.lessonsList = new System.Windows.Forms.ListView();
+            this.holidayList = new System.Windows.Forms.ListView();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.startTimePicker = new System.Windows.Forms.DateTimePicker();
-            ((System.ComponentModel.ISupportInitialize)(this.fastObjectListView1)).BeginInit();
+            this.saveButton = new System.Windows.Forms.Button();
+            this.closeButton = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.subjectList)).BeginInit();
             this.SuspendLayout();
             // 
             // ImportOldYear
@@ -125,28 +127,28 @@
             this.endTimePicker.TabStop = false;
             this.endTimePicker.Value = new System.DateTime(2014, 11, 9, 22, 22, 0, 0);
             // 
-            // fastObjectListView1
+            // subjectList
             // 
-            this.fastObjectListView1.AllColumns.Add(this.olvSubjects);
-            this.fastObjectListView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.subjectList.AllColumns.Add(this.olvSubjects);
+            this.subjectList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.fastObjectListView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.subjectList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.olvSubjects});
-            this.fastObjectListView1.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fastObjectListView1.FullRowSelect = true;
-            this.fastObjectListView1.GridLines = true;
-            this.fastObjectListView1.Location = new System.Drawing.Point(18, 187);
-            this.fastObjectListView1.Margin = new System.Windows.Forms.Padding(4);
-            this.fastObjectListView1.MaximumSize = new System.Drawing.Size(291, 405);
-            this.fastObjectListView1.MultiSelect = false;
-            this.fastObjectListView1.Name = "fastObjectListView1";
-            this.fastObjectListView1.ShowGroups = false;
-            this.fastObjectListView1.Size = new System.Drawing.Size(291, 405);
-            this.fastObjectListView1.TabIndex = 12;
-            this.fastObjectListView1.UseCompatibleStateImageBehavior = false;
-            this.fastObjectListView1.View = System.Windows.Forms.View.Details;
-            this.fastObjectListView1.VirtualMode = true;
+            this.subjectList.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.subjectList.FullRowSelect = true;
+            this.subjectList.GridLines = true;
+            this.subjectList.Location = new System.Drawing.Point(18, 187);
+            this.subjectList.Margin = new System.Windows.Forms.Padding(4);
+            this.subjectList.MaximumSize = new System.Drawing.Size(291, 405);
+            this.subjectList.MultiSelect = false;
+            this.subjectList.Name = "subjectList";
+            this.subjectList.ShowGroups = false;
+            this.subjectList.Size = new System.Drawing.Size(291, 377);
+            this.subjectList.TabIndex = 12;
+            this.subjectList.UseCompatibleStateImageBehavior = false;
+            this.subjectList.View = System.Windows.Forms.View.Details;
+            this.subjectList.VirtualMode = true;
             // 
             // olvSubjects
             // 
@@ -155,21 +157,21 @@
             this.olvSubjects.Text = "Subjects";
             this.olvSubjects.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // listView1
+            // lessonsList
             // 
-            this.listView1.Location = new System.Drawing.Point(317, 187);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(486, 405);
-            this.listView1.TabIndex = 13;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.lessonsList.Location = new System.Drawing.Point(317, 187);
+            this.lessonsList.Name = "lessonsList";
+            this.lessonsList.Size = new System.Drawing.Size(486, 377);
+            this.lessonsList.TabIndex = 13;
+            this.lessonsList.UseCompatibleStateImageBehavior = false;
             // 
-            // listView2
+            // holidayList
             // 
-            this.listView2.Location = new System.Drawing.Point(809, 187);
-            this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(261, 405);
-            this.listView2.TabIndex = 14;
-            this.listView2.UseCompatibleStateImageBehavior = false;
+            this.holidayList.Location = new System.Drawing.Point(809, 187);
+            this.holidayList.Name = "holidayList";
+            this.holidayList.Size = new System.Drawing.Size(261, 377);
+            this.holidayList.TabIndex = 14;
+            this.holidayList.UseCompatibleStateImageBehavior = false;
             // 
             // label5
             // 
@@ -206,18 +208,39 @@
             this.startTimePicker.Size = new System.Drawing.Size(361, 35);
             this.startTimePicker.TabIndex = 18;
             // 
+            // saveButton
+            // 
+            this.saveButton.Location = new System.Drawing.Point(877, 570);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(91, 32);
+            this.saveButton.TabIndex = 19;
+            this.saveButton.Text = "Save";
+            this.saveButton.UseVisualStyleBackColor = true;
+            // 
+            // closeButton
+            // 
+            this.closeButton.Location = new System.Drawing.Point(974, 570);
+            this.closeButton.Name = "closeButton";
+            this.closeButton.Size = new System.Drawing.Size(96, 32);
+            this.closeButton.TabIndex = 20;
+            this.closeButton.Text = "Close";
+            this.closeButton.UseVisualStyleBackColor = true;
+            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
+            // 
             // LessonYearUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1082, 605);
+            this.Controls.Add(this.closeButton);
+            this.Controls.Add(this.saveButton);
             this.Controls.Add(this.startTimePicker);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.listView2);
-            this.Controls.Add(this.listView1);
-            this.Controls.Add(this.fastObjectListView1);
+            this.Controls.Add(this.holidayList);
+            this.Controls.Add(this.lessonsList);
+            this.Controls.Add(this.subjectList);
             this.Controls.Add(this.endTimePicker);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -228,7 +251,7 @@
             this.Controls.Add(this.ImportOldYear);
             this.Name = "LessonYearUI";
             this.Text = "LessonYearUI";
-            ((System.ComponentModel.ISupportInitialize)(this.fastObjectListView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.subjectList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -244,13 +267,15 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker endTimePicker;
-        private BrightIdeasSoftware.FastObjectListView fastObjectListView1;
+        private BrightIdeasSoftware.FastObjectListView subjectList;
         private BrightIdeasSoftware.OLVColumn olvSubjects;
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.ListView listView2;
+        private System.Windows.Forms.ListView lessonsList;
+        private System.Windows.Forms.ListView holidayList;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DateTimePicker startTimePicker;
+        private System.Windows.Forms.Button saveButton;
+        private System.Windows.Forms.Button closeButton;
     }
 }

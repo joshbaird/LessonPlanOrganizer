@@ -19,5 +19,10 @@ namespace LessonPlanOrganizer
             timeSelection.CustomFormat = " hh:mm";
             timeSelection.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
         }
+
+        private void closeButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
