@@ -13,6 +13,14 @@ namespace LessonPlanOrganizer
         {
             LessonPlanYear.Instance.LessonPlans = new List<LessonPlan>();
             LessonPlanYear.Instance.Subjects = new List<Subject>();
+            EventsControl.AddNewSubject += (o, e) =>
+            {
+                addSubject(((EventsControl.SubjectEventArgs)e).Subject);
+            };
+            EventsControl.RemoveSubject += (o, e) =>
+            {
+                removeSubject(((EventsControl.SubjectEventArgs)e).Subject);
+            };
         }
 
         public List<LessonPlan> GetLessonsForCalendarDisplay(DateTime start, DateTime end)
@@ -20,13 +28,11 @@ namespace LessonPlanOrganizer
             return LessonPlanYear.Instance.LessonPlans.Where(l => (l.StartDate.Ticks >= start.Ticks && l.StartDate.Ticks <= end.Ticks)).ToList<LessonPlan>();
         }
 
-        #region Lesson methods and events
-        public static event EventHandler LessonChanged;
-        internal void addLessonPlans(LessonPlan item)
+        #region Lesson methods
+        public void addLessonPlans(LessonPlan item)
         {
             LessonPlanYear.Instance.LessonPlans.Add(item);
-            if(LessonChanged != null)
-                LessonChanged.Invoke(this, new EventArgs());
+            EventsControl.RaiseLessonChanged(this, EventArgs.Empty);
         }
         public System.Collections.ICollection getLessonPlans()
         {
@@ -34,13 +40,16 @@ namespace LessonPlanOrganizer
         }
         #endregion
 
-        #region Subject methods and events
-        public static event EventHandler SubjectChanged;
-        internal void addSubject(Subject item)
+        #region Subject methods
+        public void addSubject(Subject item)
         {
             LessonPlanYear.Instance.Subjects.Add(item);
-            if(SubjectChanged != null)
-                SubjectChanged.Invoke(this, new EventArgs());
+            EventsControl.RaiseSubjectChanged(this, EventArgs.Empty);
+        }
+        public void removeSubject(Subject item)
+        {
+            LessonPlanYear.Instance.Subjects.Remove(item);
+            EventsControl.RaiseSubjectChanged(this, EventArgs.Empty);
         }
         public System.Collections.ICollection getSubjects()
         {

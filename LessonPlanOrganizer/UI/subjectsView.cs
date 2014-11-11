@@ -31,11 +31,13 @@ namespace LessonPlanOrganizer
                 e.Item.ForeColor = Color.White;
             };
 
-            LessonPlanYearControl.SubjectChanged += (o, e) =>
+            EventsControl.SubjectChanged += (o, e) =>
             {
                 this.fastObjectListView1.ClearObjects();
                 this.fastObjectListView1.AddObjects(((LessonPlanYearControl)o).getSubjects());
             };
+            this.fastObjectListView1.ClearObjects();
+            this.fastObjectListView1.AddObjects(LessonPlanYear.Instance.Subjects);
         }
 
         private void fastObjectListView1_DoubleClick(object sender, EventArgs e)
@@ -76,14 +78,10 @@ namespace LessonPlanOrganizer
 
         public void DeleteSelected()
         {
-            
+            Subject sub = (Subject)this.fastObjectListView1.SelectedObject;
+            EventsControl.RaiseRemoveSubject(sub);
         }
 
-        public static event EventHandler AddNewSubject;
-        public class AddNewSubjectEventArgs : EventArgs
-        {
-            public Subject Subject;
-        }
         public void NewSubjectWindow()
         {
             Subject newSub = new Subject();
@@ -92,10 +90,7 @@ namespace LessonPlanOrganizer
             SubjectUI subjectSetupUI = new SubjectUI(newSub);
             if (subjectSetupUI.ShowDialog() == DialogResult.OK)
             {
-                AddNewSubjectEventArgs args =  new AddNewSubjectEventArgs();
-                args.Subject = newSub;
-                if(AddNewSubject != null)
-                    AddNewSubject(this, args);
+                EventsControl.RaiseAddNewSubject(newSub);
             }
         }
     }

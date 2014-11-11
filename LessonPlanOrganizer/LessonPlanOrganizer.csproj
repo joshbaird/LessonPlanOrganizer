@@ -73,6 +73,7 @@
     <Compile Include="Entity\LessonPlanYear.cs" />
     <Compile Include="Entity\Subject.cs" />
     <Compile Include="Control\LessonPlanYearControl.cs" />
+    <Compile Include="EventsControl.cs" />
     <Compile Include="UI\lessonsView.cs">
       <SubType>UserControl</SubType>
     </Compile>
