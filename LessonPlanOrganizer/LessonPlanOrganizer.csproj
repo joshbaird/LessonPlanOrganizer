@@ -146,6 +146,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entity\Report.cs" />
+    <EmbeddedResource Include="UI\LessonUI.resx">
+      <DependentUpon>LessonUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\LessonYearUI.resx">
       <DependentUpon>LessonYearUI.cs</DependentUpon>
     </EmbeddedResource>
@@ -164,6 +167,9 @@
     </Compile>
     <EmbeddedResource Include="UI\ReportUI.resx">
       <DependentUpon>ReportUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SubjectUI.resx">
+      <DependentUpon>SubjectUI.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

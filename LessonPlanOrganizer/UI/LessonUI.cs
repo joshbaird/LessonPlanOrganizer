@@ -14,6 +14,10 @@ namespace LessonPlanOrganizer
         public LessonUI(String mode)
         {
             InitializeComponent();
+
+            timeSelection.ShowUpDown = true;
+            timeSelection.CustomFormat = " hh:mm";
+            timeSelection.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
         }
     }
 }
