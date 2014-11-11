@@ -54,6 +54,9 @@ namespace LessonPlanOrganizer
             }
         }
 
+        DateTime _startDate;
+        DateTime _endDate;
+
         /// <summary>
         /// 
         /// </summary>
@@ -62,6 +65,10 @@ namespace LessonPlanOrganizer
         /// <returns></returns>
         public LessonPlanYear createLessonPlanYear(DateTime startDate, DateTime endDate)
         {
+            _startDate = startDate;
+            _endDate = endDate;
+            _subjects = new List<Subject>();
+            _lessonPlans = new List<LessonPlan>();
             return this;
         }
 
@@ -73,6 +80,7 @@ namespace LessonPlanOrganizer
         /// <returns></returns>
         public LessonPlanYear displayLessonPlanYear(DateTime startDate, DateTime endDate)
         {
+
             return this;
         }
 
