@@ -36,8 +36,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.endTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.subjectList = new BrightIdeasSoftware.FastObjectListView();
-            this.olvSubjects = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.lessonsList = new System.Windows.Forms.ListView();
             this.holidayList = new System.Windows.Forms.ListView();
             this.label5 = new System.Windows.Forms.Label();
@@ -46,15 +44,16 @@
             this.startTimePicker = new System.Windows.Forms.DateTimePicker();
             this.saveButton = new System.Windows.Forms.Button();
             this.closeButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.subjectList)).BeginInit();
+            this.subjectsView1 = new LessonPlanOrganizer.subjectsView();
             this.SuspendLayout();
             // 
             // ImportOldYear
             // 
             this.ImportOldYear.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ImportOldYear.Location = new System.Drawing.Point(12, 12);
+            this.ImportOldYear.Location = new System.Drawing.Point(9, 10);
+            this.ImportOldYear.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ImportOldYear.Name = "ImportOldYear";
-            this.ImportOldYear.Size = new System.Drawing.Size(223, 36);
+            this.ImportOldYear.Size = new System.Drawing.Size(167, 29);
             this.ImportOldYear.TabIndex = 0;
             this.ImportOldYear.Text = "Import Old Year";
             this.ImportOldYear.UseVisualStyleBackColor = true;
@@ -63,18 +62,20 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(13, 70);
+            this.label1.Location = new System.Drawing.Point(10, 57);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(117, 28);
+            this.label1.Size = new System.Drawing.Size(96, 23);
             this.label1.TabIndex = 1;
             this.label1.Text = "Start Date:";
             // 
             // startDatePicker
             // 
             this.startDatePicker.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.startDatePicker.Location = new System.Drawing.Point(139, 74);
+            this.startDatePicker.Location = new System.Drawing.Point(104, 60);
+            this.startDatePicker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.startDatePicker.Name = "startDatePicker";
-            this.startDatePicker.Size = new System.Drawing.Size(354, 35);
+            this.startDatePicker.Size = new System.Drawing.Size(266, 30);
             this.startDatePicker.TabIndex = 3;
             this.startDatePicker.Value = new System.DateTime(2014, 11, 9, 0, 0, 0, 0);
             // 
@@ -82,18 +83,20 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(13, 117);
+            this.label2.Location = new System.Drawing.Point(10, 95);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(101, 28);
+            this.label2.Size = new System.Drawing.Size(82, 23);
             this.label2.TabIndex = 5;
             this.label2.Text = "End Date:";
             // 
             // endDatePicker
             // 
             this.endDatePicker.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.endDatePicker.Location = new System.Drawing.Point(139, 117);
+            this.endDatePicker.Location = new System.Drawing.Point(104, 95);
+            this.endDatePicker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.endDatePicker.Name = "endDatePicker";
-            this.endDatePicker.Size = new System.Drawing.Size(354, 35);
+            this.endDatePicker.Size = new System.Drawing.Size(266, 30);
             this.endDatePicker.TabIndex = 6;
             this.endDatePicker.Value = new System.DateTime(2014, 11, 9, 0, 0, 0, 0);
             // 
@@ -101,9 +104,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(539, 70);
+            this.label3.Location = new System.Drawing.Point(404, 57);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(120, 28);
+            this.label3.Size = new System.Drawing.Size(96, 23);
             this.label3.TabIndex = 7;
             this.label3.Text = "Start Time:";
             // 
@@ -111,127 +115,115 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(539, 117);
+            this.label4.Location = new System.Drawing.Point(404, 95);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(104, 28);
+            this.label4.Size = new System.Drawing.Size(82, 23);
             this.label4.TabIndex = 8;
             this.label4.Text = "End Time:";
             // 
             // endTimePicker
             // 
             this.endTimePicker.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.endTimePicker.Location = new System.Drawing.Point(666, 122);
+            this.endTimePicker.Location = new System.Drawing.Point(500, 99);
+            this.endTimePicker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.endTimePicker.Name = "endTimePicker";
-            this.endTimePicker.Size = new System.Drawing.Size(361, 35);
+            this.endTimePicker.Size = new System.Drawing.Size(272, 30);
             this.endTimePicker.TabIndex = 10;
             this.endTimePicker.TabStop = false;
             this.endTimePicker.Value = new System.DateTime(2014, 11, 9, 22, 22, 0, 0);
             // 
-            // subjectList
-            // 
-            this.subjectList.AllColumns.Add(this.olvSubjects);
-            this.subjectList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.subjectList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.olvSubjects});
-            this.subjectList.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.subjectList.FullRowSelect = true;
-            this.subjectList.GridLines = true;
-            this.subjectList.Location = new System.Drawing.Point(18, 187);
-            this.subjectList.Margin = new System.Windows.Forms.Padding(4);
-            this.subjectList.MaximumSize = new System.Drawing.Size(291, 405);
-            this.subjectList.MultiSelect = false;
-            this.subjectList.Name = "subjectList";
-            this.subjectList.ShowGroups = false;
-            this.subjectList.Size = new System.Drawing.Size(291, 377);
-            this.subjectList.TabIndex = 12;
-            this.subjectList.UseCompatibleStateImageBehavior = false;
-            this.subjectList.View = System.Windows.Forms.View.Details;
-            this.subjectList.VirtualMode = true;
-            // 
-            // olvSubjects
-            // 
-            this.olvSubjects.FillsFreeSpace = true;
-            this.olvSubjects.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.olvSubjects.Text = "Subjects";
-            this.olvSubjects.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // lessonsList
             // 
-            this.lessonsList.Location = new System.Drawing.Point(317, 187);
+            this.lessonsList.Location = new System.Drawing.Point(238, 152);
+            this.lessonsList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.lessonsList.Name = "lessonsList";
-            this.lessonsList.Size = new System.Drawing.Size(486, 377);
+            this.lessonsList.Size = new System.Drawing.Size(366, 307);
             this.lessonsList.TabIndex = 13;
             this.lessonsList.UseCompatibleStateImageBehavior = false;
             // 
             // holidayList
             // 
-            this.holidayList.Location = new System.Drawing.Point(809, 187);
+            this.holidayList.Location = new System.Drawing.Point(607, 152);
+            this.holidayList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.holidayList.Name = "holidayList";
-            this.holidayList.Size = new System.Drawing.Size(261, 377);
+            this.holidayList.Size = new System.Drawing.Size(197, 307);
             this.holidayList.TabIndex = 14;
             this.holidayList.UseCompatibleStateImageBehavior = false;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(18, 163);
+            this.label5.Location = new System.Drawing.Point(14, 132);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(55, 17);
+            this.label5.Size = new System.Drawing.Size(43, 13);
             this.label5.TabIndex = 15;
             this.label5.Text = "Subject";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(317, 163);
+            this.label6.Location = new System.Drawing.Point(238, 132);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(115, 17);
+            this.label6.Size = new System.Drawing.Size(86, 13);
             this.label6.TabIndex = 16;
             this.label6.Text = "Generic Lessons";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(809, 164);
+            this.label7.Location = new System.Drawing.Point(607, 133);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(62, 17);
+            this.label7.Size = new System.Drawing.Size(47, 13);
             this.label7.TabIndex = 17;
             this.label7.Text = "Holidays";
             // 
             // startTimePicker
             // 
             this.startTimePicker.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.startTimePicker.Location = new System.Drawing.Point(666, 75);
+            this.startTimePicker.Location = new System.Drawing.Point(500, 61);
+            this.startTimePicker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.startTimePicker.Name = "startTimePicker";
-            this.startTimePicker.Size = new System.Drawing.Size(361, 35);
+            this.startTimePicker.Size = new System.Drawing.Size(272, 30);
             this.startTimePicker.TabIndex = 18;
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(877, 570);
+            this.saveButton.Location = new System.Drawing.Point(658, 463);
+            this.saveButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(91, 32);
+            this.saveButton.Size = new System.Drawing.Size(68, 26);
             this.saveButton.TabIndex = 19;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
             // 
             // closeButton
             // 
-            this.closeButton.Location = new System.Drawing.Point(974, 570);
+            this.closeButton.Location = new System.Drawing.Point(730, 463);
+            this.closeButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(96, 32);
+            this.closeButton.Size = new System.Drawing.Size(72, 26);
             this.closeButton.TabIndex = 20;
             this.closeButton.Text = "Close";
             this.closeButton.UseVisualStyleBackColor = true;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
+            // subjectsView1
+            // 
+            this.subjectsView1.Location = new System.Drawing.Point(17, 152);
+            this.subjectsView1.Name = "subjectsView1";
+            this.subjectsView1.Size = new System.Drawing.Size(216, 307);
+            this.subjectsView1.TabIndex = 21;
+            // 
             // LessonYearUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1082, 605);
+            this.ClientSize = new System.Drawing.Size(812, 492);
+            this.Controls.Add(this.subjectsView1);
             this.Controls.Add(this.closeButton);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.startTimePicker);
@@ -240,7 +232,6 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.holidayList);
             this.Controls.Add(this.lessonsList);
-            this.Controls.Add(this.subjectList);
             this.Controls.Add(this.endTimePicker);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -249,9 +240,9 @@
             this.Controls.Add(this.startDatePicker);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ImportOldYear);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "LessonYearUI";
             this.Text = "LessonYearUI";
-            ((System.ComponentModel.ISupportInitialize)(this.subjectList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -267,8 +258,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker endTimePicker;
-        private BrightIdeasSoftware.FastObjectListView subjectList;
-        private BrightIdeasSoftware.OLVColumn olvSubjects;
         private System.Windows.Forms.ListView lessonsList;
         private System.Windows.Forms.ListView holidayList;
         private System.Windows.Forms.Label label5;
@@ -277,5 +266,6 @@
         private System.Windows.Forms.DateTimePicker startTimePicker;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Button closeButton;
+        private subjectsView subjectsView1;
     }
 }

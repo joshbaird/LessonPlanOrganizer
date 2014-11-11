@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange1 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
-            System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange2 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
-            System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange3 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
-            System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange4 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
-            System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange5 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
+            System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange6 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
+            System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange7 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
+            System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange8 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
+            System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange9 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
+            System.Windows.Forms.Calendar.CalendarHighlightRange calendarHighlightRange10 = new System.Windows.Forms.Calendar.CalendarHighlightRange();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,9 +43,9 @@
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.subjectsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.editToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.newToolStripMenuItemSubject = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItemSubject = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItemSubject = new System.Windows.Forms.ToolStripMenuItem();
             this.lessonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,18 +59,16 @@
             this.tlpLessonPlanYear = new System.Windows.Forms.TableLayoutPanel();
             this.tlpLeftPane = new System.Windows.Forms.TableLayoutPanel();
             this.pTop = new System.Windows.Forms.Panel();
-            this.monthView = new System.Windows.Forms.Calendar.MonthView();
             this.bToday = new System.Windows.Forms.Button();
-            this.fastObjectListView1 = new BrightIdeasSoftware.FastObjectListView();
-            this.olvSubjects = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.calendar1 = new System.Windows.Forms.Calendar.Calendar();
             this.labelHeaderFill = new System.Windows.Forms.Label();
+            this.monthView = new System.Windows.Forms.Calendar.MonthView();
+            this.subjectsView1 = new LessonPlanOrganizer.subjectsView();
+            this.calendar1 = new System.Windows.Forms.Calendar.Calendar();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tlpLessonPlanYear.SuspendLayout();
             this.tlpLeftPane.SuspendLayout();
             this.pTop.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fastObjectListView1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -151,33 +149,34 @@
             // subjectsToolStripMenuItem
             // 
             this.subjectsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newToolStripMenuItem2,
-            this.editToolStripMenuItem2,
-            this.deleteToolStripMenuItem2});
+            this.newToolStripMenuItemSubject,
+            this.editToolStripMenuItemSubject,
+            this.deleteToolStripMenuItemSubject});
             this.subjectsToolStripMenuItem.Name = "subjectsToolStripMenuItem";
             this.subjectsToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
             this.subjectsToolStripMenuItem.Text = "&Subjects";
+            this.subjectsToolStripMenuItem.Click += new System.EventHandler(this.subjectsToolStripMenuItem_Click);
             // 
-            // newToolStripMenuItem2
+            // newToolStripMenuItemSubject
             // 
-            this.newToolStripMenuItem2.Name = "newToolStripMenuItem2";
-            this.newToolStripMenuItem2.Size = new System.Drawing.Size(107, 22);
-            this.newToolStripMenuItem2.Text = "&New";
-            this.newToolStripMenuItem2.Click += new System.EventHandler(this.newSubjectStripMenuItem_Click);
+            this.newToolStripMenuItemSubject.Name = "newToolStripMenuItemSubject";
+            this.newToolStripMenuItemSubject.Size = new System.Drawing.Size(152, 22);
+            this.newToolStripMenuItemSubject.Text = "&New";
+            this.newToolStripMenuItemSubject.Click += new System.EventHandler(this.newSubjectStripMenuItem_Click);
             // 
-            // editToolStripMenuItem2
+            // editToolStripMenuItemSubject
             // 
-            this.editToolStripMenuItem2.Name = "editToolStripMenuItem2";
-            this.editToolStripMenuItem2.Size = new System.Drawing.Size(107, 22);
-            this.editToolStripMenuItem2.Text = "&Edit";
-            this.editToolStripMenuItem2.Click += new System.EventHandler(this.editSubjectStripMenuItem_Click);
+            this.editToolStripMenuItemSubject.Name = "editToolStripMenuItemSubject";
+            this.editToolStripMenuItemSubject.Size = new System.Drawing.Size(152, 22);
+            this.editToolStripMenuItemSubject.Text = "&Edit";
+            this.editToolStripMenuItemSubject.Click += new System.EventHandler(this.editSubjectStripMenuItem_Click);
             // 
-            // deleteToolStripMenuItem2
+            // deleteToolStripMenuItemSubject
             // 
-            this.deleteToolStripMenuItem2.Name = "deleteToolStripMenuItem2";
-            this.deleteToolStripMenuItem2.Size = new System.Drawing.Size(107, 22);
-            this.deleteToolStripMenuItem2.Text = "&Delete";
-            this.deleteToolStripMenuItem2.Click += new System.EventHandler(this.deleteSubjectStripMenuItem_Click);
+            this.deleteToolStripMenuItemSubject.Name = "deleteToolStripMenuItemSubject";
+            this.deleteToolStripMenuItemSubject.Size = new System.Drawing.Size(152, 22);
+            this.deleteToolStripMenuItemSubject.Text = "&Delete";
+            this.deleteToolStripMenuItemSubject.Click += new System.EventHandler(this.deleteSubjectStripMenuItem_Click);
             // 
             // lessonToolStripMenuItem
             // 
@@ -283,7 +282,7 @@
             this.tlpLeftPane.ColumnCount = 1;
             this.tlpLeftPane.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpLeftPane.Controls.Add(this.pTop, 0, 0);
-            this.tlpLeftPane.Controls.Add(this.fastObjectListView1, 0, 1);
+            this.tlpLeftPane.Controls.Add(this.subjectsView1, 0, 1);
             this.tlpLeftPane.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpLeftPane.Location = new System.Drawing.Point(3, 3);
             this.tlpLeftPane.Name = "tlpLeftPane";
@@ -302,6 +301,29 @@
             this.pTop.Name = "pTop";
             this.pTop.Size = new System.Drawing.Size(218, 184);
             this.pTop.TabIndex = 1;
+            // 
+            // bToday
+            // 
+            this.bToday.Dock = System.Windows.Forms.DockStyle.Top;
+            this.bToday.Location = new System.Drawing.Point(0, 0);
+            this.bToday.Name = "bToday";
+            this.bToday.Size = new System.Drawing.Size(218, 23);
+            this.bToday.TabIndex = 0;
+            this.bToday.Text = "Today";
+            this.bToday.UseVisualStyleBackColor = true;
+            this.bToday.Click += new System.EventHandler(this.bToday_Click);
+            // 
+            // labelHeaderFill
+            // 
+            this.labelHeaderFill.AutoSize = true;
+            this.labelHeaderFill.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.labelHeaderFill.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelHeaderFill.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.labelHeaderFill.Location = new System.Drawing.Point(3, 0);
+            this.labelHeaderFill.Name = "labelHeaderFill";
+            this.labelHeaderFill.Size = new System.Drawing.Size(778, 1);
+            this.labelHeaderFill.TabIndex = 1;
+            this.labelHeaderFill.Text = "-";
             // 
             // monthView
             // 
@@ -326,69 +348,39 @@
             this.monthView.TodayBorderColor = System.Drawing.Color.Maroon;
             this.monthView.SelectionChanged += new System.EventHandler(this.monthView_SelectionChanged);
             // 
-            // bToday
+            // subjectsView1
             // 
-            this.bToday.Dock = System.Windows.Forms.DockStyle.Top;
-            this.bToday.Location = new System.Drawing.Point(0, 0);
-            this.bToday.Name = "bToday";
-            this.bToday.Size = new System.Drawing.Size(218, 23);
-            this.bToday.TabIndex = 0;
-            this.bToday.Text = "Today";
-            this.bToday.UseVisualStyleBackColor = true;
-            this.bToday.Click += new System.EventHandler(this.bToday_Click);
-            // 
-            // fastObjectListView1
-            // 
-            this.fastObjectListView1.AllColumns.Add(this.olvSubjects);
-            this.fastObjectListView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.olvSubjects});
-            this.fastObjectListView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fastObjectListView1.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fastObjectListView1.FullRowSelect = true;
-            this.fastObjectListView1.GridLines = true;
-            this.fastObjectListView1.Location = new System.Drawing.Point(3, 193);
-            this.fastObjectListView1.MultiSelect = false;
-            this.fastObjectListView1.Name = "fastObjectListView1";
-            this.fastObjectListView1.ShowGroups = false;
-            this.fastObjectListView1.Size = new System.Drawing.Size(218, 329);
-            this.fastObjectListView1.TabIndex = 2;
-            this.fastObjectListView1.UseCompatibleStateImageBehavior = false;
-            this.fastObjectListView1.View = System.Windows.Forms.View.Details;
-            this.fastObjectListView1.VirtualMode = true;
-            this.fastObjectListView1.DoubleClick += new System.EventHandler(this.editSubjectStripMenuItem_Click);
-            // 
-            // olvSubjects
-            // 
-            this.olvSubjects.FillsFreeSpace = true;
-            this.olvSubjects.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.olvSubjects.Text = "Subjects";
-            this.olvSubjects.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.subjectsView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.subjectsView1.Location = new System.Drawing.Point(3, 193);
+            this.subjectsView1.Name = "subjectsView1";
+            this.subjectsView1.Size = new System.Drawing.Size(218, 329);
+            this.subjectsView1.TabIndex = 2;
             // 
             // calendar1
             // 
             this.calendar1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.calendar1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            calendarHighlightRange1.DayOfWeek = System.DayOfWeek.Monday;
-            calendarHighlightRange1.EndTime = System.TimeSpan.Parse("17:00:00");
-            calendarHighlightRange1.StartTime = System.TimeSpan.Parse("08:00:00");
-            calendarHighlightRange2.DayOfWeek = System.DayOfWeek.Tuesday;
-            calendarHighlightRange2.EndTime = System.TimeSpan.Parse("17:00:00");
-            calendarHighlightRange2.StartTime = System.TimeSpan.Parse("08:00:00");
-            calendarHighlightRange3.DayOfWeek = System.DayOfWeek.Wednesday;
-            calendarHighlightRange3.EndTime = System.TimeSpan.Parse("17:00:00");
-            calendarHighlightRange3.StartTime = System.TimeSpan.Parse("08:00:00");
-            calendarHighlightRange4.DayOfWeek = System.DayOfWeek.Thursday;
-            calendarHighlightRange4.EndTime = System.TimeSpan.Parse("17:00:00");
-            calendarHighlightRange4.StartTime = System.TimeSpan.Parse("08:00:00");
-            calendarHighlightRange5.DayOfWeek = System.DayOfWeek.Friday;
-            calendarHighlightRange5.EndTime = System.TimeSpan.Parse("17:00:00");
-            calendarHighlightRange5.StartTime = System.TimeSpan.Parse("08:00:00");
+            calendarHighlightRange6.DayOfWeek = System.DayOfWeek.Monday;
+            calendarHighlightRange6.EndTime = System.TimeSpan.Parse("17:00:00");
+            calendarHighlightRange6.StartTime = System.TimeSpan.Parse("08:00:00");
+            calendarHighlightRange7.DayOfWeek = System.DayOfWeek.Tuesday;
+            calendarHighlightRange7.EndTime = System.TimeSpan.Parse("17:00:00");
+            calendarHighlightRange7.StartTime = System.TimeSpan.Parse("08:00:00");
+            calendarHighlightRange8.DayOfWeek = System.DayOfWeek.Wednesday;
+            calendarHighlightRange8.EndTime = System.TimeSpan.Parse("17:00:00");
+            calendarHighlightRange8.StartTime = System.TimeSpan.Parse("08:00:00");
+            calendarHighlightRange9.DayOfWeek = System.DayOfWeek.Thursday;
+            calendarHighlightRange9.EndTime = System.TimeSpan.Parse("17:00:00");
+            calendarHighlightRange9.StartTime = System.TimeSpan.Parse("08:00:00");
+            calendarHighlightRange10.DayOfWeek = System.DayOfWeek.Friday;
+            calendarHighlightRange10.EndTime = System.TimeSpan.Parse("17:00:00");
+            calendarHighlightRange10.StartTime = System.TimeSpan.Parse("08:00:00");
             this.calendar1.HighlightRanges = new System.Windows.Forms.Calendar.CalendarHighlightRange[] {
-        calendarHighlightRange1,
-        calendarHighlightRange2,
-        calendarHighlightRange3,
-        calendarHighlightRange4,
-        calendarHighlightRange5};
+        calendarHighlightRange6,
+        calendarHighlightRange7,
+        calendarHighlightRange8,
+        calendarHighlightRange9,
+        calendarHighlightRange10};
             this.calendar1.Location = new System.Drawing.Point(233, 3);
             this.calendar1.Name = "calendar1";
             this.calendar1.Size = new System.Drawing.Size(542, 525);
@@ -396,18 +388,6 @@
             this.calendar1.Text = "calendar1";
             this.calendar1.LoadItems += new System.Windows.Forms.Calendar.Calendar.CalendarLoadEventHandler(this.calendar1_LoadItems);
             this.calendar1.DoubleClick += new System.EventHandler(this.newLessonStripMenuItem_Click);
-            // 
-            // labelHeaderFill
-            // 
-            this.labelHeaderFill.AutoSize = true;
-            this.labelHeaderFill.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelHeaderFill.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelHeaderFill.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelHeaderFill.Location = new System.Drawing.Point(3, 0);
-            this.labelHeaderFill.Name = "labelHeaderFill";
-            this.labelHeaderFill.Size = new System.Drawing.Size(778, 1);
-            this.labelHeaderFill.TabIndex = 1;
-            this.labelHeaderFill.Text = "-";
             // 
             // MainForm
             // 
@@ -427,7 +407,6 @@
             this.tlpLessonPlanYear.ResumeLayout(false);
             this.tlpLeftPane.ResumeLayout(false);
             this.pTop.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.fastObjectListView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -444,9 +423,9 @@
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem subjectsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItemSubject;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItemSubject;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItemSubject;
         private System.Windows.Forms.ToolStripMenuItem lessonToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem1;
@@ -465,8 +444,7 @@
         private System.Windows.Forms.Button bToday;
         private System.Windows.Forms.Label labelHeaderFill;
         private System.Windows.Forms.Calendar.Calendar calendar1;
-        private BrightIdeasSoftware.FastObjectListView fastObjectListView1;
-        private BrightIdeasSoftware.OLVColumn olvSubjects;
+        private subjectsView subjectsView1;
 
 
 
