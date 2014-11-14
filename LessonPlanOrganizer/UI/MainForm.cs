@@ -17,7 +17,7 @@ namespace LessonPlanOrganizer
         public MainForm()
         {
             InitializeComponent();
-            lessonPlanYearControl = LessonPlanYearControl.Intance;
+            lessonPlanYearControl = LessonPlanYearControl.Instance;
 
             EventsControl.SubjectChanged += (o, e) =>
                 {

@@ -25,7 +25,7 @@ namespace LessonPlanOrganizer
             };
         }
 
-        public static LessonPlanYearControl Intance
+        public static LessonPlanYearControl Instance
         {
             get
             {

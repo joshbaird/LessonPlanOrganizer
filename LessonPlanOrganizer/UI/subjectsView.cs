@@ -34,7 +34,7 @@ namespace LessonPlanOrganizer
             EventsControl.SubjectChanged += (o, e) =>
             {
                 this.fastObjectListView1.ClearObjects();
-                this.fastObjectListView1.AddObjects(LessonPlanYearControl.Intance.getSubjects());
+                this.fastObjectListView1.AddObjects(LessonPlanYearControl.Instance.getSubjects());
             };
             this.fastObjectListView1.ClearObjects();
             this.fastObjectListView1.AddObjects(LessonPlanYear.Instance.Subjects);
@@ -47,6 +47,9 @@ namespace LessonPlanOrganizer
 
         private void fastObjectListView1_CellRightClick(object sender, BrightIdeasSoftware.CellRightClickEventArgs e)
         {
+            this.newToolStripMenuItem.Enabled = true;
+            this.editToolStripMenuItem.Enabled = this.ItemSelected;
+            this.deleteToolStripMenuItem.Enabled = this.ItemSelected;
             e.MenuStrip = this.cmsRightClick;
         }
 
@@ -91,5 +94,7 @@ namespace LessonPlanOrganizer
                 EventsControl.RaiseAddNewSubject(newSub);
             }
         }
+
+
     }
 }

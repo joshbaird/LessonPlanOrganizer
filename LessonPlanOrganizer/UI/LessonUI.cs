@@ -17,7 +17,7 @@ namespace LessonPlanOrganizer
             InitializeComponent();
             
             this.associatedProject.DisplayMember = "Name";
-            this.associatedProject.Items.AddRange(LessonPlanYearControl.Intance.getSubjects().ToArray());
+            this.associatedProject.Items.AddRange(LessonPlanYearControl.Instance.getSubjects().ToArray());
 
             if (cal is LessonPlan)
             {
@@ -35,7 +35,7 @@ namespace LessonPlanOrganizer
             }
             else
             {
-                _lessonPlan = new LessonPlan(((CalendarItem)cal).Calendar);
+                _lessonPlan =(cal is CalendarItem) ?  new LessonPlan(((CalendarItem)cal).Calendar) : new LessonPlan((Calendar)cal);
             }
         }
         private LessonPlan _lessonPlan;
@@ -63,7 +63,7 @@ namespace LessonPlanOrganizer
 
             setLessonPlan();
             
-            LessonPlanYearControl.Intance.addLessonPlans(this._lessonPlan);
+            LessonPlanYearControl.Instance.addLessonPlans(this._lessonPlan);
             EventsControl.RaiseLessonChanged(this._lessonPlan, EventArgs.Empty);
 
             this.DialogResult = DialogResult.OK;
@@ -72,7 +72,7 @@ namespace LessonPlanOrganizer
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            LessonPlanYearControl.Intance.removeLesson(this._lessonPlan);
+            LessonPlanYearControl.Instance.removeLesson(this._lessonPlan);
             this.DialogResult = DialogResult.None;
             this.Close();
         }

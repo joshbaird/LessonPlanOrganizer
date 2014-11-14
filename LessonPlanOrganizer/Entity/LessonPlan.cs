@@ -26,16 +26,9 @@ namespace LessonPlanOrganizer
             EventsControl.SubjectChanged += handleSubjectChange;
         }
 
-        public override string Text
+        ~LessonPlan()
         {
-            get
-            {
-                return base.Text + Notes;
-            }
-            set
-            {
-                base.Text = value;
-            }
+            EventsControl.SubjectChanged -= handleSubjectChange;
         }
 
         private Subject _subject;
