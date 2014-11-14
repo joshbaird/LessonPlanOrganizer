@@ -12,7 +12,7 @@ namespace LessonPlanOrganizer
             Name = "none";
             Color = Color.Black;
         }
-        public String Name;
+        public String Name { get; set; }
         public Color Color;
     }
 }

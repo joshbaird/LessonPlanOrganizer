@@ -9,7 +9,9 @@ namespace LessonPlanOrganizer
 {
     public class LessonPlanYearControl
     {
-        public LessonPlanYearControl()
+        private static LessonPlanYearControl instance;
+
+        private LessonPlanYearControl()
         {
             // TODO replace dateTimes with actual dates and times.
             _lessonPlanYear = LessonPlanYear.Instance.createLessonPlanYear(new DateTime(), new DateTime());
@@ -22,6 +24,22 @@ namespace LessonPlanOrganizer
                 removeSubject(((EventsControl.SubjectEventArgs)e).Subject);
             };
         }
+
+        public static LessonPlanYearControl Intance
+        {
+            get
+            {
+                if (instance == null)
+                    instance = new LessonPlanYearControl();
+                return instance;
+            }
+            set
+            {
+                // TODO need to pass new date Times here
+                instance = new LessonPlanYearControl();
+            }
+        }
+
 
         private LessonPlanYear _lessonPlanYear;
 
@@ -36,7 +54,7 @@ namespace LessonPlanOrganizer
             _lessonPlanYear.LessonPlans.Add(item);
             EventsControl.RaiseLessonChanged(this, EventArgs.Empty);
         }
-        public System.Collections.ICollection getLessonPlans()
+        public List<LessonPlan> getLessonPlans()
         {
             return _lessonPlanYear.LessonPlans;
         }
@@ -53,7 +71,7 @@ namespace LessonPlanOrganizer
             _lessonPlanYear.Subjects.Remove(item);
             EventsControl.RaiseSubjectChanged(this, EventArgs.Empty);
         }
-        public System.Collections.ICollection getSubjects()
+        public List<Subject> getSubjects()
         {
             return _lessonPlanYear.Subjects;
         }

@@ -34,7 +34,7 @@ namespace LessonPlanOrganizer
             EventsControl.SubjectChanged += (o, e) =>
             {
                 this.fastObjectListView1.ClearObjects();
-                this.fastObjectListView1.AddObjects(((LessonPlanYearControl)o).getSubjects());
+                this.fastObjectListView1.AddObjects(LessonPlanYearControl.Intance.getSubjects());
             };
             this.fastObjectListView1.ClearObjects();
             this.fastObjectListView1.AddObjects(LessonPlanYear.Instance.Subjects);
@@ -42,9 +42,7 @@ namespace LessonPlanOrganizer
 
         private void fastObjectListView1_DoubleClick(object sender, EventArgs e)
         {
-            Subject sub = (Subject)((BrightIdeasSoftware.FastObjectListView)sender).SelectedObject;
-            SubjectUI subjectSetupUI = new SubjectUI(sub);
-            subjectSetupUI.ShowDialog();
+            EditSelected();
         }
 
         private void fastObjectListView1_CellRightClick(object sender, BrightIdeasSoftware.CellRightClickEventArgs e)
@@ -73,7 +71,8 @@ namespace LessonPlanOrganizer
         {
             Subject sub = (Subject)this.fastObjectListView1.SelectedObject;
             SubjectUI subjectSetupUI = new SubjectUI(sub);
-            subjectSetupUI.ShowDialog();
+            if (subjectSetupUI.ShowDialog() == DialogResult.OK)
+                EventsControl.RaiseSubjectChanged(sub, EventArgs.Empty);
         }
 
         public void DeleteSelected()

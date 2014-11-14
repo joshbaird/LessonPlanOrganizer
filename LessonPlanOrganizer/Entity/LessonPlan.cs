@@ -12,11 +12,50 @@ namespace LessonPlanOrganizer
         public LessonPlan(Calendar year)
             : base(year)
         {
+            EventsControl.SubjectChanged += handleSubjectChange;
         }
 
         public LessonPlan(Calendar year, DateTime start, TimeSpan duration, String title)
             : base(year, start, duration, title)
         {
+            EventsControl.SubjectChanged += handleSubjectChange;
+        }
+
+        private Subject _subject;
+
+        public Subject Subject
+        {
+            get
+            {
+                if (_subject == null)
+                    _subject = new Subject();
+                return _subject;
+            }
+            set
+            {
+                _subject = value;
+                this.BackgroundColor = _subject.Color;
+            }
+        }
+
+        private String _notes;
+        public String Notes
+        {
+            get
+            {
+                if (_notes == null)
+                    _notes = String.Empty;
+                return _notes;
+            }
+            set
+            {
+                _notes = value;
+            }
+        }
+
+        private void handleSubjectChange(Object o, EventArgs e)
+        {
+            this.BackgroundColor = _subject.Color;
         }
 
         /// <summary>

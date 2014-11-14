@@ -18,15 +18,16 @@ namespace LessonPlanOrganizer
         {
             InitializeComponent();
 
-            lessonPlanYearControl = new LessonPlanYearControl();
+            lessonPlanYearControl = LessonPlanYearControl.Intance;
 
-            // test load items from Lesson Year Plan
-            LessonPlan item = new LessonPlan(calendar1, new DateTime(2014, 11, 6), new TimeSpan(1, 0, 0, 0), "Testing");
-            item.ApplyColor(Color.Red);
-            LessonPlan item2 = new LessonPlan(calendar1, new DateTime(2014, 11, 10), new TimeSpan(1, 0, 0, 0), "Testing2");
-            item2.ApplyColor(Color.Blue);
-            lessonPlanYearControl.addLessonPlans(item);
-            lessonPlanYearControl.addLessonPlans(item2);
+            EventsControl.SubjectChanged += (o, e) =>
+                {
+                    refreshCalendar();
+                };
+            EventsControl.LessonChanged += (o, e) =>
+                {
+                    refreshCalendar();
+                };
 
             // test load some subjecs
             Subject testSub1 = new Subject();
@@ -37,6 +38,16 @@ namespace LessonPlanOrganizer
             testSub2.Color = Color.Blue;
             lessonPlanYearControl.addSubject(testSub1);
             lessonPlanYearControl.addSubject(testSub2);
+
+            // test load items from Lesson Year Plan
+            LessonPlan item = new LessonPlan(calendar1, new DateTime(2014, 11, 6), new TimeSpan(1, 0, 0, 0), "Testing");
+            item.Subject = testSub2;
+            LessonPlan item2 = new LessonPlan(calendar1, new DateTime(2014, 11, 10), new TimeSpan(1, 0, 0, 0), "Testing2");
+            item2.Subject = testSub1;
+            lessonPlanYearControl.addLessonPlans(item);
+            lessonPlanYearControl.addLessonPlans(item2);
+
+
         }
 
         private LessonPlanYearControl lessonPlanYearControl;
@@ -55,6 +66,11 @@ namespace LessonPlanOrganizer
         }
         private void calendar1_LoadItems(object sender, CalendarLoadEventArgs e)
         {
+            refreshCalendar();
+        }
+        private void refreshCalendar()
+        {
+            calendar1.Items.Clear();
             calendar1.Items.AddRange(lessonPlanYearControl.GetLessonsForCalendarDisplay(monthView.SelectionStart, monthView.SelectionEnd));
         }
 
@@ -116,21 +132,21 @@ namespace LessonPlanOrganizer
         // lessons
         private void newLessonStripMenuItem_Click(object sender, EventArgs e)
         {
-            LessonUI lessonSetupUI = new LessonUI("new");
+            LessonUI lessonSetupUI = new LessonUI(this.calendar1);
             lessonSetupUI.ShowDialog();
             // TODO handle close and return
         }
 
         private void editLessonStripMenuItem_Click(object sender, EventArgs e)
         {
-            LessonUI lessonSetupUI = new LessonUI("edit");
+            LessonUI lessonSetupUI = new LessonUI(this.calendar1);
             lessonSetupUI.ShowDialog();
             // TODO handle close and return
         }
 
         private void deleteLessonStripMenuItem_Click(object sender, EventArgs e)
         {
-            LessonUI lessonSetupUI = new LessonUI("delete");
+            LessonUI lessonSetupUI = new LessonUI(this.calendar1);
             lessonSetupUI.ShowDialog();
             // TODO handle close and return
         }
