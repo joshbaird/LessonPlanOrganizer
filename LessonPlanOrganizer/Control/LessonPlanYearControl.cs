@@ -78,5 +78,11 @@ namespace LessonPlanOrganizer
             return _lessonPlanYear.Subjects;
         }
         #endregion
+
+        internal void removeLesson(LessonPlan lesson)
+        {
+            _lessonPlanYear.LessonPlans.Remove(lesson);
+            EventsControl.RaiseLessonChanged(this, EventArgs.Empty);
+        }
     }  
 }

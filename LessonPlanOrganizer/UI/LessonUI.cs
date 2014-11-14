@@ -21,8 +21,8 @@ namespace LessonPlanOrganizer
 
             if (cal is LessonPlan)
             {
-                _lessonPlan = new LessonPlan(((CalendarItem)cal).Calendar);
                 LessonPlan lp = (LessonPlan)cal;
+                _lessonPlan = lp;
                 this.lessonTitle.Text = lp.Text;
                 this.dateSelection.Value = lp.StartDate;
                 this.numStartHour.Value = lp.StartDate.Hour;
@@ -40,6 +40,18 @@ namespace LessonPlanOrganizer
         }
         private LessonPlan _lessonPlan;
 
+        private void setLessonPlan()
+        {
+            // TODO validate all the fields for lesson plan first...
+            this._lessonPlan.Text = this.lessonTitle.Text;
+            DateTime startDate = new DateTime(this.dateSelection.Value.Year, this.dateSelection.Value.Month, this.dateSelection.Value.Day, (int)this.numStartHour.Value, (int)this.numStartMin.Value, 0);
+            this._lessonPlan.StartDate = startDate;
+            DateTime endDate = startDate.AddHours((int)this.numDurHour.Value).AddMinutes((int)this.numDurMin.Value);
+            this._lessonPlan.EndDate = endDate;
+            this._lessonPlan.Subject = (Subject)this.associatedProject.SelectedItem;
+            this._lessonPlan.Notes = this.textBoxNotes.Text;
+        }
+
         private void closeButton_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
@@ -48,15 +60,9 @@ namespace LessonPlanOrganizer
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            // TODO validate all the fields for lesson plan first...
 
-            this._lessonPlan.Text = this.lessonTitle.Text;
-            DateTime startDate = new DateTime(this.dateSelection.Value.Year, this.dateSelection.Value.Month, this.dateSelection.Value.Day, (int)this.numStartHour.Value, (int)this.numStartMin.Value, 0);
-            this._lessonPlan.StartDate = startDate;
-            DateTime endDate = startDate.AddHours((int)this.numDurHour.Value).AddMinutes((int)this.numDurMin.Value);
-            this._lessonPlan.EndDate = endDate;
-            this._lessonPlan.Subject = (Subject)this.associatedProject.SelectedItem;
-            this._lessonPlan.Notes = this.textBoxNotes.Text;
+            setLessonPlan();
+            
             LessonPlanYearControl.Intance.addLessonPlans(this._lessonPlan);
             EventsControl.RaiseLessonChanged(this._lessonPlan, EventArgs.Empty);
 
@@ -66,7 +72,9 @@ namespace LessonPlanOrganizer
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
-
+            LessonPlanYearControl.Intance.removeLesson(this._lessonPlan);
+            this.DialogResult = DialogResult.None;
+            this.Close();
         }
     }
 }

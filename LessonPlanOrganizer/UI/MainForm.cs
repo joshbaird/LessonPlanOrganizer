@@ -17,7 +17,6 @@ namespace LessonPlanOrganizer
         public MainForm()
         {
             InitializeComponent();
-
             lessonPlanYearControl = LessonPlanYearControl.Intance;
 
             EventsControl.SubjectChanged += (o, e) =>
@@ -141,21 +140,20 @@ namespace LessonPlanOrganizer
         {
             LessonUI lessonSetupUI = new LessonUI(e.Item);
             lessonSetupUI.ShowDialog();
+            refreshCalendar();
             // TODO handle close and return
         }
 
         private void editLessonStripMenuItem_Click(object sender, EventArgs e)
         {
-            LessonUI lessonSetupUI = new LessonUI(this.calendar1);
+            LessonUI lessonSetupUI = new LessonUI(this.calendar1.GetSelectedItems().FirstOrDefault());
             lessonSetupUI.ShowDialog();
             // TODO handle close and return
         }
 
         private void deleteLessonStripMenuItem_Click(object sender, EventArgs e)
         {
-            LessonUI lessonSetupUI = new LessonUI(this.calendar1);
-            lessonSetupUI.ShowDialog();
-            // TODO handle close and return
+            lessonPlanYearControl.removeLesson((LessonPlan)this.calendar1.GetSelectedItems().FirstOrDefault());
         }
 
         // report
@@ -188,8 +186,11 @@ namespace LessonPlanOrganizer
             this.deleteToolStripMenuItemSubject.Enabled = this.subjectsView1.ItemSelected;
         }
 
-
-
-
+        private void lessonToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.newToolStripMenuItemLesson.Enabled = true;
+            this.editToolStripMenuItemLesson.Enabled = this.calendar1.GetSelectedItems().Count() > 0;
+            this.deleteToolStripMenuItemLesson.Enabled = this.calendar1.GetSelectedItems().Count() > 0;
+        }
     }
 }
