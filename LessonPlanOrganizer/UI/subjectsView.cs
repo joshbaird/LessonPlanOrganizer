@@ -71,8 +71,7 @@ namespace LessonPlanOrganizer
         {
             Subject sub = (Subject)this.fastObjectListView1.SelectedObject;
             SubjectUI subjectSetupUI = new SubjectUI(sub);
-            if (subjectSetupUI.ShowDialog() == DialogResult.OK)
-                EventsControl.RaiseSubjectChanged(sub, EventArgs.Empty);
+            subjectSetupUI.ShowDialog();
         }
 
         public void DeleteSelected()

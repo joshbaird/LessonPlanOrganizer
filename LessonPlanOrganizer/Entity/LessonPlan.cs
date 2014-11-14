@@ -7,10 +7,15 @@ using System.Windows.Forms.Calendar;
 
 namespace LessonPlanOrganizer
 {
-    public class LessonPlan : CalendarItem
+    public class LessonPlan : CalendarItem, IEquatable<LessonPlan>
     {
         public LessonPlan(Calendar year)
             : base(year)
+        {
+            EventsControl.SubjectChanged += handleSubjectChange;
+        }
+        public LessonPlan(Calendar calendar, DateTime startDate, DateTime endDate, String text)
+            : base(calendar, startDate, endDate, text)
         {
             EventsControl.SubjectChanged += handleSubjectChange;
         }
@@ -19,6 +24,18 @@ namespace LessonPlanOrganizer
             : base(year, start, duration, title)
         {
             EventsControl.SubjectChanged += handleSubjectChange;
+        }
+
+        public override string Text
+        {
+            get
+            {
+                return base.Text + Notes;
+            }
+            set
+            {
+                base.Text = value;
+            }
         }
 
         private Subject _subject;
@@ -132,6 +149,14 @@ namespace LessonPlanOrganizer
             return true;
         }
 
-
+        public bool Equals(LessonPlan other)
+        {
+            return (String.Equals(this.Notes, other.Notes) &&
+                    String.Equals(this.Subject.Name, other.Subject.Name) &&
+                    this.Subject.Color == other.Subject.Color &&
+                    this.Text == other.Text &&
+                    DateTime.Equals(this.StartDate, other.StartDate) &&
+                    TimeSpan.Equals(this.Duration, other.Duration));
+        }
     }
 }

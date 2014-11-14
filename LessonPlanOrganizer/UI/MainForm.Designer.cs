@@ -375,7 +375,7 @@
             this.calendar1.TabIndex = 3;
             this.calendar1.Text = "calendar1";
             this.calendar1.LoadItems += new System.Windows.Forms.Calendar.Calendar.CalendarLoadEventHandler(this.calendar1_LoadItems);
-            this.calendar1.DoubleClick += new System.EventHandler(this.newLessonStripMenuItem_Click);
+            this.calendar1.ItemDoubleClick += new System.Windows.Forms.Calendar.Calendar.CalendarItemEventHandler(this.calendar1_ItemDoubleClick);
             // 
             // labelHeaderFill
             // 

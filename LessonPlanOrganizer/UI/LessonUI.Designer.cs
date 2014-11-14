@@ -35,14 +35,22 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.associatedProject = new System.Windows.Forms.ComboBox();
-            this.timeSelection = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.textBoxNotes = new System.Windows.Forms.TextBox();
             this.deleteButton = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
             this.closeButton = new System.Windows.Forms.Button();
-            this.timeDuration = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
+            this.numStartHour = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
+            this.numStartMin = new System.Windows.Forms.NumericUpDown();
+            this.numDurMin = new System.Windows.Forms.NumericUpDown();
+            this.label8 = new System.Windows.Forms.Label();
+            this.numDurHour = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.numStartHour)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numStartMin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numDurMin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numDurHour)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -118,15 +126,6 @@
             this.associatedProject.Size = new System.Drawing.Size(266, 31);
             this.associatedProject.TabIndex = 6;
             // 
-            // timeSelection
-            // 
-            this.timeSelection.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.timeSelection.Location = new System.Drawing.Point(530, 54);
-            this.timeSelection.Margin = new System.Windows.Forms.Padding(2);
-            this.timeSelection.Name = "timeSelection";
-            this.timeSelection.Size = new System.Drawing.Size(266, 30);
-            this.timeSelection.TabIndex = 7;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -157,6 +156,7 @@
             this.deleteButton.TabIndex = 10;
             this.deleteButton.Text = "Delete";
             this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // saveButton
             // 
@@ -180,15 +180,6 @@
             this.closeButton.UseVisualStyleBackColor = true;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
-            // timeDuration
-            // 
-            this.timeDuration.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.timeDuration.Location = new System.Drawing.Point(530, 94);
-            this.timeDuration.Margin = new System.Windows.Forms.Padding(2);
-            this.timeDuration.Name = "timeDuration";
-            this.timeDuration.Size = new System.Drawing.Size(266, 30);
-            this.timeDuration.TabIndex = 13;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -200,19 +191,107 @@
             this.label6.TabIndex = 14;
             this.label6.Text = "Duration:";
             // 
+            // numStartHour
+            // 
+            this.numStartHour.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numStartHour.Location = new System.Drawing.Point(530, 52);
+            this.numStartHour.Maximum = new decimal(new int[] {
+            23,
+            0,
+            0,
+            0});
+            this.numStartHour.Name = "numStartHour";
+            this.numStartHour.Size = new System.Drawing.Size(50, 30);
+            this.numStartHour.TabIndex = 15;
+            this.numStartHour.Value = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(585, 56);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(15, 23);
+            this.label7.TabIndex = 17;
+            this.label7.Text = ":";
+            // 
+            // numStartMin
+            // 
+            this.numStartMin.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numStartMin.Location = new System.Drawing.Point(605, 53);
+            this.numStartMin.Maximum = new decimal(new int[] {
+            59,
+            0,
+            0,
+            0});
+            this.numStartMin.Name = "numStartMin";
+            this.numStartMin.Size = new System.Drawing.Size(50, 30);
+            this.numStartMin.TabIndex = 18;
+            // 
+            // numDurMin
+            // 
+            this.numDurMin.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numDurMin.Location = new System.Drawing.Point(605, 89);
+            this.numDurMin.Maximum = new decimal(new int[] {
+            59,
+            0,
+            0,
+            0});
+            this.numDurMin.Name = "numDurMin";
+            this.numDurMin.Size = new System.Drawing.Size(50, 30);
+            this.numDurMin.TabIndex = 21;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(585, 92);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(15, 23);
+            this.label8.TabIndex = 20;
+            this.label8.Text = ":";
+            // 
+            // numDurHour
+            // 
+            this.numDurHour.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numDurHour.Location = new System.Drawing.Point(530, 88);
+            this.numDurHour.Maximum = new decimal(new int[] {
+            23,
+            0,
+            0,
+            0});
+            this.numDurHour.Name = "numDurHour";
+            this.numDurHour.Size = new System.Drawing.Size(50, 30);
+            this.numDurHour.TabIndex = 19;
+            this.numDurHour.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // LessonUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(812, 492);
+            this.Controls.Add(this.numDurMin);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.numDurHour);
+            this.Controls.Add(this.numStartMin);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.numStartHour);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.timeDuration);
             this.Controls.Add(this.closeButton);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.textBoxNotes);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.timeSelection);
             this.Controls.Add(this.associatedProject);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -223,6 +302,10 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "LessonUI";
             this.Text = "LessonUI";
+            ((System.ComponentModel.ISupportInitialize)(this.numStartHour)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numStartMin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numDurMin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numDurHour)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -237,13 +320,17 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox associatedProject;
-        private System.Windows.Forms.DateTimePicker timeSelection;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBoxNotes;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Button closeButton;
-        private System.Windows.Forms.DateTimePicker timeDuration;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.NumericUpDown numStartHour;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.NumericUpDown numStartMin;
+        private System.Windows.Forms.NumericUpDown numDurMin;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.NumericUpDown numDurHour;
     }
 }

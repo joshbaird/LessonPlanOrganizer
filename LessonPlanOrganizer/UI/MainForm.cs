@@ -137,6 +137,13 @@ namespace LessonPlanOrganizer
             // TODO handle close and return
         }
 
+        private void calendar1_ItemDoubleClick(object sender, CalendarItemEventArgs e)
+        {
+            LessonUI lessonSetupUI = new LessonUI(e.Item);
+            lessonSetupUI.ShowDialog();
+            // TODO handle close and return
+        }
+
         private void editLessonStripMenuItem_Click(object sender, EventArgs e)
         {
             LessonUI lessonSetupUI = new LessonUI(this.calendar1);
@@ -180,6 +187,8 @@ namespace LessonPlanOrganizer
             this.editToolStripMenuItemSubject.Enabled = this.subjectsView1.ItemSelected;
             this.deleteToolStripMenuItemSubject.Enabled = this.subjectsView1.ItemSelected;
         }
+
+
 
 
     }

@@ -17,11 +17,11 @@ namespace LessonPlanOrganizer
             _lessonPlanYear = LessonPlanYear.Instance.createLessonPlanYear(new DateTime(), new DateTime());
             EventsControl.AddNewSubject += (o, e) =>
             {
-                addSubject(((EventsControl.SubjectEventArgs)e).Subject);
+                addSubject(((Subject)o));
             };
             EventsControl.RemoveSubject += (o, e) =>
             {
-                removeSubject(((EventsControl.SubjectEventArgs)e).Subject);
+                removeSubject((Subject)o);
             };
         }
 
@@ -51,6 +51,8 @@ namespace LessonPlanOrganizer
         #region Lesson methods
         public void addLessonPlans(LessonPlan item)
         {
+            if (_lessonPlanYear.LessonPlans.Contains(item))
+                return;
             _lessonPlanYear.LessonPlans.Add(item);
             EventsControl.RaiseLessonChanged(this, EventArgs.Empty);
         }

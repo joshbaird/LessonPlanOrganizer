@@ -8,10 +8,6 @@ namespace LessonPlanOrganizer
     public static class EventsControl
     {
 
-        public class SubjectEventArgs : EventArgs
-        {
-            public Subject Subject;
-        }
         public static event EventHandler SubjectChanged;
         public static void RaiseSubjectChanged(Object obj, EventArgs e)
         {
@@ -21,19 +17,15 @@ namespace LessonPlanOrganizer
         public static event EventHandler RemoveSubject;
         public static void RaiseRemoveSubject(Subject sub)
         {
-            SubjectEventArgs args = new SubjectEventArgs();
-            args.Subject = sub;
             if(RemoveSubject != null)
-                RemoveSubject(new Object(), args);
+                RemoveSubject(sub, EventArgs.Empty);
         }
         public static event EventHandler AddNewSubject;
 
         public static void RaiseAddNewSubject(Subject sub)
         {
-            SubjectEventArgs args = new SubjectEventArgs();
-            args.Subject = sub;
             if (AddNewSubject != null)
-                AddNewSubject(new Object(), args);
+                AddNewSubject(sub, EventArgs.Empty);
         }
 
 
