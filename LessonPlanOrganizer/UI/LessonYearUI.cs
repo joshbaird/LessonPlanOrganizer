@@ -14,13 +14,6 @@ namespace LessonPlanOrganizer
         public LessonYearUI(String mode)
         {
             InitializeComponent();
-
-            startTimePicker.ShowUpDown = true;
-            startTimePicker.CustomFormat = " hh:mm";
-            startTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            endTimePicker.ShowUpDown = true;
-            endTimePicker.CustomFormat = " hh:mm";
-            endTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
         }
 
         private void closeButton_Click(object sender, EventArgs e)
