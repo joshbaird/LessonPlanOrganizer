@@ -27,14 +27,24 @@ namespace LessonPlanOrganizer
         {
             this.fastObjectListView1.OwnerDraw = true;
 
+            // aspect getters
             this.olvLessonTitle.AspectGetter = rowObject =>
             {
                 return ((LessonPlan)rowObject).Text;
             };
             this.olvSubjects.AspectGetter = rowObject =>
-                {
-                    return ((LessonPlan)rowObject).Subject.Name;
-                };
+            {
+                return ((LessonPlan)rowObject).Subject.Name;
+            };
+            this.olvStartDate.AspectGetter = rowObject =>
+            {
+                return ((LessonPlan)rowObject).StartDate;
+            };
+            this.olvDuration.AspectGetter = rowObject =>
+            {
+                return ((LessonPlan)rowObject).Duration;
+            };
+
             this.fastObjectListView1.FormatRow += (o, e) =>
             {
                 e.Item.BackColor = ((LessonPlan)e.Model).Subject.Color;

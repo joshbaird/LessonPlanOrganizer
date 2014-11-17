@@ -145,7 +145,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(14, 132);
+            this.label5.Location = new System.Drawing.Point(14, 133);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(43, 13);
@@ -155,7 +155,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(238, 132);
+            this.label6.Location = new System.Drawing.Point(191, 133);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(86, 13);
@@ -206,14 +206,14 @@
             // 
             this.subjectsView1.Location = new System.Drawing.Point(17, 152);
             this.subjectsView1.Name = "subjectsView1";
-            this.subjectsView1.Size = new System.Drawing.Size(216, 307);
+            this.subjectsView1.Size = new System.Drawing.Size(171, 307);
             this.subjectsView1.TabIndex = 21;
             // 
             // lessonsView1
             // 
-            this.lessonsView1.Location = new System.Drawing.Point(241, 152);
+            this.lessonsView1.Location = new System.Drawing.Point(194, 152);
             this.lessonsView1.Name = "lessonsView1";
-            this.lessonsView1.Size = new System.Drawing.Size(361, 307);
+            this.lessonsView1.Size = new System.Drawing.Size(408, 307);
             this.lessonsView1.TabIndex = 22;
             // 
             // LessonYearUI
