@@ -18,7 +18,8 @@ namespace LessonPlanOrganizer
         {
             InitializeComponent();
             lessonPlanYearControl = LessonPlanYearControl.Instance;
-
+            calendar1.TimeUnitsOffset = -14; // offset display to 7:00 AM
+            this.calendar1.SetViewRange(new DateTime(2014,12,1), new DateTime(2014,12,31));
             EventsControl.SubjectChanged += (o, e) =>
                 {
                     refreshCalendar();
@@ -28,23 +29,23 @@ namespace LessonPlanOrganizer
                     refreshCalendar();
                 };
 
-            // test load some subjecs
-            Subject testSub1 = new Subject();
-            testSub1.Name = "Math";
-            testSub1.Color = Color.Red;
-            Subject testSub2 = new Subject();
-            testSub2.Name = "ELA";
-            testSub2.Color = Color.Blue;
-            lessonPlanYearControl.addSubject(testSub1);
-            lessonPlanYearControl.addSubject(testSub2);
+            //// test load some subjecs
+            //Subject testSub1 = new Subject();
+            //testSub1.Name = "Math";
+            //testSub1.Color = Color.Red;
+            //Subject testSub2 = new Subject();
+            //testSub2.Name = "ELA";
+            //testSub2.Color = Color.Blue;
+            //lessonPlanYearControl.addSubject(testSub1);
+            //lessonPlanYearControl.addSubject(testSub2);
 
-            // test load items from Lesson Year Plan
-            LessonPlan item = new LessonPlan(calendar1, new DateTime(2014, 11, 6), new TimeSpan(1, 0, 0, 0), "Testing");
-            item.Subject = testSub2;
-            LessonPlan item2 = new LessonPlan(calendar1, new DateTime(2014, 11, 10), new TimeSpan(1, 0, 0, 0), "Testing2");
-            item2.Subject = testSub1;
-            lessonPlanYearControl.addLessonPlans(item);
-            lessonPlanYearControl.addLessonPlans(item2);
+            //// test load items from Lesson Year Plan
+            //LessonPlan item = new LessonPlan(calendar1, new DateTime(2014, 11, 6), new TimeSpan(1, 0, 0, 0), "Testing");
+            //item.Subject = testSub2;
+            //LessonPlan item2 = new LessonPlan(calendar1, new DateTime(2014, 11, 10), new TimeSpan(1, 0, 0, 0), "Testing2");
+            //item2.Subject = testSub1;
+            //lessonPlanYearControl.addLessonPlans(item);
+            //lessonPlanYearControl.addLessonPlans(item2);
 
 
         }
@@ -53,10 +54,10 @@ namespace LessonPlanOrganizer
 
         private void monthView_SelectionChanged(object sender, EventArgs e)
         {
-            if ((this.monthView.SelectionEnd - this.monthView.SelectionStart).TotalDays <= this.calendar1.MaximumViewDays)
+            if (((TimeSpan)(this.monthView.SelectionEnd - this.monthView.SelectionStart)).Days < this.calendar1.MaximumViewDays)
                 this.calendar1.SetViewRange(this.monthView.SelectionStart, this.monthView.SelectionEnd);
             else
-                this.calendar1.SetViewRange(this.monthView.SelectionStart, this.monthView.SelectionStart.AddDays(this.calendar1.MaximumViewDays));
+                this.calendar1.SetViewRange(this.monthView.SelectionStart, this.monthView.SelectionStart.AddDays(this.calendar1.MaximumViewDays - 1));
         }
         private void bToday_Click(object sender, EventArgs e)
         {
