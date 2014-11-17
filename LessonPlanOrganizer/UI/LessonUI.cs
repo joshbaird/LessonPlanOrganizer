@@ -21,24 +21,29 @@ namespace LessonPlanOrganizer
 
             if (cal is LessonPlan)
             {
-                LessonPlan lp = (LessonPlan)cal;
-                _lessonPlan = lp;
-                this.lessonTitle.Text = lp.Text;
-                this.dateSelection.Value = lp.StartDate;
-                this.numStartHour.Value = lp.StartDate.Hour;
-                this.numStartMin.Value = lp.StartDate.Minute;
-                this.numDurHour.Value = lp.Duration.Hours;
-                this.numDurMin.Value = lp.Duration.Minutes;
-                int index = this.associatedProject.Items.IndexOf(lp.Subject);
-                this.associatedProject.SelectedIndex = index;
-                this.textBoxNotes.Text = lp.Notes;
+                _lessonPlan = (LessonPlan)cal;
             }
             else
             {
-                _lessonPlan =(cal is CalendarItem) ?  new LessonPlan(((CalendarItem)cal).Calendar) : new LessonPlan((Calendar)cal);
+                CalendarItem calItem = (cal is CalendarItem) ? (CalendarItem)cal : ((Calendar)cal).Items.FirstOrDefault();
+                _lessonPlan = new LessonPlan(calItem.Calendar, calItem.StartDate, calItem.EndDate, calItem.Text);
             }
+            setupUI();
         }
         private LessonPlan _lessonPlan;
+
+        private void setupUI()
+        {
+            this.lessonTitle.Text = _lessonPlan.Text;
+            this.dateSelection.Value = _lessonPlan.StartDate;
+            this.numStartHour.Value = _lessonPlan.StartDate.Hour;
+            this.numStartMin.Value = _lessonPlan.StartDate.Minute;
+            this.numDurHour.Value = _lessonPlan.Duration.Hours;
+            this.numDurMin.Value = _lessonPlan.Duration.Minutes;
+            int index = this.associatedProject.Items.IndexOf(_lessonPlan.Subject);
+            this.associatedProject.SelectedIndex = index;
+            this.textBoxNotes.Text = _lessonPlan.Notes;
+        }
 
         private void setLessonPlan()
         {

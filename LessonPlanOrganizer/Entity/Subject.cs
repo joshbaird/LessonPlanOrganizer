@@ -5,7 +5,7 @@ using System.Text;
 using System.Drawing;
 namespace LessonPlanOrganizer
 {
-    public class Subject
+    public class Subject: IEquatable<Subject>
     {
         public Subject()
         {
@@ -39,6 +39,11 @@ namespace LessonPlanOrganizer
                 _color = value;
                 EventsControl.RaiseSubjectChanged(this, EventArgs.Empty);
             }
+        }
+
+        public bool Equals(Subject other)
+        {
+            return (String.Equals(this.Name, other.Name) && Color.Equals(this.Color, other.Color));
         }
     }
 }

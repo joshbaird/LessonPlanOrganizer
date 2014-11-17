@@ -28,7 +28,7 @@ namespace LessonPlanOrganizer
 
         ~LessonPlan()
         {
-            EventsControl.SubjectChanged -= handleSubjectChange;
+            removeBindings();
         }
 
         private Subject _subject;
@@ -145,11 +145,15 @@ namespace LessonPlanOrganizer
         public bool Equals(LessonPlan other)
         {
             return (String.Equals(this.Notes, other.Notes) &&
-                    String.Equals(this.Subject.Name, other.Subject.Name) &&
-                    this.Subject.Color == other.Subject.Color &&
+                    this.Subject == other.Subject &&
                     this.Text == other.Text &&
                     DateTime.Equals(this.StartDate, other.StartDate) &&
                     TimeSpan.Equals(this.Duration, other.Duration));
+        }
+
+        internal void removeBindings()
+        {
+            EventsControl.SubjectChanged -= handleSubjectChange;
         }
     }
 }
