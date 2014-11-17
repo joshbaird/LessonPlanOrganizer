@@ -25,7 +25,7 @@ namespace LessonPlanOrganizer
             }
             else
             {
-                CalendarItem calItem = (cal is CalendarItem) ? (CalendarItem)cal : ((Calendar)cal).Items.FirstOrDefault();
+                CalendarItem calItem = (cal is CalendarItem) ? (CalendarItem)cal : (((Calendar)cal).Items.Count > 0) ? ((Calendar)cal).Items.FirstOrDefault() : new CalendarItem((Calendar)cal);
                 _lessonPlan = new LessonPlan(calItem.Calendar, calItem.StartDate, calItem.EndDate, calItem.Text);
             }
             setupUI();

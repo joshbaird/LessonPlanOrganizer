@@ -55,7 +55,33 @@ namespace LessonPlanOrganizer
         }
 
         DateTime _startDate;
+        public DateTime StartDate
+        {
+            get
+            {
+                if (_startDate == null)
+                    _startDate = new DateTime();
+                return _startDate;
+            }
+            set
+            {
+                _startDate = value;
+            }
+        }
         DateTime _endDate;
+        public DateTime EndDate
+        {
+            get
+            {
+                if (_endDate == null)
+                    _endDate = new DateTime();
+                return _endDate;
+            }
+            set
+            {
+                _endDate = value;
+            }
+        }
 
         /// <summary>
         /// 
@@ -63,13 +89,13 @@ namespace LessonPlanOrganizer
         /// <param name="startDate"></param>
         /// <param name="endDate"></param>
         /// <returns></returns>
-        public LessonPlanYear createLessonPlanYear(DateTime startDate, DateTime endDate)
+        public LessonPlanYear createLessonPlanYear(DateTime startDate, DateTime endDate, List<Subject> subjects, List<LessonPlan> lessonPlans)
         {
-            _startDate = startDate;
-            _endDate = endDate;
-            _subjects = new List<Subject>();
-            _lessonPlans = new List<LessonPlan>();
-            return this;
+            this._startDate = startDate;
+            this._endDate = endDate;
+            this._subjects = subjects;
+            this._lessonPlans = lessonPlans;
+            return Instance;
         }
 
         /// <summary>
