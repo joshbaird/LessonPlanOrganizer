@@ -71,7 +71,7 @@ namespace LessonPlanOrganizer
         private void refreshCalendar()
         {
             calendar1.Items.Clear();
-            calendar1.Items.AddRange(lessonPlanYearControl.GetLessonsForCalendarDisplay(monthView.SelectionStart, monthView.SelectionEnd));
+            calendar1.Items.AddRange(lessonPlanYearControl.GetLessonCalendarItemsForCalendarDisplay(monthView.SelectionStart, monthView.SelectionEnd));
         }
 
         #region menu strip actions
@@ -154,7 +154,7 @@ namespace LessonPlanOrganizer
 
         private void deleteLessonStripMenuItem_Click(object sender, EventArgs e)
         {
-            lessonPlanYearControl.removeLesson((LessonPlan)this.calendar1.GetSelectedItems().FirstOrDefault());
+            lessonPlanYearControl.removeLessonFromCalendarItem(this.calendar1.GetSelectedItems().FirstOrDefault());
         }
 
         // report

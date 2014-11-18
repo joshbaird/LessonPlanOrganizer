@@ -34,12 +34,12 @@ namespace LessonPlanOrganizer
 
         private void setupUI()
         {
-            this.lessonTitle.Text = _lessonPlan.Text;
-            this.dateSelection.Value = _lessonPlan.StartDate;
-            this.numStartHour.Value = _lessonPlan.StartDate.Hour;
-            this.numStartMin.Value = _lessonPlan.StartDate.Minute;
-            this.numDurHour.Value = _lessonPlan.Duration.Hours;
-            this.numDurMin.Value = _lessonPlan.Duration.Minutes;
+            this.lessonTitle.Text = _lessonPlan.CalendarItem.Text;
+            this.dateSelection.Value = _lessonPlan.CalendarItem.StartDate;
+            this.numStartHour.Value = _lessonPlan.CalendarItem.StartDate.Hour;
+            this.numStartMin.Value = _lessonPlan.CalendarItem.StartDate.Minute;
+            this.numDurHour.Value = _lessonPlan.CalendarItem.Duration.Hours;
+            this.numDurMin.Value = _lessonPlan.CalendarItem.Duration.Minutes;
             int index = this.associatedProject.Items.IndexOf(_lessonPlan.Subject);
             this.associatedProject.SelectedIndex = index;
             this.textBoxNotes.Text = _lessonPlan.Notes;
@@ -48,11 +48,11 @@ namespace LessonPlanOrganizer
         private void setLessonPlan()
         {
             // TODO validate all the fields for lesson plan first...
-            this._lessonPlan.Text = this.lessonTitle.Text;
+            this._lessonPlan.CalendarItem.Text = this.lessonTitle.Text;
             DateTime startDate = new DateTime(this.dateSelection.Value.Year, this.dateSelection.Value.Month, this.dateSelection.Value.Day, (int)this.numStartHour.Value, (int)this.numStartMin.Value, 0);
-            this._lessonPlan.StartDate = startDate;
+            this._lessonPlan.CalendarItem.StartDate = startDate;
             DateTime endDate = startDate.AddHours((int)this.numDurHour.Value).AddMinutes((int)this.numDurMin.Value);
-            this._lessonPlan.EndDate = endDate;
+            this._lessonPlan.CalendarItem.EndDate = endDate;
             this._lessonPlan.Subject = (Subject)this.associatedProject.SelectedItem;
             this._lessonPlan.Notes = this.textBoxNotes.Text;
         }

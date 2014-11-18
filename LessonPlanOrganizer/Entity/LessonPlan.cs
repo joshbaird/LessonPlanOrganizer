@@ -7,29 +7,46 @@ using System.Windows.Forms.Calendar;
 
 namespace LessonPlanOrganizer
 {
-    public class LessonPlan : CalendarItem, IEquatable<LessonPlan>
+    public class LessonPlan: IEquatable<LessonPlan>
     {
         public LessonPlan(Calendar year)
-            : base(year)
         {
+            _calendarItem = new CalendarItem(year);
             EventsControl.SubjectChanged += handleSubjectChange;
         }
         public LessonPlan(Calendar calendar, DateTime startDate, DateTime endDate, String text)
-            : base(calendar, startDate, endDate, text)
         {
+            _calendarItem = new CalendarItem(calendar, startDate, endDate, text);
             EventsControl.SubjectChanged += handleSubjectChange;
         }
 
         public LessonPlan(Calendar year, DateTime start, TimeSpan duration, String title)
-            : base(year, start, duration, title)
         {
+            _calendarItem = new CalendarItem(year, start, duration, title);
             EventsControl.SubjectChanged += handleSubjectChange;
         }
-
         ~LessonPlan()
         {
             removeBindings();
         }
+
+        private CalendarItem _calendarItem;
+        public CalendarItem CalendarItem
+        {
+            get
+            {
+                if (_calendarItem == null)
+                    _calendarItem = new CalendarItem(new Calendar());
+                return _calendarItem;
+            }
+            set
+            {
+                _calendarItem = value;
+            }
+       
+        }
+
+
 
         private Subject _subject;
 
@@ -44,7 +61,7 @@ namespace LessonPlanOrganizer
             set
             {
                 _subject = value;
-                this.BackgroundColor = _subject.Color;
+                this.CalendarItem.BackgroundColor = _subject.Color;
             }
         }
 
@@ -65,7 +82,7 @@ namespace LessonPlanOrganizer
 
         private void handleSubjectChange(Object o, EventArgs e)
         {
-            this.BackgroundColor = _subject.Color;
+            this.CalendarItem.BackgroundColor = _subject.Color;
         }
 
         /// <summary>
@@ -146,9 +163,7 @@ namespace LessonPlanOrganizer
         {
             return (String.Equals(this.Notes, other.Notes) &&
                     this.Subject == other.Subject &&
-                    this.Text == other.Text &&
-                    DateTime.Equals(this.StartDate, other.StartDate) &&
-                    TimeSpan.Equals(this.Duration, other.Duration));
+                    this.CalendarItem.Equals(other.CalendarItem));
         }
 
         internal void removeBindings()

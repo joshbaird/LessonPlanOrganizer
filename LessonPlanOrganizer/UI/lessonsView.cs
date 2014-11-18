@@ -30,7 +30,7 @@ namespace LessonPlanOrganizer
             // aspect getters
             this.olvLessonTitle.AspectGetter = rowObject =>
             {
-                return ((LessonPlan)rowObject).Text;
+                return ((LessonPlan)rowObject).CalendarItem.Text;
             };
             this.olvSubjects.AspectGetter = rowObject =>
             {
@@ -38,11 +38,11 @@ namespace LessonPlanOrganizer
             };
             this.olvStartDate.AspectGetter = rowObject =>
             {
-                return ((LessonPlan)rowObject).StartDate;
+                return ((LessonPlan)rowObject).CalendarItem.StartDate;
             };
             this.olvDuration.AspectGetter = rowObject =>
             {
-                return ((LessonPlan)rowObject).Duration;
+                return ((LessonPlan)rowObject).CalendarItem.Duration;
             };
 
             this.fastObjectListView1.FormatRow += (o, e) =>

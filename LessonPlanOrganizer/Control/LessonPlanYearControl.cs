@@ -43,9 +43,9 @@ namespace LessonPlanOrganizer
 
         private LessonPlanYear _lessonPlanYear;
 
-        public List<LessonPlan> GetLessonsForCalendarDisplay(DateTime start, DateTime end)
+        public List<CalendarItem> GetLessonCalendarItemsForCalendarDisplay(DateTime start, DateTime end)
         {
-            return _lessonPlanYear.LessonPlans.Where(l => (l.StartDate.Ticks >= start.Ticks && l.StartDate.Ticks <= end.Ticks)).ToList<LessonPlan>();
+            return _lessonPlanYear.LessonPlans.Where(l => (l.CalendarItem.StartDate.Ticks >= start.Ticks && l.CalendarItem.StartDate.Ticks <= end.Ticks)).Select(c => c.CalendarItem).ToList<CalendarItem>();
         }
 
         #region Lesson methods
@@ -85,6 +85,10 @@ namespace LessonPlanOrganizer
             lesson.removeBindings();
             EventsControl.RaiseLessonChanged(this, EventArgs.Empty);
         }
+        internal void removeLessonFromCalendarItem(CalendarItem calendarItem)
+        {
+            removeLesson(_lessonPlanYear.LessonPlans.Find(i => i.CalendarItem.Equals(calendarItem)));
+        }
 
         internal void createNewYear(DateTime start, DateTime end, List<Subject> subjects, List<LessonPlan> lessons)
         {
@@ -100,5 +104,7 @@ namespace LessonPlanOrganizer
         {
             return _lessonPlanYear.EndDate;
         }
+
+
     }  
 }
