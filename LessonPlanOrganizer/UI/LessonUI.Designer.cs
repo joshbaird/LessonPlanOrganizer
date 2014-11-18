@@ -86,11 +86,11 @@
             // 
             // dateSelection
             // 
-            this.dateSelection.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateSelection.Location = new System.Drawing.Point(113, 50);
+            this.dateSelection.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateSelection.Location = new System.Drawing.Point(113, 52);
             this.dateSelection.Margin = new System.Windows.Forms.Padding(2);
             this.dateSelection.Name = "dateSelection";
-            this.dateSelection.Size = new System.Drawing.Size(266, 30);
+            this.dateSelection.Size = new System.Drawing.Size(266, 28);
             this.dateSelection.TabIndex = 3;
             this.dateSelection.Value = new System.DateTime(2014, 11, 10, 0, 0, 0, 0);
             // 
@@ -118,12 +118,12 @@
             // 
             // associatedProject
             // 
-            this.associatedProject.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.associatedProject.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.associatedProject.FormattingEnabled = true;
-            this.associatedProject.Location = new System.Drawing.Point(530, 15);
+            this.associatedProject.Location = new System.Drawing.Point(530, 10);
             this.associatedProject.Margin = new System.Windows.Forms.Padding(2);
             this.associatedProject.Name = "associatedProject";
-            this.associatedProject.Size = new System.Drawing.Size(266, 31);
+            this.associatedProject.Size = new System.Drawing.Size(238, 28);
             this.associatedProject.TabIndex = 6;
             // 
             // label5
@@ -139,17 +139,19 @@
             // 
             // textBoxNotes
             // 
+            this.textBoxNotes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxNotes.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxNotes.Location = new System.Drawing.Point(14, 128);
+            this.textBoxNotes.Location = new System.Drawing.Point(11, 127);
             this.textBoxNotes.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxNotes.Multiline = true;
             this.textBoxNotes.Name = "textBoxNotes";
-            this.textBoxNotes.Size = new System.Drawing.Size(782, 327);
+            this.textBoxNotes.Size = new System.Drawing.Size(757, 397);
             this.textBoxNotes.TabIndex = 9;
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(593, 458);
+            this.deleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.deleteButton.Location = new System.Drawing.Point(565, 528);
             this.deleteButton.Margin = new System.Windows.Forms.Padding(2);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(66, 24);
@@ -160,7 +162,8 @@
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(664, 458);
+            this.saveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.saveButton.Location = new System.Drawing.Point(636, 528);
             this.saveButton.Margin = new System.Windows.Forms.Padding(2);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(66, 24);
@@ -171,7 +174,8 @@
             // 
             // closeButton
             // 
-            this.closeButton.Location = new System.Drawing.Point(734, 458);
+            this.closeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.closeButton.Location = new System.Drawing.Point(706, 528);
             this.closeButton.Margin = new System.Windows.Forms.Padding(2);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(68, 24);
@@ -279,7 +283,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(812, 492);
+            this.ClientSize = new System.Drawing.Size(784, 562);
+            this.ControlBox = false;
             this.Controls.Add(this.numDurMin);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.numDurHour);
@@ -301,6 +306,7 @@
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "LessonUI";
+            this.ShowIcon = false;
             this.Text = "LessonUI";
             ((System.ComponentModel.ISupportInitialize)(this.numStartHour)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numStartMin)).EndInit();

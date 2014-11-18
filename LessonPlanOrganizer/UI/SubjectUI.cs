@@ -16,7 +16,8 @@ namespace LessonPlanOrganizer
             InitializeComponent();
             _subject = (Subject)subject;
             this.colorDialog1.Color = _subject.Color;
-            this.textBox1.Text = _subject.Name;
+            this.textBoxTitle.Text = _subject.Name;
+            this.textBoxNotes.Text = String.IsNullOrEmpty(_subject.Notes) ? "subject notes..." : _subject.Notes;
             this.button1.ForeColor = colorDialog1.Color;
             this.button1.BackColor = colorDialog1.Color;
         }
@@ -36,7 +37,8 @@ namespace LessonPlanOrganizer
         {
             // TODO validate the date before save.
             _subject.Color = colorDialog1.Color;
-            _subject.Name = textBox1.Text;
+            _subject.Name = textBoxTitle.Text;
+            _subject.Notes = textBoxNotes.Text;
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

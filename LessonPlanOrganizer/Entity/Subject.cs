@@ -41,6 +41,21 @@ namespace LessonPlanOrganizer
             }
         }
 
+        private String _notes;
+        public String Notes
+        {
+            get
+            {
+                if(String.IsNullOrEmpty(_notes))
+                    _notes = String.Empty;
+                return _notes;
+            }
+            set
+            {
+                _notes = value;
+            }
+        }
+
         public bool Equals(Subject other)
         {
             return (String.Equals(this.Name, other.Name) && Color.Equals(this.Color, other.Color));

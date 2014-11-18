@@ -159,12 +159,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entity\Report.cs" />
-    <Compile Include="UI\yearView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UI\yearView.Designer.cs">
-      <DependentUpon>yearView.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="UI\lessonsView.resx">
       <DependentUpon>lessonsView.cs</DependentUpon>
     </EmbeddedResource>
@@ -195,9 +189,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\SubjectUI.resx">
       <DependentUpon>SubjectUI.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\yearView.resx">
-      <DependentUpon>yearView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
