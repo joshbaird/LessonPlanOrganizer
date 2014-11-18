@@ -14,7 +14,7 @@ namespace LessonPlanOrganizer
         private LessonPlanYearControl()
         {
             // TODO replace dateTimes with actual dates and times.
-            _lessonPlanYear = LessonPlanYear.Instance.createLessonPlanYear(new DateTime(), new DateTime(), new List<Subject>(), new List<LessonPlan>());
+            _lessonPlanYear = new LessonPlanYear(new DateTime(), new DateTime(), new List<Subject>(), new List<LessonPlan>());
             EventsControl.AddNewSubject += (o, e) =>
             {
                 addSubject(((Subject)o));
@@ -92,7 +92,7 @@ namespace LessonPlanOrganizer
 
         internal void createNewYear(DateTime start, DateTime end, List<Subject> subjects, List<LessonPlan> lessons)
         {
-            _lessonPlanYear = LessonPlanYear.Instance.createLessonPlanYear( start, end, subjects, lessons);
+            _lessonPlanYear = new LessonPlanYear( start, end, subjects, lessons);
         }
 
         internal DateTime getStartDate()

@@ -37,7 +37,7 @@ namespace LessonPlanOrganizer
                 this.fastObjectListView1.AddObjects(LessonPlanYearControl.Instance.getSubjects());
             };
             this.fastObjectListView1.ClearObjects();
-            this.fastObjectListView1.AddObjects(LessonPlanYear.Instance.Subjects);
+            this.fastObjectListView1.AddObjects(LessonPlanYearControl.Instance.getSubjects());
         }
 
         private void fastObjectListView1_DoubleClick(object sender, EventArgs e)

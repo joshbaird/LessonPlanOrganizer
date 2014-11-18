@@ -8,21 +8,25 @@ namespace LessonPlanOrganizer
     public class LessonPlanYear
     {
         // implement singleton
-        private static LessonPlanYear instance;
+        //private static LessonPlanYear instance;
 
-        private LessonPlanYear() { }
-
-        public static LessonPlanYear Instance
+        public LessonPlanYear() { }
+        public LessonPlanYear(DateTime startDate, DateTime endDate, List<Subject> subjects, List<LessonPlan> lessonPlans)
         {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = new LessonPlanYear();
-                }
-                return instance;
-            }
+            createLessonPlanYear(startDate, endDate, subjects, lessonPlans);
         }
+
+        //public static LessonPlanYear Instance
+        //{
+        //    get
+        //    {
+        //        if (instance == null)
+        //        {
+        //            instance = new LessonPlanYear();
+        //        }
+        //        return instance;
+        //    }
+        //}
 
         private List<LessonPlan> _lessonPlans;
         public List<LessonPlan> LessonPlans
@@ -95,7 +99,7 @@ namespace LessonPlanOrganizer
             this._endDate = endDate;
             this._subjects = subjects;
             this._lessonPlans = lessonPlans;
-            return Instance;
+            return this;
         }
 
         /// <summary>
