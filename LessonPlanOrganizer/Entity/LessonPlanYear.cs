@@ -110,7 +110,6 @@ namespace LessonPlanOrganizer
         /// <returns></returns>
         public LessonPlanYear displayLessonPlanYear(DateTime startDate, DateTime endDate)
         {
-
             return this;
         }
 

@@ -18,7 +18,6 @@ namespace LessonPlanOrganizer
             _oldLessons = LessonPlanYearControl.Instance.getLessonPlans().Select(i => i).ToList<LessonPlan>();
             _oldStart = LessonPlanYearControl.Instance.getStartDate();
             _oldEnd = LessonPlanYearControl.Instance.getEndDate();
-
         }
         private List<Subject> _oldSubjects;
         private List<LessonPlan> _oldLessons;

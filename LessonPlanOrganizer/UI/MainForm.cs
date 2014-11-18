@@ -28,32 +28,14 @@ namespace LessonPlanOrganizer
                 {
                     refreshCalendar();
                 };
-
-            //// test load some subjecs
-            //Subject testSub1 = new Subject();
-            //testSub1.Name = "Math";
-            //testSub1.Color = Color.Red;
-            //Subject testSub2 = new Subject();
-            //testSub2.Name = "ELA";
-            //testSub2.Color = Color.Blue;
-            //lessonPlanYearControl.addSubject(testSub1);
-            //lessonPlanYearControl.addSubject(testSub2);
-
-            //// test load items from Lesson Year Plan
-            //LessonPlan item = new LessonPlan(calendar1, new DateTime(2014, 11, 6), new TimeSpan(1, 0, 0, 0), "Testing");
-            //item.Subject = testSub2;
-            //LessonPlan item2 = new LessonPlan(calendar1, new DateTime(2014, 11, 10), new TimeSpan(1, 0, 0, 0), "Testing2");
-            //item2.Subject = testSub1;
-            //lessonPlanYearControl.addLessonPlans(item);
-            //lessonPlanYearControl.addLessonPlans(item2);
-
-
         }
 
         private LessonPlanYearControl lessonPlanYearControl;
-
+        private Boolean UpdatingDates = false;
         private void monthView_SelectionChanged(object sender, EventArgs e)
         {
+            if (UpdatingDates)
+                return;
             if (((TimeSpan)(this.monthView.SelectionEnd - this.monthView.SelectionStart)).Days < this.calendar1.MaximumViewDays)
                 this.calendar1.SetViewRange(this.monthView.SelectionStart, this.monthView.SelectionEnd);
             else
@@ -61,8 +43,11 @@ namespace LessonPlanOrganizer
         }
         private void bToday_Click(object sender, EventArgs e)
         {
+            UpdatingDates = true;
             this.monthView.SelectionStart = DateTime.Now;
-            this.monthView.SelectionEnd = DateTime.Now.AddDays(1);
+            this.monthView.SelectionEnd = DateTime.Now.AddMinutes(1);
+            UpdatingDates = false;
+            monthView_SelectionChanged(this, EventArgs.Empty);
         }
         private void calendar1_LoadItems(object sender, CalendarLoadEventArgs e)
         {

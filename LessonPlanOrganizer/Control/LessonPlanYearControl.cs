@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 using System.Windows.Forms.Calendar;
 
 namespace LessonPlanOrganizer
@@ -32,11 +31,6 @@ namespace LessonPlanOrganizer
                 if (instance == null)
                     instance = new LessonPlanYearControl();
                 return instance;
-            }
-            set
-            {
-                // TODO need to pass new date Times here
-                instance = new LessonPlanYearControl();
             }
         }
 
