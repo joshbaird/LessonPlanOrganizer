@@ -14,6 +14,8 @@ namespace LessonPlanOrganizer
         public ReportUI(String mode)
         {
             InitializeComponent();
+            if (mode == "statistics") reportTypeDynamicLabel.Text = "Subject Statistics Report";
+            else reportTypeDynamicLabel.Text = "Lesson Plan Report";
         }
 
         private void submitButton_Click(object sender, EventArgs e)

@@ -30,7 +30,6 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.reportTypeLabel = new System.Windows.Forms.Label();
-            this.reportTypeComboBox = new System.Windows.Forms.ComboBox();
             this.startDateLabel = new System.Windows.Forms.Label();
             this.startDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.endDateLabel = new System.Windows.Forms.Label();
@@ -41,6 +40,7 @@
             this.requiredTimeTextBox = new System.Windows.Forms.TextBox();
             this.submitButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
+            this.reportTypeDynamicLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -61,17 +61,6 @@
             this.reportTypeLabel.Size = new System.Drawing.Size(69, 13);
             this.reportTypeLabel.TabIndex = 1;
             this.reportTypeLabel.Text = "Report Type:";
-            // 
-            // reportTypeComboBox
-            // 
-            this.reportTypeComboBox.FormattingEnabled = true;
-            this.reportTypeComboBox.Items.AddRange(new object[] {
-            "Subject Statistics Report",
-            "Lesson Plan Report"});
-            this.reportTypeComboBox.Location = new System.Drawing.Point(92, 46);
-            this.reportTypeComboBox.Name = "reportTypeComboBox";
-            this.reportTypeComboBox.Size = new System.Drawing.Size(188, 21);
-            this.reportTypeComboBox.TabIndex = 2;
             // 
             // startDateLabel
             // 
@@ -162,11 +151,21 @@
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
+            // reportTypeDynamicLabel
+            // 
+            this.reportTypeDynamicLabel.AutoSize = true;
+            this.reportTypeDynamicLabel.Location = new System.Drawing.Point(92, 50);
+            this.reportTypeDynamicLabel.Name = "reportTypeDynamicLabel";
+            this.reportTypeDynamicLabel.Size = new System.Drawing.Size(58, 13);
+            this.reportTypeDynamicLabel.TabIndex = 13;
+            this.reportTypeDynamicLabel.Text = "reportType";
+            // 
             // ReportUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(296, 246);
+            this.Controls.Add(this.reportTypeDynamicLabel);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.requiredTimeTextBox);
@@ -177,7 +176,6 @@
             this.Controls.Add(this.endDateLabel);
             this.Controls.Add(this.startDateTimePicker);
             this.Controls.Add(this.startDateLabel);
-            this.Controls.Add(this.reportTypeComboBox);
             this.Controls.Add(this.reportTypeLabel);
             this.Controls.Add(this.label1);
             this.Name = "ReportUI";
@@ -222,7 +220,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label reportTypeLabel;
-        private System.Windows.Forms.ComboBox reportTypeComboBox;
         private System.Windows.Forms.Label startDateLabel;
         private System.Windows.Forms.DateTimePicker startDateTimePicker;
         private System.Windows.Forms.Label endDateLabel;
@@ -233,5 +230,6 @@
         private System.Windows.Forms.TextBox requiredTimeTextBox;
         private System.Windows.Forms.Button submitButton;
         private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.Label reportTypeDynamicLabel;
     }
 }

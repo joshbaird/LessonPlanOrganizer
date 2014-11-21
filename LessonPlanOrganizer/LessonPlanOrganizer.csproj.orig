@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CCBA5B4E-0A9B-42FF-AE06-79CC7BEFEF5E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LessonPlanOrganizer</RootNamespace>
+    <AssemblyName>LessonPlanOrganizer</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>03404d98</NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>LessonPlanOrganizer.Program</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="ObjectListView">
+      <HintPath>..\packages\ObjectListView.Official.2.8.0\lib\net20\ObjectListView.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\packages\System.Data.SQLite.Core.1.0.94.0\lib\net40\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6">
+      <HintPath>..\packages\System.Data.SQLite.EF6.1.0.94.0\lib\net40\System.Data.SQLite.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq">
+      <HintPath>..\packages\System.Data.SQLite.Linq.1.0.94.1\lib\net40\System.Data.SQLite.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Control\DBControl.cs" />
+    <Compile Include="Entity\LessonPlan.cs" />
+    <Compile Include="Entity\LessonPlanYear.cs" />
+    <Compile Include="Entity\Subject.cs" />
+    <Compile Include="Control\LessonPlanYearControl.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\Calendar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="System.Windows.Forms.Calendar\CalendarColorTable.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\CalendarDay.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\CalendarDayEventArgs.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\CalendarDaysMode.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\CalendarDayTop.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\CalendarHighlightRange.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\CalendarItem.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\CalendarItemCancelEventArgs.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\CalendarItemCollection.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\CalendarItemEventArgs.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\CalendarItemImageAlign.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\CalendarLoadEventArgs.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\CalendarProfessionalRenderer.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\CalendarRenderer.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\CalendarRendererBoxEventArgs.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\CalendarRendererDayEventArgs.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\CalendarRendererEventArgs.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\CalendarRendererItemBoundsEventArgs.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\CalendarRendererItemEventArgs.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\CalendarRendererTimeUnitEventArgs.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\CalendarSelectableElement.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\CalendarSystemRenderer.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\CalendarTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="System.Windows.Forms.Calendar\CalendarTimeScale.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\CalendarTimeScaleUnit.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\CalendarWeek.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\ICalendarSelectableElement.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\ISelectableElement.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\MonthView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="System.Windows.Forms.Calendar\MonthViewBoxEventArgs.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\MonthViewDay.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\MonthViewMontEventArgs.cs" />
+    <Compile Include="System.Windows.Forms.Calendar\MonthViewMonth.cs" />
+    <Compile Include="UI\LessonYearUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\LessonYearUI.Designer.cs">
+      <DependentUpon>LessonYearUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\LessonUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\LessonUI.Designer.cs">
+      <DependentUpon>LessonUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SubjectUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SubjectUI.Designer.cs">
+      <DependentUpon>SubjectUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ReportUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ReportUI.Designer.cs">
+      <DependentUpon>ReportUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Entity\Report.cs" />
+    <EmbeddedResource Include="UI\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+<<<<<<< HEAD
+    <EmbeddedResource Include="UI\ReportUI.resx">
+      <DependentUpon>ReportUI.cs</DependentUpon>
+=======
+    <EmbeddedResource Include="UI\SubjectUI.resx">
+      <DependentUpon>SubjectUI.cs</DependentUpon>
+>>>>>>> 161b6c6f022543b5f28d0fadc1f947ef0d2f7007
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\System.Data.SQLite.Core.1.0.94.0\build\net40\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.94.0\build\net40\System.Data.SQLite.Core.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.94.0\build\net40\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.94.0\build\net40\System.Data.SQLite.Core.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
