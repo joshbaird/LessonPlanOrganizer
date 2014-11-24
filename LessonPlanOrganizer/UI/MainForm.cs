@@ -145,17 +145,14 @@ namespace LessonPlanOrganizer
         // report
         private void subjectStatisticsReportStripMenuItem_Click(object sender, EventArgs e)
         {
-            ReportUI reportStats = new ReportUI("statistics");           
-            reportStats.ShowDialog();
-            // TODO handle close and return 
+            SubStatsReportInputForm inputForm = new SubStatsReportInputForm();
+            inputForm.Visible = true;
         }
 
         private void lessonPlanReportStripMenuItem_Click(object sender, EventArgs e)
         {
-            ReportUI reportStats = new ReportUI("lessonplan");
-            reportStats.hideUIItemsForLessonPlanReport();
-            reportStats.ShowDialog();
-            // TODO handle close and return 
+            LessonPlanReportInputForm inputForm = new LessonPlanReportInputForm();
+            inputForm.Visible = true;
         }
 
         // help
