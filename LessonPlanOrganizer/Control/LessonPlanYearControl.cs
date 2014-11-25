@@ -6,6 +6,7 @@ using System.Windows.Forms.Calendar;
 
 namespace LessonPlanOrganizer
 {
+    [System.Serializable]
     public class LessonPlanYearControl
     {
         private static LessonPlanYearControl instance;
@@ -13,7 +14,9 @@ namespace LessonPlanOrganizer
         private LessonPlanYearControl()
         {
             // TODO replace dateTimes with actual dates and times.
-            _lessonPlanYear = new LessonPlanYear(new DateTime(), new DateTime(), new List<Subject>(), new List<LessonPlan>());
+            _dbWrapper = new DataBaseWrapper("lesson_db.sqlite");
+            fillLessonPlanYearFromDb();
+            
             EventsControl.AddNewSubject += (o, e) =>
             {
                 addSubject(((Subject)o));
@@ -23,6 +26,8 @@ namespace LessonPlanOrganizer
                 removeSubject((Subject)o);
             };
         }
+
+
 
         public static LessonPlanYearControl Instance
         {
@@ -36,6 +41,14 @@ namespace LessonPlanOrganizer
 
 
         private LessonPlanYear _lessonPlanYear;
+        private DataBaseWrapper _dbWrapper;
+
+        private void fillLessonPlanYearFromDb()
+        {
+            // TODO fill the lesson plan Year with the data from DB.
+
+           _lessonPlanYear = new LessonPlanYear(new DateTime(), new DateTime(), new List<Subject>(), new List<LessonPlan>());
+        }
 
         public List<CalendarItem> GetLessonCalendarItemsForCalendarDisplay(DateTime start, DateTime end)
         {
