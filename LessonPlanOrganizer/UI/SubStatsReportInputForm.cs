@@ -18,6 +18,9 @@ namespace LessonPlanOrganizer
         public SubStatsReportInputForm()
         {
             InitializeComponent();
+
+            this.subjectInputDropDown.DisplayMember = "Name";
+            this.subjectInputDropDown.Items.AddRange(LessonPlanYearControl.Instance.getSubjects().ToArray());
         }
 
         private void submitButton_Click(object sender, EventArgs e)

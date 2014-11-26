@@ -93,10 +93,6 @@
             // subjectInputDropDown
             // 
             this.subjectInputDropDown.FormattingEnabled = true;
-            this.subjectInputDropDown.Items.AddRange(new object[] {
-            "Math",
-            "English",
-            "Science"});
             this.subjectInputDropDown.Location = new System.Drawing.Point(65, 79);
             this.subjectInputDropDown.Name = "subjectInputDropDown";
             this.subjectInputDropDown.Size = new System.Drawing.Size(215, 21);

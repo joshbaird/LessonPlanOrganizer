@@ -16,6 +16,9 @@ namespace LessonPlanOrganizer
             InitializeComponent();
             if (mode == "statistics") reportTypeDynamicLabel.Text = "Subject Statistics Report";
             else reportTypeDynamicLabel.Text = "Lesson Plan Report";
+
+            this.subjectComboBox.DisplayMember = "Name";
+            this.subjectComboBox.Items.AddRange(LessonPlanYearControl.Instance.getSubjects().ToArray());
         }
 
         private void submitButton_Click(object sender, EventArgs e)
