@@ -51,7 +51,6 @@ namespace LessonPlanOrganizer
             return grandTotal;
         }
 
-
         override public void generateReport()
         {
             using (var destinationFileStream = new FileStream(reportFilePath, FileMode.Create))
@@ -108,10 +107,12 @@ namespace LessonPlanOrganizer
          * Private Methods
          ***************************/
 
-        /*
-         * Generate the report's file path. Uses the current 
-         * user's Temp directory.
-         */
+
+        /// <summary>
+        /// Generate the report's file path. Uses the current 
+        /// user's Temp directory.
+        /// </summary>
+        /// <returns></returns>
         override protected String generateReportFilePath()
         {
             String filePath = Path.GetTempPath() + "\\Subject Statistics Report -" +
@@ -121,11 +122,11 @@ namespace LessonPlanOrganizer
             return filePath;
         }
 
-
-        /*
-        * Add the report details block on the top of the first 
-        * page.
-        */
+        /// <summary>
+        /// Add the report details block on the top of the first 
+        /// page.
+        /// </summary>
+        /// <param name="d"></param>
         override protected void addReportDetailsData(Document d)
         {
             Paragraph dataSet = new Paragraph("Report Generation Date: " + reportGenerationDate.ToShortDateString() + "\n" +
@@ -136,12 +137,12 @@ namespace LessonPlanOrganizer
             d.Add(dataSet);
         }
 
-
-        /*
-         * Add the header table rows to the report table.
-         * This is only called on the first page, the automated repeat row 
-         * function takes care of all following pages.
-        */
+        /// <summary>
+        /// Add the header table rows to the report table.
+        /// This is only called on the first page, the automated repeat row 
+        /// function takes care of all following pages.
+        /// </summary>
+        /// <param name="tbl"></param>
         override protected void addTableHeaderRows (PdfPTable tbl)
         {
             iTextSharp.text.Font newfontSetup = FontFactory.GetFont(FontFactory.TIMES, 12, iTextSharp.text.Font.BOLD);
@@ -157,10 +158,11 @@ namespace LessonPlanOrganizer
         }
 
 
-        /*
-         * Add the separator rows after all data has been added
-         * to the table. 
-         */
+        /// <summary>
+        /// Add the separator rows after all data has been added
+        /// to the table. 
+        /// </summary>
+        /// <param name="tbl"></param>
         private void addSeparatorRows(PdfPTable tbl)
         {
 
@@ -173,11 +175,13 @@ namespace LessonPlanOrganizer
 
         }
 
-
-        /*
-         * Add the grand total, required time, and difference rows 
-         * to the table. 
-         */
+        /// <summary>
+        /// Add the grand total, required time, and difference rows 
+        /// to the table. 
+        /// </summary>
+        /// <param name="tbl"></param>
+        /// <param name="total"></param>
+        /// <param name="reqTime"></param>
         private void addCalculationRows(PdfPTable tbl, int total, int reqTime)
         {
 

@@ -51,9 +51,9 @@ namespace LessonPlanOrganizer
         }
 
 
-        /*
-         * Add page numbers after the PDF has been created.
-         */
+        /// <summary>
+        /// Add page numbers after the PDF has been created.
+        /// </summary>
         protected void addPageNumbers()
         {
             PdfReader reader = new PdfReader(new RandomAccessFileOrArray(reportFilePath, true), null);
