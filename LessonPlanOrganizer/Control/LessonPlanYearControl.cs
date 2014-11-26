@@ -89,7 +89,6 @@ namespace LessonPlanOrganizer
         internal void removeLesson(LessonPlan lesson)
         {
             _lessonPlanYear.LessonPlans.Remove(lesson);
-            lesson.removeBindings();
             EventsControl.RaiseLessonChanged(this, EventArgs.Empty);
         }
         internal void removeLessonFromCalendarItem(CalendarItem calendarItem)
