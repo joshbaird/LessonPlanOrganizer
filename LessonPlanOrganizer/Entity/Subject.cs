@@ -5,10 +5,16 @@ using System.Text;
 using System.Drawing;
 namespace LessonPlanOrganizer
 {
+    [System.Serializable]
     public class Subject: IEquatable<Subject>
     {
         public Subject()
         {
+        }
+        public Subject(String name, Color c)
+        {
+            _name = name;
+            _color = c;
         }
         private String _name;
         public String Name 

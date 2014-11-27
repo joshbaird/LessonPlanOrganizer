@@ -15,19 +15,6 @@ namespace LessonPlanOrganizer
         {
             createLessonPlanYear(startDate, endDate, subjects, lessonPlans);
         }
-
-        //public static LessonPlanYear Instance
-        //{
-        //    get
-        //    {
-        //        if (instance == null)
-        //        {
-        //            instance = new LessonPlanYear();
-        //        }
-        //        return instance;
-        //    }
-        //}
-
         private List<LessonPlan> _lessonPlans;
         public List<LessonPlan> LessonPlans
         {

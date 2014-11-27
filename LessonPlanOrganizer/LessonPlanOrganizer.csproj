@@ -97,6 +97,7 @@
     <Compile Include="Control\PdfEventHandler.cs" />
     <Compile Include="Control\ReportControl.cs" />
     <Compile Include="Control\SubStatsPdfEventHandler.cs" />
+    <Compile Include="Entity\DataBaseWrapper.cs" />
     <Compile Include="Entity\LessonPlan.cs" />
     <Compile Include="Entity\LessonPlanReport.cs" />
     <Compile Include="Entity\LessonPlanYear.cs" />
@@ -248,6 +249,9 @@
     <EmbeddedResource Include="UI\SubStatsReportInputForm.resx">
       <DependentUpon>SubStatsReportInputForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="lesson_db.sqlite">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

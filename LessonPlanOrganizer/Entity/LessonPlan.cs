@@ -7,20 +7,21 @@ using System.Windows.Forms.Calendar;
 
 namespace LessonPlanOrganizer
 {
+    [System.Serializable]
     public class LessonPlan: IEquatable<LessonPlan>
     {
-        public LessonPlan(Calendar year)
+        private LessonPlan(Calendar year)
         {
             _calendarItem = new CalendarItem(year);
             EventsControl.SubjectChanged += handleSubjectChange;
         }
-        public LessonPlan(Calendar calendar, DateTime startDate, DateTime endDate, String text)
+        private LessonPlan(Calendar calendar, DateTime startDate, DateTime endDate, String text)
         {
             _calendarItem = new CalendarItem(calendar, startDate, endDate, text);
             EventsControl.SubjectChanged += handleSubjectChange;
         }
 
-        public LessonPlan(Calendar year, DateTime start, TimeSpan duration, String title)
+        private LessonPlan(Calendar year, DateTime start, TimeSpan duration, String title)
         {
             _calendarItem = new CalendarItem(year, start, duration, title);
             EventsControl.SubjectChanged += handleSubjectChange;
@@ -45,8 +46,6 @@ namespace LessonPlanOrganizer
             }
        
         }
-
-
 
         private Subject _subject;
 
@@ -88,26 +87,57 @@ namespace LessonPlanOrganizer
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="Year"></param>
-        /// <param name="subject"></param>
+        /// <param name="year"></param>
         /// <param name="lessonPlanDate"></param>
         /// <param name="lessonPlanTime"></param>
+        /// <param name="title"></param>
+        /// <param name="notes"></param>
         /// <returns></returns>
-        public LessonPlan createLessonPlan(LessonPlanYear Year, String subject, DateTime lessonPlanDate, DateTime lessonPlanTime)
+        public static LessonPlan createLessonPlan(Calendar year, DateTime lessonPlanDate, TimeSpan lessonPlanTime, String title, String notes = "none")
         {
-            return this;
+            LessonPlan lp = new LessonPlan(year, lessonPlanDate, lessonPlanTime, title);
+            lp.Notes = notes;
+            return lp;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="year"></param>
+        /// <param name="lessonPlanStartDate"></param>
+        /// <param name="lessonPlanEndDate"></param>
+        /// <param name="title"></param>
+        /// <param name="notes"></param>
+        /// <returns></returns>
+        public static LessonPlan createLessonPlan(Calendar year, DateTime lessonPlanStartDate, DateTime lessonPlanEndDate, String title, String notes = "none")
+        {
+            LessonPlan lp = new LessonPlan(year, lessonPlanStartDate, lessonPlanEndDate, title);
+            lp.Notes = notes;
+            return lp;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="year"></param>
+        /// <param name="notes"></param>
+        /// <returns></returns>
+        public static LessonPlan createLessonPlan(Calendar year, String notes = "none")
+        {
+            LessonPlan lp = new LessonPlan(year);
+            lp.Notes = notes;
+            return lp;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="subject"></param>
-        /// <param name="lessonPlanDate"></param>
-        /// <param name="lessonPlanTime"></param>
+        /// <param name="calItem"></param>
         /// <returns></returns>
-        public LessonPlan selectLessonPlan(String subject, DateTime lessonPlanDate, DateTime lessonPlanTime)
+        public LessonPlan selectLessonPlan(CalendarItem calItem)
         {
-            return this;
+            if (this.CalendarItem.Equals(calItem))
+                return this;
+            else
+                return null;
         }
 
         /// <summary>
@@ -119,6 +149,7 @@ namespace LessonPlanOrganizer
         /// <returns></returns>
         public LessonPlan displayLessonPlan(String subject, DateTime lessonPlanDate, DateTime lessonPlanTime)
         {
+
             return this;
         }
 
@@ -135,27 +166,15 @@ namespace LessonPlanOrganizer
             return this;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="subject"></param>
-        /// <param name="lessonPlanDate"></param>
-        /// <param name="lessonPlanTime"></param>
-        /// <returns></returns>
-        public LessonPlan editLessonPlan (String subject, DateTime lessonPlanDate, DateTime lessonPlanTime)
-        {
-            return this;
-        }
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="subject"></param>
-        /// <param name="lessonPlanDate"></param>
-        /// <param name="lessonPlanTime"></param>
         /// <returns></returns>
-        public Boolean deleteLessonPlan(String subject, DateTime lessonPlanDate, DateTime lessonPlanTime)
+        public Boolean deleteLessonPlan()
         {
+            this.removeBindings();
+            LessonPlanYearControl.Instance.removeLesson(this);
             return true;
         }
 

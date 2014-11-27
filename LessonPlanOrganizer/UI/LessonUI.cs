@@ -26,19 +26,31 @@ namespace LessonPlanOrganizer
             else
             {
                 CalendarItem calItem;
+                Subject sub;
                 if (cal is CalendarItem)
                 {
                     calItem = (CalendarItem)cal;
+                    if (LessonPlanYearControl.Instance.getLessonPlans().Where(l => l.selectLessonPlan(calItem) != null).Count() > 0)
+                        sub = LessonPlanYearControl.Instance.getLessonPlans().Where(l => l.selectLessonPlan(calItem) != null).FirstOrDefault().Subject;
+                    else
+                        sub = new Subject();
                 }
                 else if (((Calendar)cal).Items.Count > 0)
                 {
                     calItem = ((Calendar)cal).Items.FirstOrDefault();
+                    if (LessonPlanYearControl.Instance.getLessonPlans().Where(l => l.selectLessonPlan(calItem) != null).Count() > 0)
+                        sub = LessonPlanYearControl.Instance.getLessonPlans().Where(l => l.selectLessonPlan(calItem) != null).FirstOrDefault().Subject;
+                    else
+                        sub = new Subject();
                 }
                 else
                 {
                     calItem = new CalendarItem((Calendar)cal, DateTime.Now, DateTime.Now.AddHours(1), String.Empty);
+                    sub = new Subject();
                 }
-                _lessonPlan = new LessonPlan(calItem.Calendar, calItem.StartDate, calItem.EndDate, calItem.Text);
+                _lessonPlan = LessonPlan.createLessonPlan(calItem.Calendar, calItem.StartDate, calItem.EndDate, calItem.Text);
+                _lessonPlan.Subject = sub;
+                _lessonPlan.CalendarItem = calItem;
             }
             setupUI();
         }
@@ -86,7 +98,7 @@ namespace LessonPlanOrganizer
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            LessonPlanYearControl.Instance.removeLesson(this._lessonPlan);
+            this._lessonPlan.deleteLessonPlan();
             this.DialogResult = DialogResult.None;
             this.Close();
         }

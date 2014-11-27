@@ -106,10 +106,6 @@
             // subjectComboBox
             // 
             this.subjectComboBox.FormattingEnabled = true;
-            this.subjectComboBox.Items.AddRange(new object[] {
-            "English",
-            "Math",
-            "Science"});
             this.subjectComboBox.Location = new System.Drawing.Point(80, 137);
             this.subjectComboBox.Name = "subjectComboBox";
             this.subjectComboBox.Size = new System.Drawing.Size(200, 21);

@@ -100,7 +100,7 @@ namespace LessonPlanOrganizer
 
         public void DeleteSelected()
         {
-            LessonPlanYearControl.Instance.removeLesson((LessonPlan)this.fastObjectListView1.SelectedObject);
+            ((LessonPlan)this.fastObjectListView1.SelectedObject).deleteLessonPlan();
         }
 
         public void NewLessonWindow()
