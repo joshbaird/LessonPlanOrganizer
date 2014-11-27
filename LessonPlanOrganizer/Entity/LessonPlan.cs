@@ -26,6 +26,8 @@ namespace LessonPlanOrganizer
             _calendarItem = new CalendarItem(year, start, duration, title);
             EventsControl.SubjectChanged += handleSubjectChange;
         }
+
+        
         ~LessonPlan()
         {
             removeBindings();
@@ -65,6 +67,7 @@ namespace LessonPlanOrganizer
         }
 
         private String _notes;
+        private Calendar calendar;
         public String Notes
         {
             get

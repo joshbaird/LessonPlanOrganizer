@@ -1,0 +1,127 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using System.IO;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+
+namespace LessonPlanOrganizer
+{
+    abstract class Report
+    {
+        protected DateTime reportGenerationDate, startDate, endDate;
+        protected String reportFilePath;
+        protected iTextSharp.text.Font fontSetup;
+        
+        /*
+         * Abstract Methods
+         */
+
+        abstract public void generateReport();
+        abstract protected String generateReportFilePath();
+        abstract protected void addReportDetailsData(Document d);
+        abstract protected void addTableHeaderRows(PdfPTable tbl);
+
+<<<<<<< HEAD
+
+        /*
+         * Implemented Methods
+         */
+
+        public DateTime getReportGenerationDate()
+        {
+            return reportGenerationDate;
+        }
+
+        public DateTime getStartDate()
+        {
+            return startDate;
+        }
+
+        public DateTime getEndDate()
+        {
+            return endDate;
+        }
+
+        public String getReportFilePath()
+        {
+            return reportFilePath;
+        }
+
+
+        /*
+         * Add page numbers after the PDF has been created.
+         */
+        protected void addPageNumbers()
+        {
+            PdfReader reader = new PdfReader(new RandomAccessFileOrArray(reportFilePath, true), null);
+            using (FileStream fs = new FileStream(reportFilePath, FileMode.Open, FileAccess.Write, FileShare.None))
+            {
+                using (PdfStamper stamper = new PdfStamper(reader, fs))
+                {
+                    int PageCount = reader.NumberOfPages;
+                    for (int i = 1; i <= PageCount; i++)
+                    {
+                        ColumnText.ShowTextAligned(stamper.GetOverContent(i), Element.ALIGN_LEFT, new Phrase(String.Format("Page {0} of {1}", i, PageCount)), 20, 15, 0);
+
+                    }
+                }
+            }
+
+=======
+
+        /*
+         * Implemented Methods
+         */
+
+        public DateTime getReportGenerationDate()
+        {
+            return reportGenerationDate;
+        }
+
+        public DateTime getStartDate()
+        {
+            return startDate;
+        }
+
+        public DateTime getEndDate()
+        {
+            return endDate;
+        }
+
+        public String getReportFilePath()
+        {
+            return reportFilePath;
+        }
+
+
+        /// <summary>
+        /// Add page numbers after the PDF has been created.
+        /// </summary>
+        protected void addPageNumbers()
+        {
+            PdfReader reader = new PdfReader(new RandomAccessFileOrArray(reportFilePath, true), null);
+            using (FileStream fs = new FileStream(reportFilePath, FileMode.Open, FileAccess.Write, FileShare.None))
+            {
+                using (PdfStamper stamper = new PdfStamper(reader, fs))
+                {
+                    int PageCount = reader.NumberOfPages;
+                    for (int i = 1; i <= PageCount; i++)
+                    {
+                        ColumnText.ShowTextAligned(stamper.GetOverContent(i), Element.ALIGN_LEFT, new Phrase(String.Format("Page {0} of {1}", i, PageCount)), 20, 15, 0);
+
+                    }
+                }
+            }
+
+>>>>>>> 6752027349021ca6ccda7834940c5c2c331a8f07
+        }
+
+
+
+
+    }
+}

@@ -69,23 +69,8 @@ namespace LessonPlanOrganizer
             }
 
         }
-
-
-            using (FileStream fs = new FileStream(reportFilePath, FileMode.Open, FileAccess.Write, FileShare.None))
-                using (PdfStamper stamper = new PdfStamper(reader, fs))
-                {
-                    int PageCount = reader.NumberOfPages;
-                    for (int i = 1; i <= PageCount; i++)
-                    {
-                        ColumnText.ShowTextAligned(stamper.GetOverContent(i), Element.ALIGN_LEFT, new Phrase(String.Format("Page {0} of {1}", i, PageCount)), 20, 15, 0);
-
-                    }
-                }
-            }
-
-
-
-
-
+            
     }
+
 }
+
