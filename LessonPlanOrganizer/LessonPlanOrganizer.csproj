@@ -13,9 +13,24 @@
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>03404d98</NuGetPackageImportStamp>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -43,6 +58,15 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>iTextSharp\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.pdfa">
+      <HintPath>iTextSharp\itextsharp.pdfa.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.xtra">
+      <HintPath>iTextSharp\itextsharp.xtra.dll</HintPath>
+    </Reference>
     <Reference Include="ObjectListView">
       <HintPath>..\packages\ObjectListView.Official.2.8.0\lib\net20\ObjectListView.dll</HintPath>
     </Reference>
@@ -69,16 +93,35 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Control\DBControl.cs" />
+    <Compile Include="Control\LessonPlanPdfEventHandler.cs" />
+    <Compile Include="Control\PdfEventHandler.cs" />
+    <Compile Include="Control\ReportControl.cs" />
+    <Compile Include="Control\SubStatsPdfEventHandler.cs" />
     <Compile Include="Entity\LessonPlan.cs" />
+    <Compile Include="Entity\LessonPlanReport.cs" />
     <Compile Include="Entity\LessonPlanYear.cs" />
     <Compile Include="Entity\Subject.cs" />
     <Compile Include="Control\LessonPlanYearControl.cs" />
     <Compile Include="Control\EventsControl.cs" />
+    <Compile Include="Entity\SubjectStatsReport.cs" />
+    <Compile Include="Entity\TestData.cs" />
+    <Compile Include="UI\LessonPlanReportInputForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\LessonPlanReportInputForm.Designer.cs">
+      <DependentUpon>LessonPlanReportInputForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\lessonsView.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\lessonsView.Designer.cs">
       <DependentUpon>lessonsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\reportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\reportViewer.Designer.cs">
+      <DependentUpon>reportViewer.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\subjectsView.cs">
       <SubType>UserControl</SubType>
@@ -159,8 +202,20 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entity\Report.cs" />
+    <Compile Include="UI\SubStatsReportInputForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SubStatsReportInputForm.Designer.cs">
+      <DependentUpon>SubStatsReportInputForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="UI\LessonPlanReportInputForm.resx">
+      <DependentUpon>LessonPlanReportInputForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\lessonsView.resx">
       <DependentUpon>lessonsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\reportViewer.resx">
+      <DependentUpon>reportViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\subjectsView.resx">
       <DependentUpon>subjectsView.cs</DependentUpon>
@@ -190,6 +245,9 @@
     <EmbeddedResource Include="UI\SubjectUI.resx">
       <DependentUpon>SubjectUI.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\SubStatsReportInputForm.resx">
+      <DependentUpon>SubStatsReportInputForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -203,6 +261,47 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AcroPDFLib">
+      <Guid>{05BFD3F1-6319-4F30-B752-C7A22889BCC4}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="AxAcroPDFLib">
+      <Guid>{05BFD3F1-6319-4F30-B752-C7A22889BCC4}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.94.0\build\net40\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.94.0\build\net40\System.Data.SQLite.Core.targets')" />

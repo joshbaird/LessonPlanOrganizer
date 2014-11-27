@@ -2,70 +2,78 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
+
+using System.IO;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 
 namespace LessonPlanOrganizer
 {
-    class Report
+    abstract class Report
     {
-        private Report()
+        protected DateTime reportGenerationDate, startDate, endDate;
+        protected String reportFilePath;
+        protected iTextSharp.text.Font fontSetup;
+        
+        /*
+         * Abstract Methods
+         */
+
+        abstract public void generateReport();
+        abstract protected String generateReportFilePath();
+        abstract protected void addReportDetailsData(Document d);
+        abstract protected void addTableHeaderRows(PdfPTable tbl);
+
+
+        /*
+         * Implemented Methods
+         */
+
+        public DateTime getReportGenerationDate()
         {
+            return reportGenerationDate;
+        }
+
+        public DateTime getStartDate()
+        {
+            return startDate;
+        }
+
+        public DateTime getEndDate()
+        {
+            return endDate;
+        }
+
+        public String getReportFilePath()
+        {
+            return reportFilePath;
+        }
+
+
+        /*
+         * Add page numbers after the PDF has been created.
+         */
+        protected void addPageNumbers()
+        {
+            PdfReader reader = new PdfReader(new RandomAccessFileOrArray(reportFilePath, true), null);
+            using (FileStream fs = new FileStream(reportFilePath, FileMode.Open, FileAccess.Write, FileShare.None))
+            {
+                using (PdfStamper stamper = new PdfStamper(reader, fs))
+                {
+                    int PageCount = reader.NumberOfPages;
+                    for (int i = 1; i <= PageCount; i++)
+                    {
+                        ColumnText.ShowTextAligned(stamper.GetOverContent(i), Element.ALIGN_LEFT, new Phrase(String.Format("Page {0} of {1}", i, PageCount)), 20, 15, 0);
+
+                    }
+                }
+            }
 
         }
 
-        /// <summary>
-        /// Generate a subject statistics report
-        /// </summary>
-        /// <param name="subject">The subject to generate the report for</param>
-        /// <param name="startDate">Start date for reporting</param>
-        /// <param name="endDate">End date for reporting</param>
-        /// <param name="requredTime">Instructional minuets required for subject</param>
-        /// <returns>Report object for display</returns>
-        public Report generateSubStatsReport(String subject, DateTime startDate, DateTime endDate, int requredTime) 
-        {
-            // validate inputs:
-
-            // validate connection to database
-
-            // generate report
-
-            // return report
-            return this;
-        }
-
-        /// <summary>
-        /// Generate a Lesson Plan Report
-        /// </summary>
-        /// <param name="reportType">Report Type</param>
-        /// <param name="startDate">Start date for reporting</param>
-        /// <param name="endDate">End date for reporting</param>
-        /// <returns>Report Object for Display</returns>
-        public Report generateLessonPlanReport(String reportType, DateTime startDate, DateTime endDate)
-        {
-            // validate inputs:
-
-            // validate connection to database
-
-            // validate Lesson Plan Year Created
-
-            // generate report
-
-            // return report
-            return this;
-        }
-
-        /// <summary>
-        /// Sends a Report to the Printer
-        /// </summary>
-        /// <param name="r">Report for printing</param>
-        /// <returns>True if job is printed, false if there was a problem</returns>
-        public Boolean printReport(Report r)
-        {
-            // validate input report is generated and displayed
-
-            // pack and send report to printer.
 
 
-            return true;
-        }
+
     }
 }

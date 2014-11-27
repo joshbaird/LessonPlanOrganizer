@@ -82,7 +82,7 @@ namespace LessonPlanOrganizer
 
         private void handleSubjectChange(Object o, EventArgs e)
         {
-            this.CalendarItem.BackgroundColor = _subject.Color;
+            //this.CalendarItem.BackgroundColor = _subject.Color;
         }
 
         /// <summary>
