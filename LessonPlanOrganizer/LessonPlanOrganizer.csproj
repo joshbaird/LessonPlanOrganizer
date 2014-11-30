@@ -52,18 +52,11 @@
     <StartupObject>LessonPlanOrganizer.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AxInterop.AcroPDFLib">
-      <HintPath>AdobeAcro\AxInterop.AcroPDFLib.dll</HintPath>
-    </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
-    <Reference Include="Interop.AcroPDFLib">
-      <HintPath>AdobeAcro\Interop.AcroPDFLib.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="itextsharp">
       <HintPath>iTextSharp\itextsharp.dll</HintPath>
@@ -106,6 +99,7 @@
     <Compile Include="Control\SubStatsPdfEventHandler.cs" />
     <Compile Include="Entity\DataBaseWrapper.cs" />
     <Compile Include="Entity\LessonPlan.cs" />
+    <Compile Include="Entity\LessonPlanComp.cs" />
     <Compile Include="Entity\LessonPlanReport.cs" />
     <Compile Include="Entity\LessonPlanYear.cs" />
     <Compile Include="Entity\Subject.cs" />
@@ -287,15 +281,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <COMReference Include="AcroPDFLib">
-      <Guid>{05BFD3F1-6319-4F30-B752-C7A22889BCC4}</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>tlbimp</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
     <COMReference Include="AxAcroPDFLib">
       <Guid>{05BFD3F1-6319-4F30-B752-C7A22889BCC4}</Guid>
       <VersionMajor>1</VersionMajor>

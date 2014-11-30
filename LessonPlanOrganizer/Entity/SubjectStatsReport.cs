@@ -18,7 +18,7 @@ namespace LessonPlanOrganizer
         
 
         public SubjectStatsReport(DateTime startD, DateTime endD,
-                                    String sub, int reqTime)
+                                    String sub, int reqTime, ReportControl ctrl)
         {
             startDate = startD;
             endDate = endD;
@@ -29,6 +29,7 @@ namespace LessonPlanOrganizer
             grandTotal = 0;
             eventHandler = new SubStatsPdfEventHandler(subject);
             fontSetup = FontFactory.GetFont(FontFactory.TIMES, 12, iTextSharp.text.Font.NORMAL);
+            controller = ctrl;
         }
 
 
@@ -68,25 +69,21 @@ namespace LessonPlanOrganizer
                 data.HeaderRows = 1;
                 addTableHeaderRows(data);
 
-                /*Add data
-                 * Replace this with a call to ReportControl to get the data from the DB.
-                 * Pass the start and end date, DB should return all LessonPlans between 
-                 * those dates (inclusive).
+                /*
+                 * Testing DB Integration
                  */
-                TestData dataHelper = new TestData(10, "Stats");
-                LessonPlan[] realData = dataHelper.getSubStatsData();
-
-                if (realData.Length != 0)
+                List<LessonPlan> lessons = controller.getLessonPlansForDateRangeSubject();
+                
+                if (lessons.Count != 0)
                 {
-
-                    for (int i = 0; i < realData.Length; i++)
+                    for (int i = 0; i < lessons.Count; i++)
                     {
-
-                        PdfPCell cell = new PdfPCell(new Phrase(realData[i].CalendarItem.StartDate.ToShortDateString(), fontSetup));
+                        PdfPCell cell = new PdfPCell(new Phrase(lessons.ElementAt(i).CalendarItem.StartDate.ToShortDateString(), fontSetup));
                         data.AddCell(cell);
-                        cell.Phrase = new Phrase(realData[i].CalendarItem.StartDate.ToShortTimeString() + " - " + realData[i].CalendarItem.EndDate.ToShortTimeString(), fontSetup);
+                        cell.Phrase = new Phrase(lessons.ElementAt(i).CalendarItem.StartDate.ToShortTimeString() + " - " + 
+                                                 lessons.ElementAt(i).CalendarItem.EndDate.ToShortTimeString(), fontSetup);
                         data.AddCell(cell);
-                        TimeSpan duration = (realData[i].CalendarItem.EndDate - realData[i].CalendarItem.StartDate);
+                        TimeSpan duration = (lessons.ElementAt(i).CalendarItem.EndDate - lessons.ElementAt(i).CalendarItem.StartDate);
                         int numMins = Convert.ToInt32(duration.TotalMinutes);
                         cell.Phrase = new Phrase(numMins.ToString(), fontSetup);
                         data.AddCell(cell);

@@ -15,6 +15,7 @@ namespace LessonPlanOrganizer
         protected DateTime reportGenerationDate, startDate, endDate;
         protected String reportFilePath;
         protected iTextSharp.text.Font fontSetup;
+        protected ReportControl controller;
         
         /*
          * Abstract Methods

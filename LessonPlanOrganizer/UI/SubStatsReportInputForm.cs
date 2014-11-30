@@ -27,7 +27,7 @@ namespace LessonPlanOrganizer
             if (validateInputs() == true)
             {
                 ReportControl rptControl = new ReportControl(startDateTimePicker.Value, endDateTimePicker.Value,
-                                                                subjectInputDropDown.SelectedItem.ToString(), " ",
+                                                                (Subject)subjectInputDropDown.SelectedItem, " ",
                                                                 "Subject Statistics", Convert.ToInt16(requiredTimeInputTextBox.Text));
 
                 this.Visible = false;

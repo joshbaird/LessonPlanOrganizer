@@ -23,7 +23,7 @@ namespace LessonPlanOrganizer
             {
                 validateInputs();
                 ReportControl rptControl = new ReportControl(startDateTimePicker.Value, endDateTimePicker.Value,
-                                                                " ", viewByInputDropDown.SelectedItem.ToString(),
+                                                                new Subject ("Null", Color.AliceBlue), viewByInputDropDown.SelectedItem.ToString(),
                                                                 "Lesson Plan", 0);
 
                 this.Visible = false;
