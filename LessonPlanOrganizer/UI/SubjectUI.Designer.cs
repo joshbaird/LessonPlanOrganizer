@@ -37,8 +37,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.bOK = new System.Windows.Forms.Button();
             this.bCancel = new System.Windows.Forms.Button();
-            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.textBoxNotes = new System.Windows.Forms.TextBox();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();

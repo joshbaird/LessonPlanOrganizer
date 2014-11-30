@@ -16,6 +16,22 @@ namespace LessonPlanOrganizer
         {
             createLessonPlanYear(startDate, endDate, subjects, lessonPlans);
         }
+        private int _id;
+        public int ID
+        {
+            get
+            {
+                if (_id == null)
+                    _id = DateTime.Now.Year;
+                return _id;
+            }
+            set
+            {
+                _id = value;
+            }
+
+        }
+
         private List<LessonPlan> _lessonPlans;
         public List<LessonPlan> LessonPlans
         {

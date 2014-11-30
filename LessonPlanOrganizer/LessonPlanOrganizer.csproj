@@ -52,11 +52,18 @@
     <StartupObject>LessonPlanOrganizer.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AxInterop.AcroPDFLib">
+      <HintPath>AdobeAcro\AxInterop.AcroPDFLib.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.AcroPDFLib">
+      <HintPath>AdobeAcro\Interop.AcroPDFLib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="itextsharp">
       <HintPath>iTextSharp\itextsharp.dll</HintPath>
