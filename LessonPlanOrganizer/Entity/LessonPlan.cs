@@ -15,7 +15,7 @@ namespace LessonPlanOrganizer
             _calendarItem = new CalendarItem(year);
             EventsControl.SubjectChanged += handleSubjectChange;
         }
-        private LessonPlan(Calendar calendar, DateTime startDate, DateTime endDate, String text)
+        public LessonPlan(Calendar calendar, DateTime startDate, DateTime endDate, String text)
         {
             _calendarItem = new CalendarItem(calendar, startDate, endDate, text);
             EventsControl.SubjectChanged += handleSubjectChange;

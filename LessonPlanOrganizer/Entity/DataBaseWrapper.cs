@@ -2,35 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Drawing;
+using System.Windows.Forms.Calendar;
+using System.IO;
+using System.Runtime.InteropServices;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Data;
 using System.Data.SQLite;
 
 namespace LessonPlanOrganizer
 {
-
-    public class lesson_plan_year
-    {
-        public int ID { get; set; }
-        public string Begin_Date { get; set; }
-        public string End_Date { get; set; }
-    }
-
-    public class lesson_plan
-    {
-        public int ID { get; set; }
-        public int Lesson_Plan_Year_ID { get; set; }
-        public string Date { get; set; }
-        public string Begin_Date { get; set; }
-        public string End_Date { get; set; }
-        public int Subject_ID { get; set; }
-        public string Lesson_Details { get; set; }
-    }
-
-    public class subject
-    {
-        public int ID { get; set; }
-        public string Name { get; set; }
-    }
-
     class DataBaseWrapper
     {
         public const String lesson_plan = "lesson_plan";
@@ -39,7 +20,6 @@ namespace LessonPlanOrganizer
         public const String subject = "subject";
         public const String subject_ID = "subject_ID";
 
-        //private SQLiteConnection m_dbConnection;
         private String connection_string = "Data Source=;Version=3;";
 
         /// <summary>
@@ -49,204 +29,21 @@ namespace LessonPlanOrganizer
         public DataBaseWrapper(String sqlite)
         {
             connection_string = String.Format("Data Source={0};Version=3;", sqlite);
-            /// <todo> Check to see if file exists here, if not create and load        
-        }
-
-        /// <summary>
-        /// Return all lesson plan years.
-        /// </summary>
-        /// <returns> Array/List of Lesson Plan Year Objects
-        public List<lesson_plan_year> selectAllLessonPlanYears()
-        {
-            var objects = new List<lesson_plan_year>();
-            string sql = String.Format("select * from {0}", lesson_plan_year);
-
-            using (var connection = new SQLiteConnection(connection_string))
+            /// <todo> Check to see if file exists here, if not create and load
+            if (File.Exists(sqlite))
             {
-                var command = new SQLiteCommand(sql, connection);
-
-                connection.Open();
-                using (var reader = command.ExecuteReader())
+                Console.WriteLine("DEBUG MSG: Database file exists.");
+                if (doesTableExists(lesson_plan_year) == false)
                 {
-                    while (reader.Read())
-                    {
-                        var lpy_obj = new lesson_plan_year();
-                        lpy_obj.ID = Convert.ToInt32(reader["ID"]);
-                        lpy_obj.Begin_Date = (string)reader["Begin_date"];
-                        lpy_obj.End_Date = (string)reader["End_Date"];
-                        objects.Add(lpy_obj);
-                    }
+                    Console.WriteLine("DEBUG MSG: Table does not exist.");
+                    createTables();
                 }
             }
-            return objects;
-        }
-
-        /// <summary>
-        /// Return all lesson plans.
-        /// </summary>
-        /// <returns>Array/List of Lesson Plan Objects
-        public List<lesson_plan> selectAllLessonPlans()
-        {
-            var objects = new List<lesson_plan>();
-            string sql = String.Format("select * from {0}", lesson_plan);
-
-            using (var connection = new SQLiteConnection(connection_string))
+            else
             {
-                var command = new SQLiteCommand(sql, connection);
-
-                connection.Open();
-                using (var reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        var lp_obj = new lesson_plan();
-                        lp_obj.ID = Convert.ToInt32(reader["ID"]);
-                        lp_obj.Lesson_Plan_Year_ID = (int)reader["Lesson_Plan_Year_ID"];
-                        lp_obj.Date = (string)reader["Date"];
-                        lp_obj.Begin_Date = (string)reader["Begin_date"];
-                        lp_obj.End_Date = (string)reader["End_Date"];
-                        lp_obj.Subject_ID = (int)reader["Subject_ID"];
-                        lp_obj.Lesson_Details = (string)reader["Lesson_Details"];
-                        objects.Add(lp_obj);
-                    }
-                }
+                // Consider throwing an exception?
+                Console.WriteLine("Database file does not exist.");
             }
-            return objects;
-        }
-
-        /// <summary>
-        /// Return all subjects
-        /// </summary>
-        /// <returns> Array/List of Subject objects
-        public List<subject> selectAllSubjects()
-        {
-            var objects = new List<subject>();
-            string sql = String.Format("select * from {0}", subject);
-
-            using (var connection = new SQLiteConnection(connection_string))
-            {
-                var command = new SQLiteCommand(sql, connection);
-
-                connection.Open();
-                using (var reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        var subject_obj = new subject();
-                        subject_obj.ID = Convert.ToInt32(reader["ID"]);
-                        subject_obj.Name = (string)reader["Name"];
-                        objects.Add(subject_obj);
-                    }
-                }
-            }
-            return objects;
-        }
-
-        /// <summary>
-        /// Return Lesson Plan Year object based on passed parameters.
-        /// </summary>
-        /// <returns>Lesson Plan Year object
-        public List<lesson_plan_year> selectLessonPlanYear(int ID)
-        {
-            var objects = new List<lesson_plan_year>();
-            string sql = String.Format("select * from {0}", lesson_plan_year);
-
-            using (var connection = new SQLiteConnection(connection_string))
-            {
-                var command = new SQLiteCommand(sql, connection);
-
-                connection.Open();
-                using (var reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        var lpy_obj = new lesson_plan_year();
-                        lpy_obj.ID = Convert.ToInt32(reader["ID"]);
-                        lpy_obj.Begin_Date = (string)reader["Begin_date"];
-                        lpy_obj.End_Date = (string)reader["End_date"];
-                        objects.Add(lpy_obj);
-                    }
-                }
-            }
-            return objects;
-        }
-        
-        
-        /// <summary>
-        /// Return Lesson Plan object based on passed parameters.
-        /// </summary>
-        /// <param name=></param>
-        /// <returns> Lesson Plan object
-        public List<lesson_plan> selectLessonPlan(String Begin_Date, String End_Date, String Subject = "")
-        {
-            var objects = new List<lesson_plan>();
-            string sql = String.Format("SELECT * FROM {0} WHERE Date BETWEEN '{1}' AND '{2}'", lesson_plan, Begin_Date, End_Date);
-
-            if (Subject != "")
-            {
-                int Subject_ID = get_subject_ID(Subject);
-                sql = String.Format("SELECT * FROM {0} WHERE (Date BETWEEN '{1}' AND '{2}') AND Subject_ID = {3}", lesson_plan, Begin_Date, End_Date, Subject_ID);
-            }
-
-            
-            using (var connection = new SQLiteConnection(connection_string))
-            {
-                var command = new SQLiteCommand(sql, connection);
-
-                connection.Open();
-                using (var reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        var lp_obj = new lesson_plan();
-                        lp_obj.ID = Convert.ToInt32(reader["ID"]);
-                        lp_obj.Lesson_Plan_Year_ID = Convert.ToInt32(reader["Lesson_Plan_Year_ID"]);
-                        lp_obj.Date = (string)reader["Date"];
-                        lp_obj.Begin_Date = (string)reader["Begin_date"];
-                        lp_obj.End_Date = (string)reader["End_Date"];
-                        lp_obj.Subject_ID = Convert.ToInt32(reader["Subject_ID"]);
-                        lp_obj.Lesson_Details = (string)reader["Lesson_Details"];
-                        objects.Add(lp_obj);
-                    }
-                }
-            }
-            return objects;
-        }
-
-        private int get_subject_ID(String Subject)
-        {
-            var subject_obj = selectSubject(Subject);
-            return Convert.ToInt32(subject_obj[0].ID);
-        }
-
-        /// <summary>
-        /// Return Subject object based on passed parameters.
-        /// </summary>
-        /// <param name=></param>
-        /// <returns> Subject object
-        public List<subject> selectSubject(String Subject)
-        {
-            var objects = new List<subject>();
-
-            string sql = String.Format("SELECT * FROM {0} WHERE Name = '{1}'", subject, Subject);
-
-            using (var connection = new SQLiteConnection(connection_string))
-            {
-                var command = new SQLiteCommand(sql, connection);
-
-                connection.Open();
-                using (var reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        var subject_obj = new subject();
-                        subject_obj.ID = Convert.ToInt32(reader["ID"]);
-                        subject_obj.Name = (string)reader["Name"];
-                        objects.Add(subject_obj);
-                    }
-                }
-            }
-            return objects;
         }
 
         /// <summary>
@@ -254,17 +51,50 @@ namespace LessonPlanOrganizer
         /// </summary>
         public void createTables()
         {
-            executeSQLNonQuery(String.Format("CREATE TABLE `{0}` (`ID`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,`Begin_Date` TEXT,`End_Date` TEXT)", lesson_plan_year));
-
-            executeSQLNonQuery(String.Format("CREATE TABLE `{0}` (`ID`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,`Lesson_Plan_Year_ID`	INTEGER,`Date` TEXT,`Begin_Date` TEXT,`End_Date` TEXT,`Subject_ID` INTEGER,`Lesson_Details` TEXT)", lesson_plan));
-
-            executeSQLNonQuery(String.Format("CREATE TABLE `{0}` (`ID` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,`Name` TEXT)", subject));
-
+            executeSQLNonQuery(String.Format("CREATE TABLE `{0}` (`ID` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,`DATA` BLOB)", lesson_plan_year));
             executeSQLNonQuery(String.Format("INSERT INTO sqlite_sequence (name, seq) Values ('{0}', 0)", lesson_plan_year));
+        }
 
-            executeSQLNonQuery(String.Format("INSERT INTO sqlite_sequence (name, seq) Values ('{0}', '0')", lesson_plan));
+        public void serializeLessonPlanYear(LessonPlanYear LPY)
+        {
+            byte[] arData;
+ 
+            using(MemoryStream stream = new MemoryStream())
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                formatter.Serialize(stream, LPY);
+                arData = stream.ToArray();
+                stream.Close();
+            }
+            
+            string sql = String.Format("INSERT INTO {0} (DATA) VALUES(?)", lesson_plan_year);
+            executeSQLNonQueryWithBlob(sql, "DATA", arData);
+        }
 
-            executeSQLNonQuery(String.Format("INSERT INTO sqlite_sequence (name, seq) Values ('{0}', '0')", subject));
+        public LessonPlanYear deserializeLessonPlanYear()
+        {
+            LessonPlanYear LPY;
+            string sql = String.Format("SELECT ID, DATA FROM {0} ", lesson_plan_year);
+            DataTable dt = getDataTable(sql);
+
+            // Possible for null to occur here as datatable may be empty. Review this.
+            int index = dt.Rows.Count - 1;
+            if (index <= -1)
+                return null;
+
+            object val = dt.Rows[index].Field<byte[]>(1);
+
+            byte[] arData = (byte []) val;
+
+            using (MemoryStream stream = new MemoryStream())
+            {
+                stream.Write(arData, 0, arData.Length);
+                stream.Seek(0, SeekOrigin.Begin);
+
+                BinaryFormatter formatter = new BinaryFormatter();
+                LPY = (LessonPlanYear)formatter.Deserialize(stream);
+            }
+            return LPY;
         }
         
         /// <summary>
@@ -273,7 +103,7 @@ namespace LessonPlanOrganizer
         /// <param name="table">Table to insert data dictionary. Tables with existing ID validation: lesson_plan, subject</param>
         /// <param name="data">A dictionary containing the desired data in key value pair.</param>
         /// <returns></returns>
-        public bool Insert(String table, Dictionary<String, String> data)
+        private bool Insert(String table, Dictionary<String, String> data)
 	    {
 	        String columns = "";
 	        String values = "";
@@ -353,7 +183,7 @@ namespace LessonPlanOrganizer
         /// <param name="target_ID">ID of object to update.</param>
         /// <param name="data">A dictionary containing the new data.</param>
         /// <returns></returns>
-        public bool Update(String table, String target_ID, Dictionary<String, String> data)
+        private bool Update(String table, String target_ID, Dictionary<String, String> data)
 	    {
 	        String vals = "";
 	        Boolean updated = true;
@@ -383,7 +213,7 @@ namespace LessonPlanOrganizer
         /// <param name="table">Table to perform delete operation on.</param>
         /// <param name="target_ID_to_delete">Target ID to delete by.</param>
         /// <returns> Returns true on successful deletion and false on failure to delete.</returns>
-        public Boolean delete(String table, String target_ID)
+        private Boolean delete(String table, String target_ID)
         {
             Boolean deleted = true;
             try
@@ -406,7 +236,7 @@ namespace LessonPlanOrganizer
         private Boolean doesTableExists(String table_name)
         {
             int count = 0;
-            String sql = String.Format("SELECT count * FROM sqlite_master WHERE type='table' AND name='{0}'", table_name);
+            String sql = String.Format("SELECT count (*) FROM sqlite_master WHERE type='table' AND name='{0}'", table_name);
             using (var connection = new SQLiteConnection(connection_string))
             {
                 var command = new SQLiteCommand(sql, connection);
@@ -419,7 +249,7 @@ namespace LessonPlanOrganizer
                         count = reader.GetInt32(0);
                     }
                 }
-                Console.WriteLine("Count is: " + count);
+                //Console.WriteLine("Count is: " + count);
                 if (count == 0)
                     return false;
                 else
@@ -438,19 +268,107 @@ namespace LessonPlanOrganizer
             {
                 using (var connection = new SQLiteConnection(connection_string))
                 {
-                    var command = new SQLiteCommand(sql, connection);
-                    connection.Open();
-                    int rows = command.ExecuteNonQuery();
-                    connection.Close();
-                    return rows;
+                    using( var command = new SQLiteCommand(sql, connection))
+                    {
+                        command.Connection.Open();
+                        int rows = command.ExecuteNonQuery();
+                        command.Connection.Close();
+                        return rows;
+                    }
                 }
             }
             catch (Exception e)
             {
-                Console.WriteLine("DataBaseWrapper encounter a connection error: ", e.ToString());
+                Console.WriteLine("DataBaseWrapper encounter an SQL non query error: ", e.ToString());
                 return -1;
             }
         }
+
+        private int executeSQLNonQueryWithBlob(string sql, string blobFieldName, byte[] blob)
+        {
+            try
+            {
+                using (var connection = new SQLiteConnection(connection_string))
+                {
+                    using (var command = new SQLiteCommand(sql, connection))
+                    {
+                        command.Connection.Open();
+                        command.Parameters.AddWithValue("@" + blobFieldName, blob);
+                        int rows =  command.ExecuteNonQuery();
+                        command.Connection.Close();
+                        return rows;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("DataBaseWrapper encounter an SQL non query with blob error: ", e.ToString());
+                return -1;
+            }
+        }
+        /// <summary>
+	    /// Allows the programmer to run a query against the Database.
+	    /// </summary>
+	    /// <param name="sql">The SQL to run</param>
+	    /// <returns>A DataTable containing the result set.</returns>
+	    private DataTable getDataTable(string sql)
+	    {
+	        DataTable dt = new DataTable();
+	        try
+	        {
+                using (var connection = new SQLiteConnection(connection_string))
+                {
+                    using (var command = new SQLiteCommand(sql, connection))
+                    {
+                        command.Connection.Open();
+                        command.CommandText = sql;
+                        SQLiteDataReader reader = command.ExecuteReader();
+                        dt.Load(reader);
+                        reader.Close();
+                        command.Connection.Close();
+                        return dt;
+                    }
+                }
+	        }
+	        catch (Exception e)
+	        {
+	            //throw new Exception(e.Message);
+                Console.WriteLine("DataBaseWrapper encounter an SQL get table error: ", e.ToString());
+                return null;
+	        }
+	    }
+
+        /// <summary>
+	    /// Allows the programmer to retrieve single items from the DB.
+	    /// </summary>
+	    /// <param name="sql">The query to run.</param>
+	    /// <returns>A string.</returns>
+	    private string executeScalar(string sql)
+	    {
+            try
+            {
+                using (var connection = new SQLiteConnection(connection_string))
+                {
+                    using (var command = new SQLiteCommand(sql, connection))
+                    {
+                        command.Connection.Open();
+                        command.CommandText = sql;
+                        object value = command.ExecuteScalar();
+                        command.Connection.Close();
+                        if (value != null)
+                        {
+                            return value.ToString();
+                        }
+                        return "";
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("DataBaseWrapper encounter an SQL scalar query error: ", e.ToString());
+                return "error";
+            }
+	    }
 
         private bool doesIDexists(int ID, string table)
         {

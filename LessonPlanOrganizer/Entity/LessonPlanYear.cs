@@ -5,6 +5,7 @@ using System.Text;
 
 namespace LessonPlanOrganizer
 {
+    [System.Serializable]
     public class LessonPlanYear
     {
         // implement singleton

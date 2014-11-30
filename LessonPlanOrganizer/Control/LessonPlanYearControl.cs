@@ -47,7 +47,22 @@ namespace LessonPlanOrganizer
         {
             // TODO fill the lesson plan Year with the data from DB.
 
-           _lessonPlanYear = new LessonPlanYear(new DateTime(), new DateTime(), new List<Subject>(), new List<LessonPlan>());
+            _lessonPlanYear = new LessonPlanYear(new DateTime(), new DateTime(), new List<Subject>(), new List<LessonPlan>());
+           
+            
+            // DT: crude testing of serialization/deserialization of LessonPlanYear object
+            // will cause null exception error as subject and lesson plan lists are null.
+            // OK for removal...
+            //
+            // Testing serialization here (serialize first then comment out two lines below)
+            //_lessonPlanYear = new LessonPlanYear(DateTime.Today.AddDays(1), DateTime.Today, new List<Subject>(), new List<LessonPlan>());
+            //_dbWrapper.serializeLessonPlanYear(_lessonPlanYear);
+
+            // Testing deserialization here (deserialized second, uncomment two lines below after running previous)
+            //LessonPlanYear newyear = _dbWrapper.deserializeLessonPlanYear();
+            //Console.WriteLine("Deserialized object data for newyear: " + newyear.StartDate);
+            
+            
         }
 
         public List<CalendarItem> GetLessonCalendarItemsForCalendarDisplay(DateTime start, DateTime end)
