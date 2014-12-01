@@ -158,7 +158,7 @@ namespace LessonPlanOrganizer
         // help
         private void aboutHelpStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("About", "Teacher lesson plan, written by Team-C");
+            MessageBox.Show("Teacher lesson plan, written by Team-C", "About");
         }
         #endregion
 
