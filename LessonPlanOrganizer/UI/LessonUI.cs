@@ -27,11 +27,17 @@ namespace LessonPlanOrganizer
             {
                 CalendarItem calItem;
                 Subject sub;
+                String notes = "none";
                 if (cal is CalendarItem)
                 {
                     calItem = (CalendarItem)cal;
                     if (LessonPlanYearControl.Instance.getLessonPlans().Where(l => l.selectLessonPlan(calItem) != null).Count() > 0)
-                        sub = LessonPlanYearControl.Instance.getLessonPlans().Where(l => l.selectLessonPlan(calItem) != null).FirstOrDefault().Subject;
+                    {
+                        LessonPlan lp = LessonPlanYearControl.Instance.getLessonPlans().Where(l => l.selectLessonPlan(calItem) != null).FirstOrDefault();
+                        sub = lp.Subject;
+                        notes = lp.Notes;
+                    }
+                        
                     else
                         sub = new Subject();
                 }
@@ -39,7 +45,11 @@ namespace LessonPlanOrganizer
                 {
                     calItem = ((Calendar)cal).Items.FirstOrDefault();
                     if (LessonPlanYearControl.Instance.getLessonPlans().Where(l => l.selectLessonPlan(calItem) != null).Count() > 0)
-                        sub = LessonPlanYearControl.Instance.getLessonPlans().Where(l => l.selectLessonPlan(calItem) != null).FirstOrDefault().Subject;
+                    {
+                        LessonPlan lp = LessonPlanYearControl.Instance.getLessonPlans().Where(l => l.selectLessonPlan(calItem) != null).FirstOrDefault();
+                        sub = lp.Subject;
+                        notes = lp.Notes;
+                    }
                     else
                         sub = new Subject();
                 }
@@ -50,6 +60,7 @@ namespace LessonPlanOrganizer
                 }
                 _lessonPlan = LessonPlan.createLessonPlan(calItem.Calendar, calItem.StartDate, calItem.EndDate, calItem.Text);
                 _lessonPlan.Subject = sub;
+                _lessonPlan.Notes = notes;
                 _lessonPlan.CalendarItem = calItem;
             }
             setupUI();
