@@ -13,6 +13,9 @@ namespace LessonPlanOrganizer
         public LessonPlan() { }
         private LessonPlan(Calendar year)
         {
+            _startDate = DateTime.Now;
+            _endDate = DateTime.Now.Add(new TimeSpan(0, 30, 0));
+            _title = "Lesson Title";
             _calendarItem = new CalendarItem(year);
             EventsControl.SubjectChanged += handleSubjectChange;
         }

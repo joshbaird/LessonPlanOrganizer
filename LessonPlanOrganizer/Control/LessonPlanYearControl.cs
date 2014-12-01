@@ -88,7 +88,8 @@ namespace LessonPlanOrganizer
 
         public List<CalendarItem> GetLessonCalendarItemsForCalendarDisplay(DateTime start, DateTime end)
         {
-            return _lessonPlanYear.LessonPlans.Where(l => (l.StartDate.Ticks >= start.Ticks && l.StartDate.Ticks <= end.Ticks)).Select(c => c.CalendarItem).ToList<CalendarItem>();
+            DateTime starting = start.Date;
+            return _lessonPlanYear.LessonPlans.Where(l => (l.CalendarItem.StartDate.Ticks >= starting.Ticks && l.CalendarItem.StartDate.Ticks <= end.Ticks)).Select(c => c.CalendarItem).ToList<CalendarItem>();
         }
 
         #region Lesson methods
