@@ -28,6 +28,7 @@ namespace LessonPlanOrganizer
                 {
                     refreshCalendar();
                 };
+            lessonPlanYearControl.Calendar = this.calendar1;
         }
 
         private LessonPlanYearControl lessonPlanYearControl;
@@ -61,9 +62,9 @@ namespace LessonPlanOrganizer
 
         #region menu strip actions
 
-        private void openFileStripMenuItem_Click(object sender, EventArgs e)
+        private void saveFileStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            lessonPlanYearControl.SavetoDataBase();    
         }
 
         private void quitFileStripMenuItem_Click(object sender, EventArgs e)

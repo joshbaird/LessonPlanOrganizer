@@ -83,11 +83,11 @@ namespace LessonPlanOrganizer
         private void setLessonPlan()
         {
             // TODO validate all the fields for lesson plan first...
-            this._lessonPlan.CalendarItem.Text = this.lessonTitle.Text;
+            this._lessonPlan.Title = this.lessonTitle.Text;
             DateTime startDate = new DateTime(this.dateSelection.Value.Year, this.dateSelection.Value.Month, this.dateSelection.Value.Day, (int)this.numStartHour.Value, (int)this.numStartMin.Value, 0);
-            this._lessonPlan.CalendarItem.StartDate = startDate;
+            this._lessonPlan.StartDate = startDate;
             DateTime endDate = startDate.AddHours((int)this.numDurHour.Value).AddMinutes((int)this.numDurMin.Value);
-            this._lessonPlan.CalendarItem.EndDate = endDate;
+            this._lessonPlan.EndDate = endDate;
             this._lessonPlan.Subject = (Subject)this.associatedProject.SelectedItem;
             this._lessonPlan.Notes = this.textBoxNotes.Text;
         }

@@ -38,6 +38,20 @@ namespace LessonPlanOrganizer
                 return instance;
             }
         }
+        private Calendar _calendar;
+        public Calendar Calendar
+        {
+            get
+            {
+                if (_calendar == null)
+                    _calendar = new Calendar();
+                return _calendar;
+            }
+            set 
+            {
+                _calendar = value;
+            }
+        }
 
 
         private LessonPlanYear _lessonPlanYear;
@@ -47,7 +61,11 @@ namespace LessonPlanOrganizer
         {
             // TODO fill the lesson plan Year with the data from DB.
 
-            _lessonPlanYear = new LessonPlanYear(new DateTime(), new DateTime(), new List<Subject>(), new List<LessonPlan>());
+            LessonPlanYear lpy = _dbWrapper.deserializeLessonPlanYear();
+            if (lpy != null)
+                _lessonPlanYear = lpy;
+            else
+                _lessonPlanYear = new LessonPlanYear(new DateTime(), new DateTime(), new List<Subject>(), new List<LessonPlan>());
            
             
             // DT: crude testing of serialization/deserialization of LessonPlanYear object
@@ -61,13 +79,16 @@ namespace LessonPlanOrganizer
             // Testing deserialization here (deserialized second, uncomment two lines below after running previous)
             //LessonPlanYear newyear = _dbWrapper.deserializeLessonPlanYear();
             //Console.WriteLine("Deserialized object data for newyear: " + newyear.StartDate);
-            
-            
+        }
+
+        public void SavetoDataBase()
+        {
+            _dbWrapper.serializeLessonPlanYear(_lessonPlanYear);
         }
 
         public List<CalendarItem> GetLessonCalendarItemsForCalendarDisplay(DateTime start, DateTime end)
         {
-            return _lessonPlanYear.LessonPlans.Where(l => (l.CalendarItem.StartDate.Ticks >= start.Ticks && l.CalendarItem.StartDate.Ticks <= end.Ticks)).Select(c => c.CalendarItem).ToList<CalendarItem>();
+            return _lessonPlanYear.LessonPlans.Where(l => (l.StartDate.Ticks >= start.Ticks && l.StartDate.Ticks <= end.Ticks)).Select(c => c.CalendarItem).ToList<CalendarItem>();
         }
 
         #region Lesson methods
@@ -125,7 +146,5 @@ namespace LessonPlanOrganizer
         {
             return _lessonPlanYear.EndDate;
         }
-
-
     }  
 }

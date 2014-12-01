@@ -10,7 +10,7 @@ namespace LessonPlanOrganizer
         //compares by startDate
         public int Compare (LessonPlan x, LessonPlan y)
         {
-            return DateTime.Compare(x.CalendarItem.StartDate, y.CalendarItem.StartDate);
+            return DateTime.Compare(x.StartDate, y.StartDate);
         }
     }
 }
