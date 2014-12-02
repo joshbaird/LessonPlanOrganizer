@@ -10,7 +10,9 @@ namespace LessonPlanOrganizer
     [System.Serializable]
     public class LessonPlan: IEquatable<LessonPlan>
     {
-        public LessonPlan() { }
+        public LessonPlan() 
+        {
+        }
         private LessonPlan(Calendar year)
         {
             _startDate = DateTime.Now;
@@ -18,7 +20,10 @@ namespace LessonPlanOrganizer
             _title = "Lesson Title";
             _calendarItem = new CalendarItem(year);
             _id = Guid.NewGuid().ToString("N");
-            EventsControl.SubjectChanged += handleSubjectChange;
+            EventsControl.SubjectChanged += (o,e)=>
+            {
+                handleSubjectChange(o,e);
+            };
         }
         public LessonPlan(Calendar calendar, DateTime startDate, DateTime endDate, String title)
         {
@@ -27,7 +32,10 @@ namespace LessonPlanOrganizer
             _title = title;
             _calendarItem = new CalendarItem(calendar, startDate, endDate, title);
             _id = Guid.NewGuid().ToString("N");
-            EventsControl.SubjectChanged += handleSubjectChange;
+            EventsControl.SubjectChanged += (o, e) =>
+            {
+                handleSubjectChange(o, e);
+            };
         }
 
         private LessonPlan(Calendar year, DateTime start, TimeSpan duration, String title)
@@ -37,7 +45,10 @@ namespace LessonPlanOrganizer
             _title = title;
             _calendarItem = new CalendarItem(year, start, duration, title);
             _id = Guid.NewGuid().ToString("N");
-            EventsControl.SubjectChanged += handleSubjectChange;
+            EventsControl.SubjectChanged += (o, e) =>
+            {
+                handleSubjectChange(o, e);
+            };
         }
 
         private String _id;
@@ -107,6 +118,14 @@ namespace LessonPlanOrganizer
             removeBindings();
         }
 
+        public void SubScribeBindings()
+        {
+            EventsControl.SubjectChanged += (o, e) =>
+            {
+                handleSubjectChange(o, e);
+            };
+        }
+
         [System.NonSerialized]
         private CalendarItem _calendarItem;
         public CalendarItem CalendarItem
@@ -159,7 +178,7 @@ namespace LessonPlanOrganizer
 
         private void handleSubjectChange(Object o, EventArgs e)
         {
-            //this.CalendarItem.BackgroundColor = _subject.Color;
+            this.CalendarItem.BackgroundColor = _subject.Color;
         }
 
         /// <summary>

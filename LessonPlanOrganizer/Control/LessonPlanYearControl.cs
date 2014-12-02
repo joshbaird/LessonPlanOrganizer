@@ -68,7 +68,7 @@ namespace LessonPlanOrganizer
                 _lessonPlanYear = lpy;
             else
                 _lessonPlanYear = new LessonPlanYear(new DateTime(), new DateTime(), new List<Subject>(), new List<LessonPlan>());
-           
+            _lessonPlanYear.LessonPlans.ForEach(l => l.SubScribeBindings());
             
             // DT: crude testing of serialization/deserialization of LessonPlanYear object
             // will cause null exception error as subject and lesson plan lists are null.
