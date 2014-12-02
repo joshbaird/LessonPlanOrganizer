@@ -176,5 +176,16 @@ namespace LessonPlanOrganizer
             this.editToolStripMenuItemLesson.Enabled = this.calendar1.GetSelectedItems().Count() > 0;
             this.deleteToolStripMenuItemLesson.Enabled = this.calendar1.GetSelectedItems().Count() > 0;
         }
+
+        private void calendar1_ItemDatesChanged(object sender, CalendarItemEventArgs e)
+        {
+            Console.WriteLine(e.Item.Text);
+            lessonPlanYearControl.getLessonPlans().Where(l => l.CalendarItem.Equals(e.Item)).FirstOrDefault().SyncCalendar();
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            lessonPlanYearControl.SavetoDataBase(); 
+        }
     }
 }

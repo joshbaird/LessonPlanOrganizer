@@ -251,5 +251,12 @@ namespace LessonPlanOrganizer
         {
             EventsControl.SubjectChanged -= handleSubjectChange;
         }
+
+        internal void SyncCalendar()
+        {
+            this._startDate = CalendarItem.StartDate;
+            this._endDate = CalendarItem.EndDate;
+            this._title = CalendarItem.Text;
+        }
     }
 }
