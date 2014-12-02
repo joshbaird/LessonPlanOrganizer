@@ -106,7 +106,6 @@
     <Compile Include="Control\LessonPlanYearControl.cs" />
     <Compile Include="Control\EventsControl.cs" />
     <Compile Include="Entity\SubjectStatsReport.cs" />
-    <Compile Include="Entity\TestData.cs" />
     <Compile Include="UI\LessonPlanReportInputForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -182,7 +182,7 @@ namespace LessonPlanOrganizer
                     {
                         for (int j = 0; j < lessons.Count; j++)
                         {
-                            PdfPCell cell = new PdfPCell(new Phrase(lessons.ElementAt(j).CalendarItem.StartDate.ToShortTimeString() + " - " + lessons.ElementAt(j).CalendarItem.EndDate.ToShortTimeString(),
+                            PdfPCell cell = new PdfPCell(new Phrase(lessons.ElementAt(j).StartDate.ToShortTimeString() + " - " + lessons.ElementAt(j).EndDate.ToShortTimeString(),
                                     fontSetup));
                             data.AddCell(cell);
                             cell.Phrase = new Phrase(lessons.ElementAt(j).Subject.Name, fontSetup);
@@ -274,8 +274,8 @@ namespace LessonPlanOrganizer
                             int dateIndex = (weeks * 7) + days;
                             if (listLen < realData.ElementAt(dateIndex).Count)
                             {
-                                String cellString = realData.ElementAt(dateIndex).ElementAt(listLen).CalendarItem.StartDate.ToShortTimeString();
-                                cellString += " - " + realData.ElementAt(dateIndex).ElementAt(listLen).CalendarItem.EndDate.ToShortTimeString();
+                                String cellString = realData.ElementAt(dateIndex).ElementAt(listLen).StartDate.ToShortTimeString();
+                                cellString += " - " + realData.ElementAt(dateIndex).ElementAt(listLen).EndDate.ToShortTimeString();
                                 cellString += "\n" + realData.ElementAt(dateIndex).ElementAt(listLen).Subject.Name;
                                 cellString += "\n\n" + realData.ElementAt(dateIndex).ElementAt(listLen).Notes;
                                 PdfPCell cell = new PdfPCell(new Phrase(cellString, smallfontSetup));
@@ -310,11 +310,6 @@ namespace LessonPlanOrganizer
                 doc.Open();
                 wr.PageEvent = eventHandler;
                 addReportDetailsData(doc);
-
-                /*
-                 * Remove this line after DB integration
-                 */
-                //TestData dataHelper = new TestData(6, "Lesson");
 
                 List<DateTime> firstDayOfMonths = getFirstDaysOfMonths();
                 for (int cycleMonths = 0; cycleMonths < firstDayOfMonths.Count; cycleMonths++)
@@ -356,7 +351,7 @@ namespace LessonPlanOrganizer
                         {
                             for (int cycleData = 0; cycleData < realData.Count; cycleData++)
                             {
-                                cellString += realData.ElementAt(cycleData).CalendarItem.StartDate.ToShortTimeString();
+                                cellString += realData.ElementAt(cycleData).StartDate.ToShortTimeString();
                                 cellString += " : " + realData.ElementAt(cycleData).Subject.Name;
                                 if (cycleData != realData.Count - 1) cellString += "\n";
                             }
@@ -417,7 +412,7 @@ namespace LessonPlanOrganizer
             DateTime currentDay = startDate;
             List<DateTime> dates = new List<DateTime>();
             dates.Add(currentDay);
-            while (currentDay != endDate)
+            while (DateTime.Compare(currentDay,endDate)<= 0)
             {
                 currentDay = currentDay.AddDays(1);
                 dates.Add(currentDay);
