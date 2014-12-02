@@ -16,7 +16,7 @@ namespace LessonPlanOrganizer
         private LessonPlanYearControl()
         {
             // TODO replace dateTimes with actual dates and times.
-            _dbWrapper = new DataBaseWrapper(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "lesson_db.sqlite");
+            _dbWrapper = new DataBaseWrapper(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData).ToString() + "lesson_db.sqlite");
             fillLessonPlanYearFromDb();
             
             EventsControl.AddNewSubject += (o, e) =>
