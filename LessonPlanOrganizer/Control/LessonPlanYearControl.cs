@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms.Calendar;
@@ -14,7 +15,7 @@ namespace LessonPlanOrganizer
         private LessonPlanYearControl()
         {
             // TODO replace dateTimes with actual dates and times.
-            _dbWrapper = new DataBaseWrapper("lesson_db.sqlite");
+            _dbWrapper = new DataBaseWrapper(Path.GetTempPath()+"\\lesson_db.sqlite");
             fillLessonPlanYearFromDb();
             
             EventsControl.AddNewSubject += (o, e) =>
@@ -89,7 +90,9 @@ namespace LessonPlanOrganizer
         public List<CalendarItem> GetLessonCalendarItemsForCalendarDisplay(DateTime start, DateTime end)
         {
             DateTime starting = start.Date;
-            return _lessonPlanYear.LessonPlans.Where(l => (l.CalendarItem.StartDate.Ticks >= starting.Ticks && l.CalendarItem.StartDate.Ticks <= end.Ticks)).Select(c => c.CalendarItem).ToList<CalendarItem>();
+            //return _lessonPlanYear.LessonPlans.Where(l => (l.CalendarItem.StartDate.Ticks >= starting.Ticks && l.CalendarItem.StartDate.Ticks <= end.Ticks)).Select(c => c.CalendarItem).ToList<CalendarItem>();
+            return _lessonPlanYear.LessonPlans.Where(l => (l.StartDate.Ticks >= starting.Ticks && l.StartDate.Ticks <= end.Ticks)).Select(c => c.CalendarItem).ToList<CalendarItem>();
+
         }
 
         #region Lesson methods

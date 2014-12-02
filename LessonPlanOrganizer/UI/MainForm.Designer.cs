@@ -283,7 +283,7 @@
             this.tlpLeftPane.ColumnCount = 1;
             this.tlpLeftPane.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpLeftPane.Controls.Add(this.pTop, 0, 0);
-            //this.tlpLeftPane.Controls.Add(this.subjectsView1, 0, 1);
+            this.tlpLeftPane.Controls.Add(this.subjectsView1, 0, 1);
             this.tlpLeftPane.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpLeftPane.Location = new System.Drawing.Point(3, 3);
             this.tlpLeftPane.Name = "tlpLeftPane";

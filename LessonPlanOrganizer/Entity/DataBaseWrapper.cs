@@ -78,7 +78,9 @@ namespace LessonPlanOrganizer
             DataTable dt = getDataTable(sql);
 
             // Possible for null to occur here as datatable may be empty. Review this.
-            int index = dt.Rows.Count - 1;
+            int index;
+            if (dt != null) index = dt.Rows.Count - 1;
+            else index = -1;
             if (index <= -1)
                 return null;
 
