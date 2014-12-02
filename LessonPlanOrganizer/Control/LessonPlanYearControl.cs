@@ -100,7 +100,7 @@ namespace LessonPlanOrganizer
         public void addLessonPlans(LessonPlan item)
         {
             if (_lessonPlanYear.LessonPlans.Contains(item))
-                return;
+                _lessonPlanYear.LessonPlans.Remove(item);
             _lessonPlanYear.LessonPlans.Add(item);
             EventsControl.RaiseLessonChanged(this, EventArgs.Empty);
         }

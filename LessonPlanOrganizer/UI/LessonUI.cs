@@ -28,6 +28,7 @@ namespace LessonPlanOrganizer
                 CalendarItem calItem;
                 Subject sub;
                 String notes = "none";
+                String id = Guid.NewGuid().ToString("N");
                 if (cal is CalendarItem)
                 {
                     calItem = (CalendarItem)cal;
@@ -36,6 +37,7 @@ namespace LessonPlanOrganizer
                         LessonPlan lp = LessonPlanYearControl.Instance.getLessonPlans().Where(l => l.selectLessonPlan(calItem) != null).FirstOrDefault();
                         sub = lp.Subject;
                         notes = lp.Notes;
+                        id = lp.ID;
                     }
                         
                     else
@@ -49,6 +51,7 @@ namespace LessonPlanOrganizer
                         LessonPlan lp = LessonPlanYearControl.Instance.getLessonPlans().Where(l => l.selectLessonPlan(calItem) != null).FirstOrDefault();
                         sub = lp.Subject;
                         notes = lp.Notes;
+                        id = lp.ID;
                     }
                     else
                         sub = new Subject();
@@ -61,6 +64,7 @@ namespace LessonPlanOrganizer
                 _lessonPlan = LessonPlan.createLessonPlan(calItem.Calendar, calItem.StartDate, calItem.EndDate, calItem.Text);
                 _lessonPlan.Subject = sub;
                 _lessonPlan.Notes = notes;
+                _lessonPlan.ID = id;
                 _lessonPlan.CalendarItem = calItem;
             }
             setupUI();

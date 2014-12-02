@@ -17,6 +17,7 @@ namespace LessonPlanOrganizer
             _endDate = DateTime.Now.Add(new TimeSpan(0, 30, 0));
             _title = "Lesson Title";
             _calendarItem = new CalendarItem(year);
+            _id = Guid.NewGuid().ToString("N");
             EventsControl.SubjectChanged += handleSubjectChange;
         }
         public LessonPlan(Calendar calendar, DateTime startDate, DateTime endDate, String title)
@@ -25,6 +26,7 @@ namespace LessonPlanOrganizer
             _endDate = endDate;
             _title = title;
             _calendarItem = new CalendarItem(calendar, startDate, endDate, title);
+            _id = Guid.NewGuid().ToString("N");
             EventsControl.SubjectChanged += handleSubjectChange;
         }
 
@@ -34,7 +36,21 @@ namespace LessonPlanOrganizer
             _endDate = start.Add(duration);
             _title = title;
             _calendarItem = new CalendarItem(year, start, duration, title);
+            _id = Guid.NewGuid().ToString("N");
             EventsControl.SubjectChanged += handleSubjectChange;
+        }
+
+        private String _id;
+        public String ID
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                _id = value;
+            }
         }
 
         private DateTime _startDate;
@@ -242,9 +258,7 @@ namespace LessonPlanOrganizer
 
         public bool Equals(LessonPlan other)
         {
-            return (String.Equals(this.Notes, other.Notes) &&
-                    this.Subject == other.Subject &&
-                    this.CalendarItem.Equals(other.CalendarItem));
+            return (String.Equals(this.ID, other.ID));
         }
 
         internal void removeBindings()
