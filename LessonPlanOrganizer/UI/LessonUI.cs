@@ -100,6 +100,8 @@ namespace LessonPlanOrganizer
 
         private void saveButton_Click(object sender, EventArgs e)
         {
+
+            //original code
             setLessonPlan();
             LessonPlanYearControl.Instance.addLessonPlans(this._lessonPlan);
             EventsControl.RaiseLessonChanged(this._lessonPlan, EventArgs.Empty);
