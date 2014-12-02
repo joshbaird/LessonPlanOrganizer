@@ -10,14 +10,20 @@ namespace LessonPlanOrganizer
     [System.Serializable]
     public class LessonPlan: IEquatable<LessonPlan>
     {
-        public LessonPlan() { }
+        public LessonPlan() 
+        {
+        }
         private LessonPlan(Calendar year)
         {
             _startDate = DateTime.Now;
             _endDate = DateTime.Now.Add(new TimeSpan(0, 30, 0));
             _title = "Lesson Title";
             _calendarItem = new CalendarItem(year);
-            EventsControl.SubjectChanged += handleSubjectChange;
+            _id = Guid.NewGuid().ToString("N");
+            EventsControl.SubjectChanged += (o,e)=>
+            {
+                handleSubjectChange(o,e);
+            };
         }
         public LessonPlan(Calendar calendar, DateTime startDate, DateTime endDate, String title)
         {
@@ -25,7 +31,11 @@ namespace LessonPlanOrganizer
             _endDate = endDate;
             _title = title;
             _calendarItem = new CalendarItem(calendar, startDate, endDate, title);
-            EventsControl.SubjectChanged += handleSubjectChange;
+            _id = Guid.NewGuid().ToString("N");
+            EventsControl.SubjectChanged += (o, e) =>
+            {
+                handleSubjectChange(o, e);
+            };
         }
 
         private LessonPlan(Calendar year, DateTime start, TimeSpan duration, String title)
@@ -34,7 +44,24 @@ namespace LessonPlanOrganizer
             _endDate = start.Add(duration);
             _title = title;
             _calendarItem = new CalendarItem(year, start, duration, title);
-            EventsControl.SubjectChanged += handleSubjectChange;
+            _id = Guid.NewGuid().ToString("N");
+            EventsControl.SubjectChanged += (o, e) =>
+            {
+                handleSubjectChange(o, e);
+            };
+        }
+
+        private String _id;
+        public String ID
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                _id = value;
+            }
         }
 
         private DateTime _startDate;
@@ -91,6 +118,14 @@ namespace LessonPlanOrganizer
             removeBindings();
         }
 
+        public void SubScribeBindings()
+        {
+            EventsControl.SubjectChanged += (o, e) =>
+            {
+                handleSubjectChange(o, e);
+            };
+        }
+
         [System.NonSerialized]
         private CalendarItem _calendarItem;
         public CalendarItem CalendarItem
@@ -143,7 +178,7 @@ namespace LessonPlanOrganizer
 
         private void handleSubjectChange(Object o, EventArgs e)
         {
-            //this.CalendarItem.BackgroundColor = _subject.Color;
+            this.CalendarItem.BackgroundColor = _subject.Color;
         }
 
         /// <summary>
@@ -242,14 +277,19 @@ namespace LessonPlanOrganizer
 
         public bool Equals(LessonPlan other)
         {
-            return (String.Equals(this.Notes, other.Notes) &&
-                    this.Subject == other.Subject &&
-                    this.CalendarItem.Equals(other.CalendarItem));
+            return (String.Equals(this.ID, other.ID));
         }
 
         internal void removeBindings()
         {
             EventsControl.SubjectChanged -= handleSubjectChange;
+        }
+
+        internal void SyncCalendar()
+        {
+            this._startDate = CalendarItem.StartDate;
+            this._endDate = CalendarItem.EndDate;
+            this._title = CalendarItem.Text;
         }
     }
 }

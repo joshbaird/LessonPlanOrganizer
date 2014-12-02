@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms.Calendar;
+using System.Data.SQLite;
 
 namespace LessonPlanOrganizer
 {
@@ -15,9 +16,7 @@ namespace LessonPlanOrganizer
         private LessonPlanYearControl()
         {
             // TODO replace dateTimes with actual dates and times.
-            //_dbWrapper = new DataBaseWrapper(Path.GetTempPath()+"\\lesson_db.sqlite");
-            _dbWrapper = new DataBaseWrapper("lesson_db.sqlite");
-
+            _dbWrapper = new DataBaseWrapper(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "lesson_db.sqlite");
             fillLessonPlanYearFromDb();
             
             EventsControl.AddNewSubject += (o, e) =>
@@ -69,7 +68,7 @@ namespace LessonPlanOrganizer
                 _lessonPlanYear = lpy;
             else
                 _lessonPlanYear = new LessonPlanYear(new DateTime(), new DateTime(), new List<Subject>(), new List<LessonPlan>());
-           
+            _lessonPlanYear.LessonPlans.ForEach(l => l.SubScribeBindings());
             
             // DT: crude testing of serialization/deserialization of LessonPlanYear object
             // will cause null exception error as subject and lesson plan lists are null.
@@ -101,7 +100,7 @@ namespace LessonPlanOrganizer
         public void addLessonPlans(LessonPlan item)
         {
             if (_lessonPlanYear.LessonPlans.Contains(item))
-                return;
+                _lessonPlanYear.LessonPlans.Remove(item);
             _lessonPlanYear.LessonPlans.Add(item);
             EventsControl.RaiseLessonChanged(this, EventArgs.Empty);
         }
