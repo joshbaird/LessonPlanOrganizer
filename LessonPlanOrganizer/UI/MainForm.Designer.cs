@@ -59,11 +59,11 @@
             this.tlpLessonPlanYear = new System.Windows.Forms.TableLayoutPanel();
             this.tlpLeftPane = new System.Windows.Forms.TableLayoutPanel();
             this.pTop = new System.Windows.Forms.Panel();
-            this.monthView = new System.Windows.Forms.Calendar.MonthView();
             this.bToday = new System.Windows.Forms.Button();
+            this.labelHeaderFill = new System.Windows.Forms.Label();
+            this.monthView = new System.Windows.Forms.Calendar.MonthView();
             this.subjectsView1 = new LessonPlanOrganizer.subjectsView();
             this.calendar1 = new System.Windows.Forms.Calendar.Calendar();
-            this.labelHeaderFill = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tlpLessonPlanYear.SuspendLayout();
@@ -303,6 +303,29 @@
             this.pTop.Size = new System.Drawing.Size(218, 184);
             this.pTop.TabIndex = 1;
             // 
+            // bToday
+            // 
+            this.bToday.Dock = System.Windows.Forms.DockStyle.Top;
+            this.bToday.Location = new System.Drawing.Point(0, 0);
+            this.bToday.Name = "bToday";
+            this.bToday.Size = new System.Drawing.Size(218, 23);
+            this.bToday.TabIndex = 0;
+            this.bToday.Text = "Today";
+            this.bToday.UseVisualStyleBackColor = true;
+            this.bToday.Click += new System.EventHandler(this.bToday_Click);
+            // 
+            // labelHeaderFill
+            // 
+            this.labelHeaderFill.AutoSize = true;
+            this.labelHeaderFill.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.labelHeaderFill.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelHeaderFill.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.labelHeaderFill.Location = new System.Drawing.Point(3, 0);
+            this.labelHeaderFill.Name = "labelHeaderFill";
+            this.labelHeaderFill.Size = new System.Drawing.Size(778, 1);
+            this.labelHeaderFill.TabIndex = 1;
+            this.labelHeaderFill.Text = "-";
+            // 
             // monthView
             // 
             this.monthView.ArrowsColor = System.Drawing.SystemColors.Window;
@@ -326,17 +349,6 @@
             this.monthView.TodayBorderColor = System.Drawing.Color.Maroon;
             this.monthView.SelectionChanged += new System.EventHandler(this.monthView_SelectionChanged);
             // 
-            // bToday
-            // 
-            this.bToday.Dock = System.Windows.Forms.DockStyle.Top;
-            this.bToday.Location = new System.Drawing.Point(0, 0);
-            this.bToday.Name = "bToday";
-            this.bToday.Size = new System.Drawing.Size(218, 23);
-            this.bToday.TabIndex = 0;
-            this.bToday.Text = "Today";
-            this.bToday.UseVisualStyleBackColor = true;
-            this.bToday.Click += new System.EventHandler(this.bToday_Click);
-            // 
             // subjectsView1
             // 
             this.subjectsView1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -347,6 +359,7 @@
             // 
             // calendar1
             // 
+            this.calendar1.AllowNew = false;
             this.calendar1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.calendar1.Font = new System.Drawing.Font("Segoe UI", 9F);
             calendarHighlightRange1.DayOfWeek = System.DayOfWeek.Monday;
@@ -378,18 +391,7 @@
             this.calendar1.LoadItems += new System.Windows.Forms.Calendar.Calendar.CalendarLoadEventHandler(this.calendar1_LoadItems);
             this.calendar1.ItemDatesChanged += new System.Windows.Forms.Calendar.Calendar.CalendarItemEventHandler(this.calendar1_ItemDatesChanged);
             this.calendar1.ItemDoubleClick += new System.Windows.Forms.Calendar.Calendar.CalendarItemEventHandler(this.calendar1_ItemDoubleClick);
-            // 
-            // labelHeaderFill
-            // 
-            this.labelHeaderFill.AutoSize = true;
-            this.labelHeaderFill.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelHeaderFill.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelHeaderFill.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelHeaderFill.Location = new System.Drawing.Point(3, 0);
-            this.labelHeaderFill.Name = "labelHeaderFill";
-            this.labelHeaderFill.Size = new System.Drawing.Size(778, 1);
-            this.labelHeaderFill.TabIndex = 1;
-            this.labelHeaderFill.Text = "-";
+            this.calendar1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.calendar1_KeyDown);
             // 
             // MainForm
             // 

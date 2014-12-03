@@ -19,7 +19,7 @@ namespace LessonPlanOrganizer
             InitializeComponent();
             lessonPlanYearControl = LessonPlanYearControl.Instance;
             calendar1.TimeUnitsOffset = -14; // offset display to 7:00 AM
-            this.calendar1.SetViewRange(new DateTime(2014,12,1), new DateTime(2014,12,31));
+            //this.calendar1.SetViewRange(new DateTime(2014,12,1), new DateTime(2014,12,31));
             EventsControl.SubjectChanged += (o, e) =>
                 {
                     refreshCalendar();
@@ -29,6 +29,7 @@ namespace LessonPlanOrganizer
                     refreshCalendar();
                 };
             lessonPlanYearControl.Calendar = this.calendar1;
+            refreshCalendar();
         }
 
         private LessonPlanYearControl lessonPlanYearControl;
@@ -186,6 +187,35 @@ namespace LessonPlanOrganizer
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             lessonPlanYearControl.SavetoDataBase(); 
+        }
+
+        private List<CalendarItem> clipboardOfLessons = new List<CalendarItem>();
+
+        private void calendar1_KeyDown(object sender, KeyEventArgs e)
+        {
+            List<CalendarItem> selectedItems = new List<CalendarItem>();
+            selectedItems.AddRange(this.calendar1.GetSelectedItems());
+            if (e.Control && e.KeyCode == Keys.C && selectedItems.Count() > 0)
+            {
+                clipboardOfLessons.Clear();
+                clipboardOfLessons.AddRange(this.calendar1.GetSelectedItems());
+            }
+            if (e.Control && e.KeyCode == Keys.V && this.calendar1.SelectedElementStart != null && clipboardOfLessons.Count > 0)
+            {
+                DateTime startOffset = this.calendar1.SelectedElementStart.Date;
+                DateTime lastEndDate = clipboardOfLessons.FirstOrDefault().StartDate;
+                clipboardOfLessons.ForEach(c => {
+                    startOffset = startOffset.Add((c.StartDate - lastEndDate).Duration());
+                    lastEndDate = c.EndDate;
+                    LessonPlan lp = new LessonPlan(this.calendar1, startOffset, startOffset.Add(c.Duration), c.Text);
+                    startOffset = startOffset.Add(c.Duration);
+                    LessonPlan original = lessonPlanYearControl.getLessonPlans().Where(i => i.CalendarItem.Equals(c)).FirstOrDefault();
+                    lp.Subject = original.Subject;
+                    lp.Notes = original.Notes;
+                    lp.Title = c.Text;
+                    lessonPlanYearControl.addLessonPlans(lp);
+                });
+            }
         }
     }
 }
