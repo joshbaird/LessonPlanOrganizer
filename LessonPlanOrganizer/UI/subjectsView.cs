@@ -29,7 +29,7 @@ namespace LessonPlanOrganizer
             this.fastObjectListView1.FormatRow += (o, e) =>
             {
                 e.Item.BackColor = ((Subject)e.Model).Color;
-                e.Item.ForeColor = Color.White;
+                e.Item.ForeColor = (PerceivedBrightness(((Subject)e.Model).Color) > 130 ? Color.Black : Color.White);
             };
 
             EventsControl.SubjectChanged += (o, e) =>
@@ -39,6 +39,13 @@ namespace LessonPlanOrganizer
             };
             this.fastObjectListView1.ClearObjects();
             this.fastObjectListView1.AddObjects(LessonPlanYearControl.Instance.getSubjects());
+        }
+        private int PerceivedBrightness(Color c)
+        {
+            return (int)Math.Sqrt(
+            c.R * c.R * .299 +
+            c.G * c.G * .587 +
+            c.B * c.B * .114);
         }
 
         private void fastObjectListView1_DoubleClick(object sender, EventArgs e)

@@ -16,8 +16,8 @@ namespace LessonPlanOrganizer
         {
             InitializeComponent();
             
-            this.associatedProject.DisplayMember = "Name";
-            this.associatedProject.Items.AddRange(LessonPlanYearControl.Instance.getSubjects().ToArray());
+            this.associatedSubject.DisplayMember = "Name";
+            this.associatedSubject.Items.AddRange(LessonPlanYearControl.Instance.getSubjects().ToArray());
 
             if (cal is LessonPlan)
             {
@@ -79,21 +79,27 @@ namespace LessonPlanOrganizer
             this.numStartMin.Value = _lessonPlan.CalendarItem.StartDate.Minute;
             this.numDurHour.Value = _lessonPlan.CalendarItem.Duration.Hours;
             this.numDurMin.Value = _lessonPlan.CalendarItem.Duration.Minutes;
-            int index = this.associatedProject.Items.IndexOf(_lessonPlan.Subject);
-            this.associatedProject.SelectedIndex = index;
+            int index = this.associatedSubject.Items.IndexOf(_lessonPlan.Subject);
+            this.associatedSubject.SelectedIndex = index;
             this.textBoxNotes.Text = _lessonPlan.Notes;
         }
 
-        private void setLessonPlan()
+        private Boolean setLessonPlan()
         {
-            // TODO validate all the fields for lesson plan first...
+            if(String.IsNullOrEmpty(this.lessonTitle.Text) || 
+                this.associatedSubject.SelectedItem == null)
+            {
+                MessageBox.Show("Invalid Data found", "Error in Data");
+                return false;
+            }
             this._lessonPlan.Title = this.lessonTitle.Text;
             DateTime startDate = new DateTime(this.dateSelection.Value.Year, this.dateSelection.Value.Month, this.dateSelection.Value.Day, (int)this.numStartHour.Value, (int)this.numStartMin.Value, 0);
             this._lessonPlan.StartDate = startDate;
             DateTime endDate = startDate.AddHours((int)this.numDurHour.Value).AddMinutes((int)this.numDurMin.Value);
             this._lessonPlan.EndDate = endDate;
-            this._lessonPlan.Subject = (Subject)this.associatedProject.SelectedItem;
+            this._lessonPlan.Subject = (Subject)this.associatedSubject.SelectedItem;
             this._lessonPlan.Notes = this.textBoxNotes.Text;
+            return true;
         }
 
         private void closeButton_Click(object sender, EventArgs e)
@@ -104,9 +110,8 @@ namespace LessonPlanOrganizer
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-
-            //original code
-            setLessonPlan();
+            if (!setLessonPlan())
+                return;
             LessonPlanYearControl.Instance.addLessonPlans(this._lessonPlan);
             EventsControl.RaiseLessonChanged(this._lessonPlan, EventArgs.Empty);
             this.DialogResult = DialogResult.OK;

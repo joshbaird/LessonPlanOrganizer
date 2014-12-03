@@ -78,42 +78,34 @@ namespace LessonPlanOrganizer
         {
             LessonYearUI lessonYearSetup = new LessonYearUI("new");
             lessonYearSetup.ShowDialog();
-            // TODO handle close and return
-
         }
 
         private void editYearStripMenuItem_Click(object sender, EventArgs e)
         {
             LessonYearUI lessonYearSetup = new LessonYearUI("edit");
             lessonYearSetup.ShowDialog();
-            // TODO handle close and return
         }
 
         private void deleteYearStripMenuItem_Click(object sender, EventArgs e)
         {
             LessonYearUI lessonYearSetup = new LessonYearUI("delete");
             lessonYearSetup.ShowDialog();
-            // TODO handle close and return
         }
 
         // Subject
         private void newSubjectStripMenuItem_Click(object sender, EventArgs e)
         {
             this.subjectsView1.NewSubjectWindow();
-            // TODO handle close and return
         }
 
         private void editSubjectStripMenuItem_Click(object sender, EventArgs e)
         {
             this.subjectsView1.EditSelected();
-            // TODO handle close and return
         }
 
         private void deleteSubjectStripMenuItem_Click(object sender, EventArgs e)
         {
             this.subjectsView1.DeleteSelected();
-            // TODO display list of all subjects and allow user to remove.
-            // TODO handle close and return
         }
 
         // lessons
@@ -121,7 +113,6 @@ namespace LessonPlanOrganizer
         {
             LessonUI lessonSetupUI = new LessonUI(this.calendar1);
             lessonSetupUI.ShowDialog();
-            // TODO handle close and return
         }
 
         private void calendar1_ItemDoubleClick(object sender, CalendarItemEventArgs e)
@@ -129,14 +120,12 @@ namespace LessonPlanOrganizer
             LessonUI lessonSetupUI = new LessonUI(e.Item);
             lessonSetupUI.ShowDialog();
             refreshCalendar();
-            // TODO handle close and return
         }
 
         private void editLessonStripMenuItem_Click(object sender, EventArgs e)
         {
             LessonUI lessonSetupUI = new LessonUI(this.calendar1.GetSelectedItems().FirstOrDefault());
             lessonSetupUI.ShowDialog();
-            // TODO handle close and return
         }
 
         private void deleteLessonStripMenuItem_Click(object sender, EventArgs e)

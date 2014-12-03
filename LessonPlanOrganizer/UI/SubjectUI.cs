@@ -35,7 +35,13 @@ namespace LessonPlanOrganizer
 
         private void bOK_Click(object sender, EventArgs e)
         {
-            // TODO validate the date before save.
+            if(colorDialog1.Color == null ||
+                String.IsNullOrEmpty(textBoxTitle.Text) ||
+                String.IsNullOrEmpty(textBoxNotes.Text))
+            {
+                MessageBox.Show("Invalid Data found", "Error Invalid Data");
+                return;
+            }
             _subject.Color = colorDialog1.Color;
             _subject.Name = textBoxTitle.Text;
             _subject.Notes = textBoxNotes.Text;

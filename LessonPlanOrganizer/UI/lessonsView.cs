@@ -48,7 +48,7 @@ namespace LessonPlanOrganizer
             this.fastObjectListView1.FormatRow += (o, e) =>
             {
                 e.Item.BackColor = ((LessonPlan)e.Model).Subject.Color;
-                e.Item.ForeColor = Color.White;
+                e.Item.ForeColor = (PerceivedBrightness(((LessonPlan)e.Model).Subject.Color) > 130 ? Color.Black : Color.White);
             };
 
             EventsControl.SubjectChanged += (o, e) =>
@@ -63,6 +63,13 @@ namespace LessonPlanOrganizer
             };
             this.fastObjectListView1.ClearObjects();
             this.fastObjectListView1.AddObjects(LessonPlanYearControl.Instance.getLessonPlans());
+        }
+        private int PerceivedBrightness(Color c)
+        {
+            return (int)Math.Sqrt(
+            c.R * c.R * .299 +
+            c.G * c.G * .587 +
+            c.B * c.B * .114);
         }
 
         private void fastObjectListView1_CellRightClick(object sender, BrightIdeasSoftware.CellRightClickEventArgs e)
