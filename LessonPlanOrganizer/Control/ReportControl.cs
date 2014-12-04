@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace LessonPlanOrganizer
 {
@@ -40,8 +42,17 @@ namespace LessonPlanOrganizer
 
         public void viewReport ()
         {
-            reportViewer view = new reportViewer (report.getReportFilePath());
-            view.Visible = true;
+            if (checkAdobeInstalled() == true)
+            {
+                reportViewer view = new reportViewer(report.getReportFilePath());
+                view.Visible = true;
+            }
+
+            else
+            {
+                String message = "Adobe Reader NOT Found.\nPlease install Adobe Reader and then run your report again.\nhttp://www.adobe.com/products/reader.html";
+                MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
             
         }
 
@@ -94,5 +105,21 @@ namespace LessonPlanOrganizer
             requestedLessons.Sort(new LessonPlanComp());
             return requestedLessons;
         }
+
+
+        public Boolean checkAdobeInstalled()
+        {
+
+            RegistryKey adobe = Registry.LocalMachine.OpenSubKey("Software").OpenSubKey("Adobe");
+            if (adobe != null)
+            { 
+                RegistryKey acroRead = adobe.OpenSubKey("Acrobat Reader");
+                if (acroRead != null) return true;
+                else return false;
+            }
+            else return false;
+
+         }
     }
+    
 }
