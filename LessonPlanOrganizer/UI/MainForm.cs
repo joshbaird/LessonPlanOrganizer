@@ -19,7 +19,6 @@ namespace LessonPlanOrganizer
             InitializeComponent();
             lessonPlanYearControl = LessonPlanYearControl.Instance;
             calendar1.TimeUnitsOffset = -14; // offset display to 7:00 AM
-            //this.calendar1.SetViewRange(new DateTime(2014,12,1), new DateTime(2014,12,31));
             EventsControl.SubjectChanged += (o, e) =>
                 {
                     refreshCalendar();
@@ -188,6 +187,7 @@ namespace LessonPlanOrganizer
             {
                 clipboardOfLessons.Clear();
                 clipboardOfLessons.AddRange(this.calendar1.GetSelectedItems());
+                clipboardOfLessons = clipboardOfLessons.OrderBy(o => o.StartDate).ToList();
             }
             if (e.Control && e.KeyCode == Keys.V && this.calendar1.SelectedElementStart != null && clipboardOfLessons.Count > 0)
             {
