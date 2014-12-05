@@ -206,5 +206,17 @@ namespace LessonPlanOrganizer
                 });
             }
         }
+        private String deleteLessonPlanGUID;
+        private void calendar1_ItemDeleting(object sender, CalendarItemCancelEventArgs e)
+        {
+            deleteLessonPlanGUID = lessonPlanYearControl.getLessonPlans().Where(i => i.CalendarItem.Equals(e.Item)).FirstOrDefault().ID;
+        }
+
+        private void calendar1_ItemDeleted(object sender, CalendarItemEventArgs e)
+        {
+            if (!String.IsNullOrEmpty(deleteLessonPlanGUID))
+                lessonPlanYearControl.getLessonPlans().Where(l => String.Equals(deleteLessonPlanGUID, l.ID)).FirstOrDefault().deleteLessonPlan();
+            deleteLessonPlanGUID = String.Empty;
+        }
     }
 }

@@ -43,19 +43,6 @@ namespace LessonPlanOrganizer
                     else
                         sub = new Subject();
                 }
-                else if (((Calendar)cal).Items.Count > 0)
-                {
-                    calItem = ((Calendar)cal).Items.FirstOrDefault();
-                    if (LessonPlanYearControl.Instance.getLessonPlans().Where(l => l.selectLessonPlan(calItem) != null).Count() > 0)
-                    {
-                        LessonPlan lp = LessonPlanYearControl.Instance.getLessonPlans().Where(l => l.selectLessonPlan(calItem) != null).FirstOrDefault();
-                        sub = lp.Subject;
-                        notes = lp.Notes;
-                        id = lp.ID;
-                    }
-                    else
-                        sub = new Subject();
-                }
                 else
                 {
                     calItem = new CalendarItem((Calendar)cal, DateTime.Now, DateTime.Now.AddHours(1), String.Empty);
