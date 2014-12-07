@@ -29,20 +29,21 @@ namespace LessonPlanOrganizer
         public DataBaseWrapper(String sqlite)
         {
             connection_string = String.Format("Data Source={0};Version=3;", sqlite);
-            /// <todo> Check to see if file exists here, if not create and load
+            //Console.WriteLine("File path string: " + sqlite);
             if (File.Exists(sqlite))
             {
-                Console.WriteLine("DEBUG MSG: Database file exists.");
+                //Console.WriteLine("DEBUG MSG: Database file exists.");
                 if (doesTableExists(lesson_plan_year) == false)
                 {
-                    Console.WriteLine("DEBUG MSG: Table does not exist.");
+                    //Console.WriteLine("DEBUG MSG: Table does not exist.");
                     createTables();
                 }
             }
             else
             {
-                // Consider throwing an exception?
-                Console.WriteLine("Database file does not exist.");
+                //Console.WriteLine("Database file does not exist.");
+                SQLiteConnection.CreateFile(sqlite);
+                createTables();
             }
         }
 
@@ -55,6 +56,10 @@ namespace LessonPlanOrganizer
             executeSQLNonQuery(String.Format("INSERT INTO sqlite_sequence (name, seq) Values ('{0}', 0)", lesson_plan_year));
         }
 
+        /// <summary>
+        /// Serialize and store LPY object.
+        /// </summary>
+        /// <param name="LPY">LPY object to serialize.</param>
         public void serializeLessonPlanYear(LessonPlanYear LPY)
         {
             byte[] arData;
@@ -71,13 +76,16 @@ namespace LessonPlanOrganizer
             executeSQLNonQueryWithBlob(sql, "DATA", arData);
         }
 
+        /// <summary>
+        /// Deserializez last database entry and return LPY object.
+        /// </summary>
+        /// <returns>Lesson Plan Year object. </returns>
         public LessonPlanYear deserializeLessonPlanYear()
         {
             LessonPlanYear LPY;
             string sql = String.Format("SELECT ID, DATA FROM {0} ", lesson_plan_year);
             DataTable dt = getDataTable(sql);
 
-            // Possible for null to occur here as datatable may be empty. Review this.
             int index;
             if (dt != null) index = dt.Rows.Count - 1;
             else index = -1;

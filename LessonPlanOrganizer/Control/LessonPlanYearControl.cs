@@ -15,7 +15,7 @@ namespace LessonPlanOrganizer
 
         private LessonPlanYearControl()
         {
-            _dbWrapper = new DataBaseWrapper(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData).ToString() + "lesson_db.sqlite");
+            _dbWrapper = new DataBaseWrapper(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData).ToString() + "\\lesson_db.sqlite");
             fillLessonPlanYearFromDb();
             
             EventsControl.AddNewSubject += (o, e) =>
