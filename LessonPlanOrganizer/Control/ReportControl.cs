@@ -109,16 +109,35 @@ namespace LessonPlanOrganizer
 
         public Boolean checkAdobeInstalled()
         {
+            Boolean acroFound = false;
 
-            RegistryKey adobe = Registry.LocalMachine.OpenSubKey("Software").OpenSubKey("Adobe");
-            if (adobe != null)
+            //check for 32 bit version 
+            RegistryKey adobeReader32 = Registry.LocalMachine.OpenSubKey("Software").OpenSubKey("Adobe");
+            if (adobeReader32 != null)
             { 
-                RegistryKey acroRead = adobe.OpenSubKey("Acrobat Reader");
-                if (acroRead != null) return true;
-                else return false;
-            }
-            else return false;
+                RegistryKey acroRead = adobeReader32.OpenSubKey("Acrobat Reader");
+                if (acroRead != null) acroFound = true;
 
+                RegistryKey adobeAcro = adobeReader32.OpenSubKey("Adobe Acrobat");
+                if (adobeAcro != null) acroFound = true;
+            }
+
+            //check for 64 bit version of Acrobat Reader
+            RegistryKey adobeReader64 = Registry.LocalMachine.OpenSubKey("Software").OpenSubKey("Wow6432Node");
+            if (adobeReader64 != null)
+            {
+                adobeReader64 = adobeReader64.OpenSubKey("Adobe");
+                if (adobeReader64 != null)
+                {
+                    RegistryKey acroReader = adobeReader64.OpenSubKey("Acrobat Reader");
+                    if (acroReader != null) acroFound = true;
+
+                    RegistryKey adobeAcro = adobeReader64.OpenSubKey("Adobe Acrobat");
+                    if (adobeAcro != null) acroFound = true;
+                }
+            }
+
+            return acroFound;
          }
     }
     
