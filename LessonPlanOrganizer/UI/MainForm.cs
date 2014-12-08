@@ -148,7 +148,7 @@ namespace LessonPlanOrganizer
         // help
         private void aboutHelpStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Lesson Plan Organizer\nWritten by Team-C", "About");
+            MessageBox.Show("Lesson Plan Organizer\nWritten by Team-C\n\nJoshua Baird\nCandace Lamoreaux\nAngela Lin\nDavid Tran", "About");
         }
         #endregion
 
